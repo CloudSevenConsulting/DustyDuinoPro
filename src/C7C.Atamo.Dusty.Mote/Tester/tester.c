@@ -70,7 +70,11 @@ void tester(void)
 	int ret;
 
 #if TEST_MEMORY_ENABLE
-    /*TODO: Memory testing*/
+	ret = test_data_bus();/*TODO: Memory testing check*/
+	if (ret)
+	{
+		TestFail();
+	}
 #endif/*TEST_MEMORY*/
 }
 

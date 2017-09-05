@@ -25,3 +25,16 @@ Initialize and update the necessary C Library submodule:
 
    $ git submodule init
    $ git submodule update
+
+Pulling the QSL
+===============
+
+A small Python 3.x package is provided to automate QSL updates.
+
+.. code-block:: bash
+
+   $ cd c7c-atamo-dusty/src/
+   $ cd C7C.Atamo.Dusty.PullQSL
+   $ python -m PullQSL.main
+
+Configure the ``settings.ini`` in ``C7C.Atamo.Dusty.PullQSL.resources``

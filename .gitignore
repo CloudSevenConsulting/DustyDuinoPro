@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Atmel Studio temporary and build filels
+[Dd]ebug/
+[Rr]elease/
+*.atsuo

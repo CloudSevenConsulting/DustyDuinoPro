@@ -23,6 +23,6 @@
 #ifndef TEST_MEMORY_H_
 #define TEST_MEMORY_H_
 
-void test_data_bus(void);
+int test_data_bus(volatile int * address)
 
 #endif /* TEST_SMB_H_ */

@@ -30,21 +30,44 @@
  */
 #include <asf.h>
 
+/* ****************************************************************************
+ * DEBUG Settings
+ * ***************************************************************************/
+
+/*Comment this out to turn off debug*/
+#define TEST_MODE 1
+
+#if TEST_MODE
+#include "tester/tester.h"
+#endif
+
+/* ****************************************************************************
+ * FUNCTION: system_init
+ * *********************
+ * To keep the main routine clean; these commands refer to initialisation 
+ * and should only be run during startup
+ *
+ * ***************************************************************************/
 void system_init (void)
 {
 	board_init();
 	sysclk_init();
 }
 
-
-int main (void)
+void main (void)
 {
-	/* Insert system clock initialization code here (sysclk_init()). */
 
-	while (1)
+	system_init();
+
+	#if TEST_MODE
+	while(1)
 	{
-		continue;/*TODO*/
+		tester();
 	}
-
-	/* Insert application code here, after the board has been initialized. */
+	#else
+	while(1)
+	{
+	}
+	#endif
 }
+

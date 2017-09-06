@@ -20,9 +20,9 @@
  * ----------------
  *
  * ==========================================================================*/
-void test_data_bus(volatile datum * address)
+int test_data_bus(volatile int * address)
 {
-    datum pattern;
+    int pattern;
 
     /*
      * Perform a walking 1's test at the given address.
@@ -43,7 +43,7 @@ void test_data_bus(volatile datum * address)
         }
     }
 
-    return (0);
+    return 1;
 
     //TODO: This function
     //This function was taken from: https://barrgroup.com/Embedded-Systems/How-To/Memory-Test-Suite-C

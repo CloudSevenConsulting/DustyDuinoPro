@@ -30,6 +30,7 @@
       <framework-data>
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.basic.clock" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations />
   <files>
@@ -51,6 +52,11 @@
     <file path="src/ASF/mega/utils/preprocessor/tpaste.h" framework="" version="" source="mega/utils/preprocessor/tpaste.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/mega/utils/progmem.h" framework="" version="" source="mega/utils/progmem.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/mega/utils/status_codes.h" framework="" version="" source="mega/utils/status_codes.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/mega/drivers/cpu/mega_reset_cause.h" framework="" version="3.31.0" source="mega\drivers\cpu\mega_reset_cause.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/clock/mega/sysclk.c" framework="" version="3.31.0" source="common\services\clock\mega\sysclk.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/clock/mega/sysclk.h" framework="" version="3.31.0" source="common\services\clock\mega\sysclk.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/clock/sysclk.h" framework="" version="3.31.0" source="common\services\clock\sysclk.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/Config/conf_clock.h" framework="" version="3.31.0" source="common\services\clock\mega\module_config\conf_clock.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.31.0/common.applications.user_application.user_board.mega/html/index.html" />
   <offline-documentation help="" />
@@ -87,6 +93,8 @@
       <Value>../src/ASF/mega/utils/preprocessor</Value>
       <Value>../src</Value>
       <Value>../src/ASF/common/boards/user_board</Value>
+      <Value>../src/ASF/mega/drivers/cpu</Value>
+      <Value>../src/ASF/common/services/clock</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -112,6 +120,8 @@
       <Value>../src/ASF/mega/utils/preprocessor</Value>
       <Value>../src</Value>
       <Value>../src/ASF/common/boards/user_board</Value>
+      <Value>../src/ASF/mega/drivers/cpu</Value>
+      <Value>../src/ASF/common/services/clock</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -142,6 +152,8 @@
       <Value>../src/ASF/mega/utils/preprocessor</Value>
       <Value>../src</Value>
       <Value>../src/ASF/common/boards/user_board</Value>
+      <Value>../src/ASF/mega/drivers/cpu</Value>
+      <Value>../src/ASF/common/services/clock</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -168,6 +180,8 @@
       <Value>../src/ASF/mega/utils/preprocessor</Value>
       <Value>../src</Value>
       <Value>../src/ASF/common/boards/user_board</Value>
+      <Value>../src/ASF/mega/drivers/cpu</Value>
+      <Value>../src/ASF/common/services/clock</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -175,7 +189,52 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.c">
+    <Compile Include="src\sm_clib\dn_clib_build.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_clib_version.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_common.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_endianness.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_hdlc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_hdlc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_ipmt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_ipmt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_lock.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_serial_mt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_serial_mt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_clib\dn_uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Tester\memory.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Tester\memory.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Tester\tester.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\Tester\tester.h">
       <SubType>compile</SubType>
     </Compile>
     <None Include="src\ASF\common\boards\board.h">
@@ -232,6 +291,21 @@
     <None Include="src\ASF\mega\utils\status_codes.h">
       <SubType>compile</SubType>
     </None>
+    <None Include="src\ASF\mega\drivers\cpu\mega_reset_cause.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\common\services\clock\mega\sysclk.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\common\services\clock\mega\sysclk.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\clock\sysclk.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\config\conf_clock.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -242,14 +316,21 @@
     <Folder Include="src\ASF\common\" />
     <Folder Include="src\ASF\common\boards\" />
     <Folder Include="src\ASF\common\boards\user_board\" />
+    <Folder Include="src\ASF\common\services\" />
+    <Folder Include="src\ASF\common\services\clock\" />
+    <Folder Include="src\ASF\common\services\clock\mega\" />
     <Folder Include="src\ASF\common\utils\" />
     <Folder Include="src\ASF\common\utils\interrupt\" />
     <Folder Include="src\ASF\common\utils\make\" />
     <Folder Include="src\ASF\mega\" />
+    <Folder Include="src\ASF\mega\drivers\" />
+    <Folder Include="src\ASF\mega\drivers\cpu\" />
     <Folder Include="src\ASF\mega\utils\" />
     <Folder Include="src\ASF\mega\utils\assembler\" />
     <Folder Include="src\ASF\mega\utils\preprocessor\" />
     <Folder Include="src\config\" />
+    <Folder Include="src\sm_clib" />
+    <Folder Include="src\Tester" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

@@ -7,6 +7,8 @@ C7C.Atamo.Dusty
    :maxdepth: 2
    :caption: Contents:
 
+   intro/home
+
    usage/main
 
    technical/main

@@ -77,5 +77,6 @@ Because of the way the branch ``gh-pages`` is set-up, a funny build process is r
     b) Manually remove all build files (everything in ``build/html`` excluding the hidden ``.git`` directory)
 
 2. ``Make`` the files from source with ``make html``
-3. ``git-add`` and ``git-commit`` the changes
-4. ``git push origin gh-pages``
+3. ``git add --all``
+4. ``git commit -m "docs"`` (who cares about commit messages here)
+5. ``git push origin gh-pages``

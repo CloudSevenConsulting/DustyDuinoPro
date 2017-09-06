@@ -1,0 +1,7 @@
+****
+Home
+****
+
+This project is a UWA design project for ATAMO.
+
+The project's code-base can found at `<https://github.com/kjph/c7c-atamo-dusty>`_

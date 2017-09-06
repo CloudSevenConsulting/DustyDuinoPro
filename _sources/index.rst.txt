@@ -7,8 +7,6 @@ C7C.Atamo.Dusty
    :maxdepth: 2
    :caption: Contents:
 
-   deploy/dusty_qsl
-
    usage/main
 
    technical/main

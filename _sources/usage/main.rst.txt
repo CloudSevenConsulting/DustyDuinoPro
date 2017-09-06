@@ -4,15 +4,21 @@ Usage
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Software:
 
-   dependencies
-   projDocs
+   dependencies/software
+   dependencies/otherPkgs_dustyQSL
+
 
 .. toctree::
    :caption: Git Tutorials
    :maxdepth: 2
 
-   git_basics
-   git_checkout
-   git_branches
+   git/git_basics
+   git/git_checkout
+   git/git_branches
+
+.. toctree::
+   :caption: Contributing
+
+   projDocs

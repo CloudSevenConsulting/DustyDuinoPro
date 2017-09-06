@@ -17,7 +17,7 @@ To contribute to the documentation you must:
 
 1. Install Python and Sphinx
 2. Setup your Sphinx project
-3. Make, commit, and push
+3. Building
 
 
 Installing Python Sphinx
@@ -62,3 +62,20 @@ You will need to setup your sphinx project in a separate directory the git repo:
    # press [enter] to all options
 
 
+Building
+========
+
+Because of the way the branch ``gh-pages`` is set-up, a funny build process is required.
+
+.. note::
+
+   Team to consider automating this with Python tool
+
+1. If the indexes must change (i.e. new files added/files moved) then a clean is required before build
+
+    a) **Do not** use ``make clean``, as this will remove the ``.git`` files
+    b) Manually remove all build files (everything in ``build/html`` excluding the hidden ``.git`` directory)
+
+2. ``Make`` the files from source with ``make html``
+3. ``git-add`` and ``git-commit`` the changes
+4. ``git push origin gh-pages``

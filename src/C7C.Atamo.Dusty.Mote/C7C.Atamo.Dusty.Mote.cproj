@@ -31,6 +31,7 @@
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.clock" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.ioport" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations />
   <files>
@@ -57,6 +58,8 @@
     <file path="src/ASF/common/services/clock/mega/sysclk.h" framework="" version="3.31.0" source="common\services\clock\mega\sysclk.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/common/services/clock/sysclk.h" framework="" version="3.31.0" source="common\services\clock\sysclk.h" changed="False" content-id="Atmel.ASF" />
     <file path="src/Config/conf_clock.h" framework="" version="3.31.0" source="common\services\clock\mega\module_config\conf_clock.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/ioport/ioport.h" framework="" version="3.31.0" source="common\services\ioport\ioport.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/ioport/mega/ioport.h" framework="" version="3.31.0" source="common\services\ioport\mega\ioport.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.31.0/common.applications.user_application.user_board.mega/html/index.html" />
   <offline-documentation help="" />
@@ -95,6 +98,7 @@
       <Value>../src/ASF/common/boards/user_board</Value>
       <Value>../src/ASF/mega/drivers/cpu</Value>
       <Value>../src/ASF/common/services/clock</Value>
+      <Value>../src/ASF/common/services/ioport</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -122,6 +126,7 @@
       <Value>../src/ASF/common/boards/user_board</Value>
       <Value>../src/ASF/mega/drivers/cpu</Value>
       <Value>../src/ASF/common/services/clock</Value>
+      <Value>../src/ASF/common/services/ioport</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
 </AvrGcc>
@@ -154,6 +159,7 @@
       <Value>../src/ASF/common/boards/user_board</Value>
       <Value>../src/ASF/mega/drivers/cpu</Value>
       <Value>../src/ASF/common/services/clock</Value>
+      <Value>../src/ASF/common/services/ioport</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -182,6 +188,7 @@
       <Value>../src/ASF/common/boards/user_board</Value>
       <Value>../src/ASF/mega/drivers/cpu</Value>
       <Value>../src/ASF/common/services/clock</Value>
+      <Value>../src/ASF/common/services/ioport</Value>
     </ListValues>
   </avrgcc.assembler.general.IncludePaths>
   <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
@@ -189,6 +196,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="src\ASF\common\services\ioport\ioport.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\ioport\mega\ioport.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\sm_clib\dn_clib_build.h">
       <SubType>compile</SubType>
     </Compile>
@@ -319,6 +332,8 @@
     <Folder Include="src\ASF\common\services\" />
     <Folder Include="src\ASF\common\services\clock\" />
     <Folder Include="src\ASF\common\services\clock\mega\" />
+    <Folder Include="src\ASF\common\services\ioport\" />
+    <Folder Include="src\ASF\common\services\ioport\mega\" />
     <Folder Include="src\ASF\common\utils\" />
     <Folder Include="src\ASF\common\utils\interrupt\" />
     <Folder Include="src\ASF\common\utils\make\" />

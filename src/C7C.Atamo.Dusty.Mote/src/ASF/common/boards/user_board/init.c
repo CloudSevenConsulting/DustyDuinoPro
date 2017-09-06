@@ -18,4 +18,6 @@ void board_init(void)
 	 * for, e.g., the I/O pins. The initialization can rely on application-
 	 * specific board configuration, found in conf_board.h.
 	 */
+
+	 ioport_enable_pin(3);/*TODO remove this; test artifcat*/
 }

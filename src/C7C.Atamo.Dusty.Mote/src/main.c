@@ -35,7 +35,7 @@
  * ***************************************************************************/
 
 /*Comment this out to turn off debug*/
-#define TEST_MODE 1
+#define TEST_MODE 0
 
 #if TEST_MODE
 #include "tester/tester.h"
@@ -54,7 +54,7 @@ void system_init (void)
 	sysclk_init();
 }
 
-void main (void)
+int main (void)
 {
 
 	system_init();

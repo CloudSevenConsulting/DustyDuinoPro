@@ -48,7 +48,7 @@
  * and should only be run during startup
  *
  * ***************************************************************************/
-void system_init (void)
+static void system_init (void)
 {
 	board_init();
 	sysclk_init();

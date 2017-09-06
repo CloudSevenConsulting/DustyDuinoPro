@@ -1,0 +1,54 @@
+**********
+Git Basics
+**********
+
+This section will **not** go into the details of ``git``, there are better
+tutorials online that can be read.
+
+This tutorial will be tailored for *this* project.
+
+Setup
+=====
+
+With ``git`` installed on your system, clone the repo;
+
+.. code-block:: bash
+
+   $ git clone https://github.com/kjph/c7c-atamo-dusty.git
+   $ cd c7c-atamo-dusty
+
+Workflow
+========
+
+The workflow used for this project will be basic.
+Despite this, it is still recommended to read up on the basic ``git`` workflows_.
+
+.. _workflows: https://guides.github.com/introduction/flow/
+
+A daily build process is provided below:
+
+1. ``git pull`` to update your **local repository** with the Github repository
+2. Merge any conflicting changes if required (or ask a more senior dev.)
+3. ``git log`` to review changes to ensure you're up to speed and understand the changes
+4. Make your local changes;
+
+     a) ``git add`` to stage changes
+     b) ``git commit`` to save changes into your **local repository**
+
+5. ``git push`` to ensure your local repository is the same with the server repository (update refs)
+6. Repeat
+
+Git Theory
+==========
+
+``git`` rookies often wonder why there are three different commands (``add``, ``commit``, ``push``) which all
+sound like they do the same thing.
+
+**They don't** (obviously).
+
+Recommended reading to clear-up these:
+
+* Git: `Git Basics <https://git-scm.com/book/en/v2/Getting-Started-Git-Basics>`_.
+* Stackoverflow: `What are the differences between git-commit and git-push <https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push>`_.
+* Stackexchange (software engineering): `what does stage mean in git <https://softwareengineering.stackexchange.com/questions/119782/what-does-stage-mean-in-git>`_.
+

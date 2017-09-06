@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Firmware Testing Overview &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Technical Documentation" href="../main.html"/>
+        <link rel="next" title="Making Tests" href="firmwareTesting_makingTests.html"/>
+        <link rel="prev" title="Technical Documentation" href="../main.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy/dusty_qsl.html">Dusty Quick Start Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Technical Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Firmware Testing Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#building-test-mode">Building Test Mode</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#testing-configuration">Testing Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="firmwareTesting_makingTests.html">Making Tests</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../main.html">Technical Documentation</a> &raquo;</li>
+        
+      <li>Firmware Testing Overview</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/technical/testing/firmwareTesting_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="firmware-testing-overview">
+<h1>Firmware Testing Overview<a class="headerlink" href="#firmware-testing-overview" title="Permalink to this headline">¶</a></h1>
+<p>Testing is performed with a separate build from the production build.</p>
+<p>Selecting the build mode is done in software source code.</p>
+<div class="section" id="building-test-mode">
+<h2>Building Test Mode<a class="headerlink" href="#building-test-mode" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal"><span class="pre">main.c</span></code> the following code enables Test mode.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
+<span class="cm"> * DEBUG Settings</span>
+<span class="cm"> * ***************************************************************************/</span>
+
+<span class="cm">/*Comment this out to turn off debug*/</span>
+<span class="cp">#define TEST_MODE 1</span>
+
+<span class="cp">#if TEST_MODE</span>
+<span class="cp">#include</span> <span class="cpf">&quot;tester/debug.h&quot;</span><span class="cp"></span>
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>The <strong>pre-processor</strong> macro <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is a boolean which is checked in source
+code. If it is set, then the compiler will only build the test mode code.
+If instead <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is zero, then the compiler will build into production</p>
+<div class="section" id="testing-configuration">
+<h3>Testing Configuration<a class="headerlink" href="#testing-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Certain tests can be enabled or disabled in <code class="docutils literal"><span class="pre">tester/debug.c</span></code></p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
+<span class="cm"> * Test Selection</span>
+<span class="cm"> * ***************************************************************************/</span>
+<span class="cp">#define TEST_SMB_ENABLE 1</span>
+<span class="cp">#define TEST_MEMORY_ENABLE 0</span>
+</pre></div>
+</div>
+<p>As seen in the code-block above, similar macros are defined to enable or disable
+certain tests. When the macros are set to 1, then the compiler will build the
+relevant test functions and then run them. If the macros are set to 0, no build
+will occur for the tests in question.</p>
+<p>The example above has SMB testing enables and Memory testing disabled</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="firmwareTesting_makingTests.html" class="btn btn-neutral float-right" title="Making Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../main.html" class="btn btn-neutral" title="Technical Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

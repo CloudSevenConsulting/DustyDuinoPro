@@ -1,0 +1,50 @@
+*************************
+Firmware Testing Overview
+*************************
+
+Testing is performed with a separate build from the production build.
+
+Selecting the build mode is done in software source code.
+
+Building Test Mode
+==================
+
+In ``main.c`` the following code enables Test mode.
+
+.. code-block:: c
+
+   /* ****************************************************************************
+    * DEBUG Settings
+    * ***************************************************************************/
+
+   /*Comment this out to turn off debug*/
+   #define TEST_MODE 1
+
+   #if TEST_MODE
+   #include "tester/debug.h"
+   #endif
+
+
+The **pre-processor** macro ``TEST_MODE`` is a boolean which is checked in source
+code. If it is set, then the compiler will only build the test mode code.
+If instead ``TEST_MODE`` is zero, then the compiler will build into production
+
+Testing Configuration
+---------------------
+
+Certain tests can be enabled or disabled in ``tester/debug.c``
+
+.. code-block:: c
+
+   /* ****************************************************************************
+    * Test Selection
+    * ***************************************************************************/
+   #define TEST_SMB_ENABLE 1
+   #define TEST_MEMORY_ENABLE 0
+
+As seen in the code-block above, similar macros are defined to enable or disable
+certain tests. When the macros are set to 1, then the compiler will build the
+relevant test functions and then run them. If the macros are set to 0, no build
+will occur for the tests in question.
+
+The example above has SMB testing enables and Memory testing disabled

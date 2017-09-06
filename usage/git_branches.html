@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Branches &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
+        <link rel="up" title="Usage" href="main.html"/>
+        <link rel="next" title="Technical Documentation" href="../technical/main.html"/>
+        <link rel="prev" title="Checkout" href="git_checkout.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../deploy/dusty_qsl.html">Dusty Quick Start Library</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main.html">Usage</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dependencies.html">Project Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projDocs.html">Project Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_basics.html">Git Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_checkout.html">Checkout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Branches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-new-branch">Making a New Branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-branches">Navigating Branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-workflow">Example Workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../technical/main.html">Technical Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="main.html">Usage</a> &raquo;</li>
+        
+      <li>Branches</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/usage/git_branches.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="branches">
+<h1>Branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="making-a-new-branch">
+<h2>Making a New Branch<a class="headerlink" href="#making-a-new-branch" title="Permalink to this headline">¶</a></h2>
+<p>To make a new branch</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout -b <span class="o">[</span>branchName<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="navigating-branches">
+<h2>Navigating Branches<a class="headerlink" href="#navigating-branches" title="Permalink to this headline">¶</a></h2>
+<p>Note that sometimes <code class="docutils literal"><span class="pre">git</span></code> will not let you move between branches if you
+have uncommitted changes in your current branch.</p>
+<p>Now the question is, where do you want these changes to be committed to?</p>
+<ul class="simple">
+<li>Commit them to old branch?</li>
+<li>Commit them to the new branch?</li>
+</ul>
+<p>In both cases you first have to stash your uncommitted changes;</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git stash save
+</pre></div>
+</div>
+<p>This command saves all current untracked changes, but to no branch at all (just some
+random storage space in <code class="docutils literal"><span class="pre">git</span></code>), and then remove them</p>
+<p>To recover these changes use the command</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git stash apply
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-workflow">
+<h2>Example Workflow<a class="headerlink" href="#example-workflow" title="Permalink to this headline">¶</a></h2>
+<p>An example workflow is shown below, here we are using the testing machine and
+a different developer (dev2) wishes to checkout their branch for testing whilst
+not affecting the current branch of the current developer (dev1)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git status         <span class="c1"># Check the current working tree</span>
+On branch dev1
+Your branch is ahead of <span class="s1">&#39;origin/dev1&#39;</span> by <span class="m">1</span> commit.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+Changes not staged <span class="k">for</span> commit:
+  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+
+        modified:   src/tester/example_file.c
+
+$ git stash save     <span class="c1"># Save the current changes in the working tree to stash</span>
+Saved working directory and index state WIP on dev1: 22cbc57 Prev commit <span class="o">(</span>example<span class="o">)</span>
+HEAD is now at 22cbc57 Prev commit <span class="o">(</span>example<span class="o">)</span>
+
+$ git checkout dev2  <span class="c1"># checkout the branch</span>
+Switched to branch <span class="s1">&#39;dev2&#39;</span>
+Your branch is up-to-date with <span class="s1">&#39;origin/dev2&#39;</span>.
+
+$ git pull           <span class="c1"># Get any updates</span>
+
+<span class="c1">#... build and test as required</span>
+
+<span class="c1"># &gt;&gt;&gt;&gt; CHOOSE ONE OF TWO ----------------------------------------------------</span>
+
+<span class="c1"># OPTION A</span>
+$ git reset --hard   <span class="c1"># If you want to get rid of any changes made during testing</span>
+
+<span class="c1"># OPTION B</span>
+$ git add .          <span class="c1"># If you want to save changes made during testing</span>
+$ git commit
+
+<span class="c1"># &gt;&gt;&gt;&gt; ----------------------------------------------------------------------</span>
+
+$ git checkout dev1  <span class="c1"># checkout the previous branch</span>
+Switched to branch <span class="s1">&#39;dev1&#39;</span>
+Your branch is up-to-date with <span class="s1">&#39;origin/dev1&#39;</span>.
+
+$ git stash dev1     <span class="c1"># Re-apply the changes to the branch</span>
+On branch dev1
+Your branch is ahead of <span class="s1">&#39;origin/dev1&#39;</span> by <span class="m">1</span> commit.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+Changes not staged <span class="k">for</span> commit:
+  <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+
+        modified:   src/tester/example_file.c
+
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../technical/main.html" class="btn btn-neutral float-right" title="Technical Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="git_checkout.html" class="btn btn-neutral" title="Checkout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

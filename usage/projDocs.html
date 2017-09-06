@@ -37,6 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
         <link rel="up" title="Usage" href="main.html"/>
+        <link rel="next" title="Git Basics" href="git_basics.html"/>
         <link rel="prev" title="Project Software" href="dependencies.html"/> 
 
   
@@ -93,10 +94,15 @@
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html">Project Software</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Project Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-python-sphinx">Installing Python Sphinx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-your-sphinx-project">Setup your Sphinx Project</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="git_basics.html">Git Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_checkout.html">Checkout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_branches.html">Branches</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../technical/main.html">Technical Documentation</a></li>
 </ul>
 
             
@@ -164,35 +170,18 @@
             
   <div class="section" id="project-documentation">
 <h1>Project Documentation<a class="headerlink" href="#project-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Project documentation can be found in <code class="docutils literal"><span class="pre">c7c-atamo-dusty/docs/</span></code></p>
-<p>The directory tree should be as follows:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>Mode                LastWriteTime         Length Name
-----                -------------         ------ ----
-d-----       <span class="m">2017</span>-09-05     <span class="m">17</span>:46                build
-d-----       <span class="m">2017</span>-09-06     <span class="m">12</span>:00                <span class="nb">source</span>
--a----       <span class="m">2017</span>-09-05     <span class="m">17</span>:40            <span class="m">815</span> make.bat
--a----       <span class="m">2017</span>-09-05     <span class="m">17</span>:40            <span class="m">617</span> Makefile
+<p><a class="reference external" href="https://kjph.github.io/c7c-atamo-dusty/">Project documentation</a> can be found in the <code class="docutils literal"><span class="pre">gh-pages</span></code> branch.</p>
+<p>The <code class="docutils literal"><span class="pre">.rst</span></code> files are shipped to <code class="docutils literal"><span class="pre">./sources</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout gh-pages
+$ <span class="nb">cd</span> ./_sources
 </pre></div>
 </div>
-<p>The git repository <strong>does not</strong> ship the <code class="docutils literal"><span class="pre">build/</span></code> files, they must be built using
-Python Sphinx (see below for installation):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#for *nix</span>
-$ ./make clean
-$ ./make html
-
-<span class="c1">#for DOS</span>
-PS&gt; ./make.bat clean
-PS&gt; ./make.bat html
-</pre></div>
-</div>
-<p>To open the HTML files (or just open it with a file explorer…):</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1">#for dos</span>
-PS&gt; Invoke-Item build/html/index.html
-
-<span class="c1">#for *nix</span>
-$ xdg-open build/html/index.html
-</pre></div>
-</div>
+<p>To contribute to the documentation you must:</p>
+<ol class="arabic simple">
+<li>Install Python and Sphinx</li>
+<li>Setup your Sphinx project</li>
+<li>Make, commit, and push</li>
+</ol>
 <div class="section" id="installing-python-sphinx">
 <h2>Installing Python Sphinx<a class="headerlink" href="#installing-python-sphinx" title="Permalink to this headline">¶</a></h2>
 <p>Python <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> is a tool that helps build documentation out of reStructured Text (rst)
@@ -211,6 +200,18 @@ pip <span class="m">9</span>.0.1 from C:<span class="se">\.</span>..<span class=
 <blockquote>
 <div>$ python -m pip install sphinx_rtd_theme</div></blockquote>
 </div>
+<div class="section" id="setup-your-sphinx-project">
+<h2>Setup your Sphinx Project<a class="headerlink" href="#setup-your-sphinx-project" title="Permalink to this headline">¶</a></h2>
+<p>You will need to setup your sphinx project in a separate directory the git repo:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~
+$ mkdir someDir
+$ <span class="nb">cd</span> someDir/
+$ sphinx-quickstart.exe
+
+<span class="c1"># press [enter] to all options</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -222,6 +223,8 @@ pip <span class="m">9</span>.0.1 from C:<span class="se">\.</span>..<span class=
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="git_basics.html" class="btn btn-neutral float-right" title="Git Basics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dependencies.html" class="btn btn-neutral" title="Project Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

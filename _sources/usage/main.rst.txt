@@ -1,5 +1,6 @@
+*****
 Usage
-=====
+*****
 
 .. toctree::
    :maxdepth: 2
@@ -7,3 +8,11 @@ Usage
 
    dependencies
    projDocs
+
+.. toctree::
+   :caption: Git Tutorials
+   :maxdepth: 2
+
+   git_basics
+   git_checkout
+   git_branches

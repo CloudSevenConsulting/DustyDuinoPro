@@ -1,0 +1,51 @@
+********
+Checkout
+********
+
+Going back to an old commit
+===========================
+
+Use this ``log`` format to get a quick review of all the commits
+
+.. code-block:: bash
+
+    $ git log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+
+This will output something like this
+
+.. code-block:: bash
+
+    d253315 2017-05-19 Person A Modified timer for TIMER0
+    f106360 2017-05-19 Jamie Phan Decouple SMB interrupt from main
+    466ce7c 2017-05-19 Jamie Phan Add Design Documentation
+    3d2496f 2017-05-19 Jamie Phan Unit test folder
+
+The cryptic looking string of text and numbers that start the line is the commit ``SHA1`` in shortened form
+
+To review that code use;
+
+.. code-block:: bash
+
+    $ git checkout [cryptic-text-number-combo]
+
+For example;
+
+.. code-block:: bash
+
+    $ git checkout 4552c5d
+
+    Note: checking out '4552c5d'.
+
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by performing another checkout.
+
+.. note::
+   Note that is says you're in a ``detached HEAD`` state. Do not make any changes right now
+   unless you know what you're doing!
+
+To go back do;
+
+.. code-block:: bash
+
+   $ git checkout master

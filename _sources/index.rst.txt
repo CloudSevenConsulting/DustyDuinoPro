@@ -10,3 +10,5 @@ C7C.Atamo.Dusty
    deploy/dusty_qsl
 
    usage/main
+
+   technical/main

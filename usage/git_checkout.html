@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Checkout &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,8 +36,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="next" title="Project Software" href="dependencies.html"/>
-        <link rel="prev" title="Dusty Quick Start Library" href="../deploy/dusty_qsl.html"/> 
+        <link rel="up" title="Usage" href="main.html"/>
+        <link rel="next" title="Branches" href="git_branches.html"/>
+        <link rel="prev" title="Git Basics" href="git_basics.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,11 +90,14 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../deploy/dusty_qsl.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="main.html">Usage</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="dependencies.html">Project Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projDocs.html">Project Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git_basics.html">Git Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_checkout.html">Checkout</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Checkout</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#going-back-to-an-old-commit">Going back to an old commit</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="git_branches.html">Branches</a></li>
 </ul>
 </li>
@@ -142,13 +146,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Usage</li>
+          <li><a href="main.html">Usage</a> &raquo;</li>
+        
+      <li>Checkout</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/usage/main.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/usage/git_checkout.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -161,39 +167,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">Project Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="projDocs.html">Project Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#installing-python-sphinx">Installing Python Sphinx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#setup-your-sphinx-project">Setup your Sphinx Project</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="checkout">
+<h1>Checkout<a class="headerlink" href="#checkout" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="going-back-to-an-old-commit">
+<h2>Going back to an old commit<a class="headerlink" href="#going-back-to-an-old-commit" title="Permalink to this headline">¶</a></h2>
+<p>Use this <code class="docutils literal"><span class="pre">log</span></code> format to get a quick review of all the commits</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git log --pretty<span class="o">=</span>format:<span class="s1">&#39;%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s&#39;</span> --date<span class="o">=</span>short
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Git Tutorials</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="git_basics.html">Git Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git_basics.html#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_basics.html#workflow">Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_basics.html#git-theory">Git Theory</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="git_checkout.html">Checkout</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git_checkout.html#going-back-to-an-old-commit">Going back to an old commit</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="git_branches.html">Branches</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git_branches.html#making-a-new-branch">Making a New Branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_branches.html#navigating-branches">Navigating Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_branches.html#example-workflow">Example Workflow</a></li>
-</ul>
-</li>
-</ul>
+<p>This will output something like this</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>d253315 <span class="m">2017</span>-05-19 Person A Modified timer <span class="k">for</span> TIMER0
+f106360 <span class="m">2017</span>-05-19 Jamie Phan Decouple SMB interrupt from main
+466ce7c <span class="m">2017</span>-05-19 Jamie Phan Add Design Documentation
+3d2496f <span class="m">2017</span>-05-19 Jamie Phan Unit <span class="nb">test</span> folder
+</pre></div>
+</div>
+<p>The cryptic looking string of text and numbers that start the line is the commit <code class="docutils literal"><span class="pre">SHA1</span></code> in shortened form</p>
+<p>To review that code use;</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout <span class="o">[</span>cryptic-text-number-combo<span class="o">]</span>
+</pre></div>
+</div>
+<p>For example;</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout 4552c5d
+
+Note: checking out <span class="s1">&#39;4552c5d&#39;</span>.
+
+You are in <span class="s1">&#39;detached HEAD&#39;</span> state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that is says you’re in a <code class="docutils literal"><span class="pre">detached</span> <span class="pre">HEAD</span></code> state. Do not make any changes right now
+unless you know what you’re doing!</p>
+</div>
+<p>To go back do;</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout master
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -207,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dependencies.html" class="btn btn-neutral float-right" title="Project Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="git_branches.html" class="btn btn-neutral float-right" title="Branches" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../deploy/dusty_qsl.html" class="btn btn-neutral" title="Dusty Quick Start Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="git_basics.html" class="btn btn-neutral" title="Git Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

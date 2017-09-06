@@ -1,0 +1,97 @@
+********
+Branches
+********
+
+Making a New Branch
+===================
+
+To make a new branch
+
+.. code-block:: bash
+
+   $ git checkout -b [branchName]
+
+Navigating Branches
+===================
+
+Note that sometimes ``git`` will not let you move between branches if you
+have uncommitted changes in your current branch.
+
+Now the question is, where do you want these changes to be committed to?
+
+- Commit them to old branch?
+- Commit them to the new branch?
+
+In both cases you first have to stash your uncommitted changes;
+
+.. code-block:: bash
+
+   $ git stash save
+
+This command saves all current untracked changes, but to no branch at all (just some
+random storage space in ``git``), and then remove them
+
+To recover these changes use the command
+
+.. code-block:: bash
+
+   $ git stash apply
+
+Example Workflow
+================
+
+An example workflow is shown below, here we are using the testing machine and
+a different developer (dev2) wishes to checkout their branch for testing whilst
+not affecting the current branch of the current developer (dev1)
+
+.. code-block:: bash
+
+   $ git status         # Check the current working tree
+   On branch dev1
+   Your branch is ahead of 'origin/dev1' by 1 commit.
+     (use "git push" to publish your local commits)
+   Changes not staged for commit:
+     (use "git add <file>..." to update what will be committed)
+     (use "git checkout -- <file>..." to discard changes in working directory)
+
+           modified:   src/tester/example_file.c
+
+   $ git stash save     # Save the current changes in the working tree to stash
+   Saved working directory and index state WIP on dev1: 22cbc57 Prev commit (example)
+   HEAD is now at 22cbc57 Prev commit (example)
+
+   $ git checkout dev2  # checkout the branch
+   Switched to branch 'dev2'
+   Your branch is up-to-date with 'origin/dev2'.
+
+   $ git pull           # Get any updates
+
+   #... build and test as required
+
+   # >>>> CHOOSE ONE OF TWO ----------------------------------------------------
+
+   # OPTION A
+   $ git reset --hard   # If you want to get rid of any changes made during testing
+
+   # OPTION B
+   $ git add .          # If you want to save changes made during testing
+   $ git commit
+
+   # >>>> ----------------------------------------------------------------------
+
+   $ git checkout dev1  # checkout the previous branch
+   Switched to branch 'dev1'
+   Your branch is up-to-date with 'origin/dev1'.
+
+   $ git stash dev1     # Re-apply the changes to the branch
+   On branch dev1
+   Your branch is ahead of 'origin/dev1' by 1 commit.
+     (use "git push" to publish your local commits)
+   Changes not staged for commit:
+     (use "git add <file>..." to update what will be committed)
+     (use "git checkout -- <file>..." to discard changes in working directory)
+
+           modified:   src/tester/example_file.c
+
+   no changes added to commit (use "git add" and/or "git commit -a")
+

@@ -8,3 +8,5 @@ C7C.Atamo.Dusty
    :caption: Contents:
 
    deploy/dusty_qsl
+
+   usage/main

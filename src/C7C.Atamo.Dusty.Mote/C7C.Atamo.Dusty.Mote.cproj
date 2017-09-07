@@ -238,6 +238,27 @@
     <Compile Include="src\sm_clib\dn_uart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\sm_qsl\dn_debug.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_defaults.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_fsm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_fsm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_qsl_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_time.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\sm_qsl\dn_watchdog.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\Tester\memory.c">
       <SubType>compile</SubType>
     </Compile>
@@ -344,6 +365,7 @@
     <Folder Include="src\ASF\mega\utils\assembler\" />
     <Folder Include="src\ASF\mega\utils\preprocessor\" />
     <Folder Include="src\config\" />
+    <Folder Include="src\sm_qsl" />
     <Folder Include="src\sm_clib" />
     <Folder Include="src\Tester" />
   </ItemGroup>

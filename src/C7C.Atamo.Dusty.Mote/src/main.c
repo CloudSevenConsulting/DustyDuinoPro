@@ -29,6 +29,7 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 #include <asf.h>
+#include "sm_qsl/dn_qsl_api.h"
 
 /* ****************************************************************************
  * DEBUG Settings
@@ -59,15 +60,15 @@ int main (void)
 
 	system_init();
 
-	#if TEST_MODE
+#if TEST_MODE
 	while(1)
 	{
 		tester();
 	}
-	#else
+#else
 	while(1)
 	{
 	}
-	#endif
+#endif
 }
 

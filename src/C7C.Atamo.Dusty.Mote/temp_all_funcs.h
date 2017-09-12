@@ -2,102 +2,130 @@
  * CONFIGURATION FUNCTIONS
  ******************************************************************************/
 
-/* ----------
- * CONFIG_SET
- * ----------
- *      Parses configuration from payload and sets their value in volatile
- *      memory
+//========== config_set
+/** @brief Parses configuration from payload and sets their value in volatile
+ *         memory
  *
- * ARGUMENTS:
- *      - package_payload (char *): The data from the Dusty network
+ * @param package_payload The data from the Dusty network
  *
- * RETURNS:
- *      0 on success, 1 on failure
- *
+ * @return 0 on success, 1 on failure
  */
 int config_set(char *package_payload);
 
-/* --------------
- * CONFIG_DEFAULT
- * --------------
- *      Loads configuration from non-volatile memory and sets their value in
- *      volatile memory
+//========== config_default
+/** @brief Loads configuration from non-volatile memory and sets their value in
+ *         volatile memory
  *
- * ARGUMENTS:
- *      - none
+ * Default configurations will be set in volatile memory to ensure that the
+ * device does not need to rely on a central host to broadcast configuration
+ * information at startup. This will drastically reduce network startup loads.
  *
- * RETURNS:
- *      0 on success, 1 on failure
- *
+ * @return 0 on success, 1 on failure
  */
 int config_default(void);
 
-/* ----------------
- * CONFIG_PARAM_SET
- * ----------------
- *      Sets a single parameter (in volatile memory)
+//========== config_param_set
+/** @brief Set the parameter's value set in volatile memory
  *
- * ARGUMENTS:
- *      - param (int): The parameter index in volatile memory
- *      - value (int): The value to set the parameter to
+ * @param param the parameter index
+ * @param value the value to set the value
  *
- * RETURNS:
- *      0 on success, 1 on failure
- *
+ * @return 0 on success, 1 on failure
  */
 int config_param_set(int param, int value);
 
-/* --------------------
- * CONFIG_PARAM_GET_CUR
- * --------------------
- *      Get the parameter's current value set in volatile memory
+//========== config_param_get_cur
+/** @brief Get the current value of the param set in volatile memory
  *
- * ARGUMENTS:
- *      - param (int): the parameter index
+ * @param param the parameter index
  *
- * RETURNS:
- *      The parameter value if successful, 0 if failed
- *
+ * @return the current value of the parameter
  */
 int config_param_get_cur(int param);
 
-/* ---------------------
- * CONFIG_LOOKUP_GET_MAX
- * ---------------------
- *      Get a parameter's maximum allowable value (private)
+//========== config_param_lookup_max
+/** @brief Get a parameter's maximum allowable value
  *
- * ARGUMENTS:
- *      - param (int): the parameter index
+ * This should be privately called
  *
- * RETURNS:
- *      The maximum allowable value
+ * @param param the parameter index
  *
+ * @return the maximum value of the parameter
  */
-int config_lookup_get_max(int param);
+int config_param_lookup_max(int param);
 
-/* ---------------------
- * CONFIG_LOOKUP_GET_MIN
- * ---------------------
- *      Get a parameter's minimum allowable value (private)
+//========== config_param_lookup_min
+/** @brief Get a parameter's minimum allowable value
  *
- * ARGUMENTS:
- *      - param (int): the parameter index
+ * This should be privately called
  *
- * RETURNS:
- *      The minimum allowable value
+ * @param param the parameter index
  *
+ * @return the minimum value of the parameter
  */
-int config_lookup_get_min(int param);
+int config_param_lookup_min(int param);
 
 /*******************************************************************************
  * SYSTEM FUNCTIONS
  ******************************************************************************/
-int sys_init(void);
-void sys_sleep(int time_milliseconds);
-void sys_reboot(void);
 
-int sleepguard_set(void);
-int sleepguard_free(void);
+//========== sys_init
+/** @brief Initialize the system and its core peripherals
+ *
+ * @return 0 on success, 1 on failure
+ */
+int sys_init(void);
+
+int sysclk_init(void);
+int wdt_init(void);
+int port_init(void);
+int timern_init(void);
+int uart_init(void);
+int iic_init(void);
+int sensor_init(void);
+int wsn_init(void);
+
+//========== sys_sleep
+/** @brief Put the system to sleep
+ *
+ * Sleep in this context refers to a low-power mode in which pre-determined
+ * peripherals are turned off to reduce energy consumption by the device. Note
+ * that these peripherals will require rebooting on wakeup.
+ * This routine can fail if the sleepguard is set, preventing the system from
+ * sleeping
+ *
+ * @param time_milliseconds The time to put the system to sleep for in
+ *                          milliseconds
+ *
+ * @return 0 on success, 1 on failure
+ */
+int sys_sleep(int time_milliseconds);
+
+//========== sys_reboot
+/** @brief Reboots system peripherals that were turned off in sys_sleep.
+ *
+ * Note that this routine will take time before all peripherals are operational.
+ * The routine will set a global flag when this is done
+ *
+ * @return 0 on success, 1 on failure
+ */
+int sys_reboot(void);
+
+//========== sleepguard_set
+/** @brief Public function to set the global sleepguard flag
+ *
+ * Note that if the flag is already set, this will increment the flag to
+ * indicate how many resources require the system to be on. The complimentary
+ * function sleepguard_free will decrease this flag value, until eventually the
+ * the value is zero (false)
+ *
+ */
+void sleepguard_set(void);
+
+//========== sleepguard_free
+/** @brief Public function to free the global sleepguard flag
+ */
+void sleepguard_free(void);
 
 /*******************************************************************************
  * Calculation Functions
@@ -108,8 +136,8 @@ int calc_time_wait(int time_now);
 /*******************************************************************************
  * SAMPLING FUNCTIONS
  ******************************************************************************/
-int sample_read(char slave_addr);
-int sample_frame();
+int sample_read(char *slave_addr, char *buf);
+int sample_frame(char *buf);
 
 /*******************************************************************************
  * NETWORK FUNCTIONS
@@ -119,3 +147,12 @@ int wsn_push(void);
 int wsn_get_timenow(void);
 int wsn_get_payload(void);
 
+/*******************************************************************************
+ * COMMUNICATIONS FUNCTIONS
+ ******************************************************************************/
+int uart_tx(void);
+int uart_rx(void);
+
+int iic_write(void);
+int iic_write_read(void);
+int iic_read(void);

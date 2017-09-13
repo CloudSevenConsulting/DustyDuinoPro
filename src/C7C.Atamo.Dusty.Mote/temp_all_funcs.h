@@ -1,4 +1,16 @@
 /*******************************************************************************
+ * STATE CONTROL
+ ******************************************************************************/
+typedef struct {
+    int _config_set_flag = 0;
+    int *_config;
+    int _sys_sleepguard = 0;
+    int _sys_ready_flag = 0;
+} sys_state;
+
+static sys_state SystemState;
+
+/*******************************************************************************
  * CONFIGURATION FUNCTIONS
  ******************************************************************************/
 
@@ -130,6 +142,17 @@ void sleepguard_free(void);
 /*******************************************************************************
  * Calculation Functions
  ******************************************************************************/
+
+//========== calc_time_sleep
+/** @brief Determine the time to sleep before the next sampling time
+ *
+ * The next sampling time is next multiple of the sampleing_period (conf
+ * parameter) rounded down.
+ *
+ * @param time_now time in milliseconds second last epoch
+ *
+ * @return 0 on success, 1 on failure
+ */
 int calc_time_sleep(int time_now);
 int calc_time_wait(int time_now);
 

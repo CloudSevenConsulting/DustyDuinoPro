@@ -21,23 +21,22 @@
  *
  */
 
-/*
- * Include header files for all drivers that have been imported from
- * Atmel Software Framework (ASF).
- */
-/*
- * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
- */
+ #define TEST_MODE 0/*Set this to turn on debug*/
+
+/* ****************************************************************************
+ * Standard Libraries
+ * ***************************************************************************/
 #include <asf.h>
+#include <avr/io.h>
+
+/* ****************************************************************************
+ * Drivers
+ * ***************************************************************************/
 #include "sm_qsl/dn_qsl_api.h"
 
 /* ****************************************************************************
- * DEBUG Settings
+ * DEBUG Includes
  * ***************************************************************************/
-
-/*Comment this out to turn off debug*/
-#define TEST_MODE 0
-
 #if TEST_MODE
 #include "tester/tester.h"
 #endif
@@ -58,6 +57,7 @@ static void system_init (void)
 int main (void)
 {
 
+	digitalWrite(17, HIGH);
 	system_init();
 
 #if TEST_MODE

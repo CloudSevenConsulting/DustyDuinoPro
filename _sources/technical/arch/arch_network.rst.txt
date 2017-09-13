@@ -1,0 +1,17 @@
+********************
+Network Architecture
+********************
+
+Devices
+=======
+
+There will be three devices on the network
+- Motes (a.k.a Sensor Hosts)
+- Access Points (APs)
+- Network Managers (NMs)
+
+NMs will have AP code within them because
+- They have no computational restraints
+- They have no power consumption restraints
+
+and hence they have the luxury of including lots of functionality without compromise

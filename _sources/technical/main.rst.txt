@@ -8,3 +8,15 @@ Technical Documentation
 
    testing/firmwareTesting_overview
    testing/firmwareTesting_makingTests
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Architecture
+
+   arch/arch_network
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Development Principles
+
+   principles/encapsulation

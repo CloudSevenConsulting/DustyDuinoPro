@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Firmware Testing Overview &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Network Architecture &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
         <link rel="up" title="Technical Documentation" href="../main.html"/>
-        <link rel="next" title="Making Tests" href="firmwareTesting_makingTests.html"/>
-        <link rel="prev" title="Technical Documentation" href="../main.html"/> 
+        <link rel="next" title="Encapsulation and State Variables" href="../principles/encapsulation.html"/>
+        <link rel="prev" title="Making Tests" href="../testing/firmwareTesting_makingTests.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -92,15 +92,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../main.html">Technical Documentation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Firmware Testing Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#building-test-mode">Building Test Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#testing-configuration">Testing Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_overview.html">Firmware Testing Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_makingTests.html">Making Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Network Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#devices">Devices</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="firmwareTesting_makingTests.html">Making Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../arch/arch_network.html">Network Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../principles/encapsulation.html">Encapsulation and State Variables</a></li>
 </ul>
 </li>
@@ -150,13 +147,13 @@
         
           <li><a href="../main.html">Technical Documentation</a> &raquo;</li>
         
-      <li>Firmware Testing Overview</li>
+      <li>Network Architecture</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/technical/testing/firmwareTesting_overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/technical/arch/arch_network.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -169,44 +166,18 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="firmware-testing-overview">
-<h1>Firmware Testing Overview<a class="headerlink" href="#firmware-testing-overview" title="Permalink to this headline">¶</a></h1>
-<p>Testing is performed with a separate build from the production build.</p>
-<p>Selecting the build mode is done in software source code.</p>
-<div class="section" id="building-test-mode">
-<h2>Building Test Mode<a class="headerlink" href="#building-test-mode" title="Permalink to this headline">¶</a></h2>
-<p>In <code class="docutils literal"><span class="pre">main.c</span></code> the following code enables Test mode.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
-<span class="cm"> * DEBUG Settings</span>
-<span class="cm"> * ***************************************************************************/</span>
-
-<span class="cm">/*Comment this out to turn off debug*/</span>
-<span class="cp">#define TEST_MODE 1</span>
-
-<span class="cp">#if TEST_MODE</span>
-<span class="cp">#include</span> <span class="cpf">&quot;tester/debug.h&quot;</span><span class="cp"></span>
-<span class="cp">#endif</span>
-</pre></div>
-</div>
-<p>The <strong>pre-processor</strong> macro <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is a boolean which is checked in source
-code. If it is set, then the compiler will only build the test mode code.
-If instead <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is zero, then the compiler will build into production</p>
-<div class="section" id="testing-configuration">
-<h3>Testing Configuration<a class="headerlink" href="#testing-configuration" title="Permalink to this headline">¶</a></h3>
-<p>Certain tests can be enabled or disabled in <code class="docutils literal"><span class="pre">tester/debug.c</span></code></p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
-<span class="cm"> * Test Selection</span>
-<span class="cm"> * ***************************************************************************/</span>
-<span class="cp">#define TEST_SMB_ENABLE 1</span>
-<span class="cp">#define TEST_MEMORY_ENABLE 0</span>
-</pre></div>
-</div>
-<p>As seen in the code-block above, similar macros are defined to enable or disable
-certain tests. When the macros are set to 1, then the compiler will build the
-relevant test functions and then run them. If the macros are set to 0, no build
-will occur for the tests in question.</p>
-<p>The example above has SMB testing enables and Memory testing disabled</p>
-</div>
+  <div class="section" id="network-architecture">
+<h1>Network Architecture<a class="headerlink" href="#network-architecture" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="devices">
+<h2>Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h2>
+<p>There will be three devices on the network
+- Motes (a.k.a Sensor Hosts)
+- Access Points (APs)
+- Network Managers (NMs)</p>
+<p>NMs will have AP code within them because
+- They have no computational restraints
+- They have no power consumption restraints</p>
+<p>and hence they have the luxury of including lots of functionality without compromise</p>
 </div>
 </div>
 
@@ -220,10 +191,10 @@ will occur for the tests in question.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="firmwareTesting_makingTests.html" class="btn btn-neutral float-right" title="Making Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../principles/encapsulation.html" class="btn btn-neutral float-right" title="Encapsulation and State Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../main.html" class="btn btn-neutral" title="Technical Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../testing/firmwareTesting_makingTests.html" class="btn btn-neutral" title="Making Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

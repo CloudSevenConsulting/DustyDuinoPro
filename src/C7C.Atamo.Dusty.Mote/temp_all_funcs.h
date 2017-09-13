@@ -3,17 +3,20 @@
  ******************************************************************************/
 
 //========== config_set
-/** @brief Parses configuration from payload and sets their value in volatile
- *         memory
+/** @brief Ensures configuration parameters are set. If not set, default
+ *         parameters are loaded from non-volatile memory. If set and a packet
+ *         payload is passed as an argument, then the payload is parsed and the
+ *         parameters contained therein are updated accordingly.
  *
- * @param package_payload The data from the Dusty network
+ * @param package_payload The full packet payload received in a configuration
+ *                        packet sent by the Dusty network manager
  *
  * @return 0 on success, 1 on failure
  */
 int config_set(char *package_payload);
 
 //========== config_default
-/** @brief Loads configuration from non-volatile memory and sets their value in
+/** @brief Loads configuration from non-volatile memory and sets their values in
  *         volatile memory
  *
  * Default configurations will be set in volatile memory to ensure that the
@@ -25,14 +28,14 @@ int config_set(char *package_payload);
 int config_default(void);
 
 //========== config_param_set
-/** @brief Set the parameter's value set in volatile memory
+/** @brief Set the parameter's value in volatile memory
  *
- * @param param the parameter index
- * @param value the value to set the value
+ * @param param the parameter type byte received in the configuration packet
+ * @param value the parameter value byte(s) received in the configuration packet
  *
  * @return 0 on success, 1 on failure
  */
-int config_param_set(int param, int value);
+int config_param_set(int type, int value);
 
 //========== config_param_get_cur
 /** @brief Get the current value of the param set in volatile memory

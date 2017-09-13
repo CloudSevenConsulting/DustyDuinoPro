@@ -14,6 +14,7 @@ Technical Documentation
    :caption: Architecture
 
    arch/arch_network
+   arch/mote_configurations
 
 .. toctree::
    :maxdepth: 2

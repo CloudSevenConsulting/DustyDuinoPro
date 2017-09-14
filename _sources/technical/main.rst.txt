@@ -16,3 +16,5 @@ Technical Documentation
    arch/arch_network
    arch/arch_sh
    arch/sh_configurations
+
+   arch/error_handling

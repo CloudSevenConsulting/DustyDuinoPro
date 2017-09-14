@@ -14,10 +14,5 @@ Technical Documentation
    :caption: Architecture
 
    arch/arch_network
-   arch/mote_configurations
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Development Principles
-
-   principles/encapsulation
+   arch/arch_sh
+   arch/sh_configurations

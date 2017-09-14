@@ -1,0 +1,7 @@
+***********
+Sensor Host
+***********
+
+The main routine of the sensor host can be seen below
+
+.. figure:: imgs/sh_main.png

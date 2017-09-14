@@ -12,3 +12,5 @@ C7C.Atamo.Dusty
    usage/main
 
    technical/main
+
+   standards/main

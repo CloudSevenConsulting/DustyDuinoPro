@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Technical Guidelines and Standards &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="next" title="Project Software" href="dependencies/software.html"/>
-        <link rel="prev" title="Home" href="../intro/home.html"/> 
+        <link rel="next" title="Encapsulation and State Variables" href="principles/encapsulation.html"/>
+        <link rel="prev" title="Sensor Host Configurations" href="../technical/arch/sh_configurations.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,17 +89,12 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro/home.html">Home</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/software.html">Project Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html">Git Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_checkout.html">Checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html">Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html">Project Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/main.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../technical/main.html">Technical Documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical Guidelines and Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../technical/main.html">Technical Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../standards/main.html">Technical Guidelines and Standards</a></li>
 </ul>
 
             
@@ -144,13 +139,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Usage</li>
+      <li>Technical Guidelines and Standards</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/usage/main.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/standards/main.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -163,49 +158,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="usage">
-<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="technical-guidelines-and-standards">
+<h1>Technical Guidelines and Standards<a class="headerlink" href="#technical-guidelines-and-standards" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Software:</span></p>
+<p class="caption"><span class="caption-text">Development Principles</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dependencies/software.html">Project Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html#source-code">Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html#pulling-the-qsl">Pulling the QSL</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Git Tutorials</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="git/git_basics.html">Git Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#workflow">Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#git-theory">Git Theory</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="git/git_checkout.html">Checkout</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_checkout.html#going-back-to-an-old-commit">Going back to an old commit</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="git/git_branches.html">Branches</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#making-a-new-branch">Making a New Branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#navigating-branches">Navigating Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#example-workflow">Example Workflow</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contributing</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="projDocs.html">Project Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#installing-python-sphinx">Installing Python Sphinx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#setup-your-sphinx-project">Setup your Sphinx Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#building">Building</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
 </ul>
 </div>
 </div>
@@ -220,10 +178,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dependencies/software.html" class="btn btn-neutral float-right" title="Project Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="principles/encapsulation.html" class="btn btn-neutral float-right" title="Encapsulation and State Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../intro/home.html" class="btn btn-neutral" title="Home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../technical/arch/sh_configurations.html" class="btn btn-neutral" title="Sensor Host Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

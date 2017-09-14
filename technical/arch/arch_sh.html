@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Network Architecture &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Sensor Host &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
         <link rel="up" title="Technical Documentation" href="../main.html"/>
-        <link rel="next" title="Sensor Host" href="arch_sh.html"/>
-        <link rel="prev" title="Making Tests" href="../testing/firmwareTesting_makingTests.html"/> 
+        <link rel="next" title="Sensor Host Configurations" href="sh_configurations.html"/>
+        <link rel="prev" title="Network Architecture" href="arch_network.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -94,11 +94,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../main.html">Technical Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_overview.html">Firmware Testing Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_makingTests.html">Making Tests</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Network Architecture</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#key-sub-systems">Key Sub-Systems</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="arch_sh.html">Sensor Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch_network.html">Network Architecture</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensor Host</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
 </ul>
 </li>
@@ -149,13 +146,13 @@
         
           <li><a href="../main.html">Technical Documentation</a> &raquo;</li>
         
-      <li>Network Architecture</li>
+      <li>Sensor Host</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/technical/arch/arch_network.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/technical/arch/arch_sh.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,60 +165,11 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="network-architecture">
-<h1>Network Architecture<a class="headerlink" href="#network-architecture" title="Permalink to this headline">¶</a></h1>
-<p>Several sensor-hosts are placed within the site to create a self-forming multi-hop mesh network that interfaces with the client users/developers through a TCP/IP network – the WSN. The sensor-hosts within the WSN are AVR-based microcontrollers (DuinoPro) with digital sensors and Dusty modules which provide communication with Linear Technology’s SmartMesh-IP network protocol. The sensor-hosts samples data, and transmits/forward the data to the network-manager – a centralised node that monitors and manages the WSN. The network manager uploads this data using the Node-RED service to the cloud infrastructure hosted by Amazon Web Services (AWS).</p>
-<dl class="docutils">
-<dt>The sub-systems in AWS integrate with one another to perform two key tasks:</dt>
-<dd><ul class="first last simple">
-<li>Parse data sent from the WSN and store it in a structured format for later querying, and</li>
-<li>serve data and controls through a web-application accessible through a HTTP browser</li>
-</ul>
-</dd>
-</dl>
-<p>Data storage is achieved using a NoSQL database, DynamoDB. Data sent from the WSN is directed to the DynamoDB for storage which can later be queried for analysis.</p>
-<p>The web-application accesses the DynamoDB to process the data for analysis and visualisation. It further exposes interfaces that allow users to configure the WSN remotely. The web-application is designed with Python Django and orchestrated with Elastic Beanstalk. Orchestration in this context refers to the automatic deployment and auto-scaling of infrastructure to serve web-application to clients – this includes virtual servers for hosting the application (EC2), load balancing, and the DynamoDB interface for querying data. Additionally, Elastic Beanstalk provides a simple deployment service that allows developers to rapidly patch the web-application.</p>
-<p>Finally, the Amazon API Gateway service provides a means of authentication and interprets and directs in/out-bound streams.</p>
-<div class="figure" id="id1">
-<img alt="../../_images/system_architecture_network.png" src="../../_images/system_architecture_network.png" />
-<p class="caption"><span class="caption-text">System Architecture</span></p>
-</div>
-<div class="section" id="key-sub-systems">
-<h2>Key Sub-Systems<a class="headerlink" href="#key-sub-systems" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
-<colgroup>
-<col width="17%" />
-<col width="83%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Sub-System</th>
-<th class="head">Function</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Sensor Host</td>
-<td>Samples data from the site; transmits and forward within the WSN mesh</td>
-</tr>
-<tr class="row-odd"><td>Access Point (AP)</td>
-<td>Radio bridge between WSN and Network Manager</td>
-</tr>
-<tr class="row-even"><td>Network Manager</td>
-<td>Centralised node that monitors and manages mesh; TCP/IP bridge between WSN and cloud infrastructure</td>
-</tr>
-<tr class="row-odd"><td>Amazon API Gateway</td>
-<td>Provides authentication to the AWS infrastructure; exposes AWS interfacing API</td>
-</tr>
-<tr class="row-even"><td>DynamoDB</td>
-<td>NoSQL database for storage of data from WSN</td>
-</tr>
-<tr class="row-odd"><td>Elastic Beanstalk</td>
-<td>AWS Orchestration service that auto-deploys and auto-scales the Python Django Web-App</td>
-</tr>
-<tr class="row-even"><td>Web-App</td>
-<td>Serves data and controls to users through HTTP</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="sensor-host">
+<h1>Sensor Host<a class="headerlink" href="#sensor-host" title="Permalink to this headline">¶</a></h1>
+<p>The main routine of the sensor host can be seen below</p>
+<div class="figure">
+<img alt="../../_images/sh_main.png" src="../../_images/sh_main.png" />
 </div>
 </div>
 
@@ -235,10 +183,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="arch_sh.html" class="btn btn-neutral float-right" title="Sensor Host" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sh_configurations.html" class="btn btn-neutral float-right" title="Sensor Host Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../testing/firmwareTesting_makingTests.html" class="btn btn-neutral" title="Making Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="arch_network.html" class="btn btn-neutral" title="Network Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

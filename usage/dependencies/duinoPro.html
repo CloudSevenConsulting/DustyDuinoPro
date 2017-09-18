@@ -93,7 +93,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../main.html">Project How-To’s</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="software.html">Project Software</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">DuinoPro and ArduinoIDE integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DuinoPro and ArduinoIDE integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git_basics.html">Git Basics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../git/git_checkout.html">Checkout</a></li>
@@ -185,19 +188,61 @@ folder# <code class="docutils literal"><span class="pre">03.11</span></code></p>
 <li>From the installation <code class="docutils literal"><span class="pre">.zip</span></code> copy files into your computer as follows:</li>
 </ol>
 <div class="figure">
-<a class="reference internal image-reference" href="../../_images/installation.png"><img alt="../../_images/installation.png" src="../../_images/installation.png" style="width: 571.1999999999999px; height: 528.0px;" /></a>
+<a class="reference internal image-reference" href="../../_images/installation.png"><img alt="../../_images/installation.png" src="../../_images/installation.png" style="width: 534.6px; height: 537.6px;" /></a>
 </div>
 <ol class="arabic simple" start="3">
+<li>Modify the <code class="docutils literal"><span class="pre">package_duinopro_index.json</span></code> file as follows:</li>
+</ol>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;packages&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;platforms&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.1&quot;</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
 <li>Open the Arduino IDE and open your preferences (<code class="docutils literal"><span class="pre">Ctrl+,</span></code>). Modify the <em>Additional Boards Manager URL</em> field to: <code class="docutils literal"><span class="pre">http://10.0.0.156/mediawiki/images/1/1c/package_duinopro_index.json</span></code></li>
 </ol>
 <div class="figure">
 <a class="reference internal image-reference" href="../../_images/installation02.png"><img alt="../../_images/installation02.png" src="../../_images/installation02.png" style="width: 529.8px; height: 435.0px;" /></a>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li>Select your board in <code class="docutils literal"><span class="pre">Tools</span></code></li>
 </ol>
 <div class="figure">
 <a class="reference internal image-reference" href="../../_images/installation03.png"><img alt="../../_images/installation03.png" src="../../_images/installation03.png" style="width: 462.0px; height: 536.0px;" /></a>
+</div>
+<div class="section" id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
+<p>With your board set in step 4 above, use the following sketch to test your build:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span></span><span class="c1">//These are required for the DuinoPRO library</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;SPI.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;duinoPRO.h&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// Testing the DuinoPRO library</span>
+  <span class="n">duinoPRO</span> <span class="n">myBaseBoard</span><span class="p">;</span>
+  <span class="n">myBaseBoard</span><span class="p">.</span><span class="n">setLed</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// We don&#39;t need this</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some warnings will appear, JP yet to debug these</p>
+</div>
 </div>
 </div>
 

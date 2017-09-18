@@ -1,4 +1,22 @@
 /*******************************************************************************
+ * Standard Defines
+ ******************************************************************************/
+#define SUCCESS 1
+#define FAILURE 0
+
+/*******************************************************************************
+ * Configuration Lookup Table
+ ******************************************************************************/
+#define CONFIG__LUT_SENSOR_RESOLUTION 0x00
+/*.. etc*/
+
+/*******************************************************************************
+ * Sensor lookup (most likely will be in sensor header)
+ ******************************************************************************/
+#define SENSOR__TYPE_A 0x00
+/*.. etc*/
+
+/*******************************************************************************
  * STATE CONTROL
  ******************************************************************************/
 typedef struct {
@@ -6,6 +24,9 @@ typedef struct {
     int *_config;
     int _sys_sleepguard = 0;
     int _sys_ready_flag = 0;
+    int _sensor_type;
+    int _sensor_addr;
+    int _sensor_conf_flag; /*Has the sensor been found and is it set?*/
 } sys_state;
 
 static sys_state SystemState;
@@ -162,8 +183,19 @@ int calc_time_wait(int time_now);
 /*******************************************************************************
  * SAMPLING FUNCTIONS
  ******************************************************************************/
-int sample_read(char *slave_addr, char *buf);
-int sample_frame(char *buf);
+
+//========== sensor_read
+/** @brief Standard inteface between Duino and sensor; sensor agnostic
+ *
+ * sensor drivers are called in this routine which are modular to allow for
+ * sensor agnostic reading
+ *
+ * @param buf the buffer to read data into
+ *
+ * @return 0 on success, 1 on failure
+ */
+int sensor_read(char *buf);
+int sensor_frame(char *buf);
 
 /*******************************************************************************
  * NETWORK FUNCTIONS

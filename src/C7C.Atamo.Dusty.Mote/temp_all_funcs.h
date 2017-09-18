@@ -37,7 +37,7 @@ static sys_state SystemState;
 
 //========== config_set
 /** @brief Ensures configuration parameters are set. If not set, default
- *         parameters are loaded from non-volatile memory. If set and a packet
+ *         parameters are loaded from non-volatile memory. Once set, if a packet
  *         payload is passed as an argument, then the payload is parsed and the
  *         parameters contained therein are updated accordingly.
  *
@@ -52,7 +52,7 @@ int config_set(char *package_payload);
 /** @brief Loads configuration from non-volatile memory and sets their values in
  *         volatile memory
  *
- * Default configurations will be set in volatile memory to ensure that the
+ * Default configurations will be set in non-volatile memory to ensure that the
  * device does not need to rely on a central host to broadcast configuration
  * information at startup. This will drastically reduce network startup loads.
  *
@@ -87,6 +87,19 @@ int config_param_get_cur(int param);
  * @param param the parameter index
  *
  * @return the maximum value of the parameter
+ */
+int config_param_lookup_max(int param);
+
+//========== config_param_lookup_length
+/** @brief Get the number of bytes for a parameter's value when received in a 
+ *         configuration packet
+ *
+ * This should be privately called
+ *
+ * @param param the parameter index
+ *
+ * @return the number of bytes to expect for the parameter value in the
+ *         configuration packet
  */
 int config_param_lookup_max(int param);
 

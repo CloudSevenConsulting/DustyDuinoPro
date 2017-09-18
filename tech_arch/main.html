@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Project How-To’s &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>System Architecture &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,8 +36,8 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="next" title="Project Software" href="dependencies/software.html"/>
-        <link rel="prev" title="Background" href="../intro/home.html"/> 
+        <link rel="next" title="Network Architecture" href="arch_network.html"/>
+        <link rel="prev" title="Quick Reference" href="../quickRef/quickRef.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -90,18 +90,16 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../toc.html">Table of Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../intro/home.html">Background</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Project How-To’s</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/software.html">Project Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/duinoPro.html">DuinoPro and ArduinoIDE integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html">Git Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_checkout.html">Checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html">Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html">Project Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/main.html">Project How-To’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">System Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arch_network.html">Network Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch_sh.html">Sensor Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_implement/main.html">Implementation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_testingDeploy/main.html">Testing and Deployment</a></li>
 </ul>
@@ -148,13 +146,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Project How-To’s</li>
+      <li>System Architecture</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/usage/main.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tech_arch/main.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,50 +165,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="project-how-to-s">
-<span id="idx-usage"></span><h1>Project How-To’s<a class="headerlink" href="#project-how-to-s" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="system-architecture">
+<span id="idx-tech-arch"></span><h1>System Architecture<a class="headerlink" href="#system-architecture" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Software Required:</span></p>
+<p class="caption"><span class="caption-text">Architecture</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="dependencies/software.html">Project Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies/duinoPro.html">DuinoPro and ArduinoIDE integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html#source-code">Source Code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dependencies/otherPkgs_dustyQSL.html#pulling-the-qsl">Pulling the QSL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch_network.html">Network Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="arch_network.html#key-sub-systems">Key Sub-Systems</a></li>
 </ul>
 </li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Git Tutorials</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="git/git_basics.html">Git Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#workflow">Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_basics.html#git-theory">Git Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arch_sh.html">Sensor Host</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#configuration-lookup">Configuration Lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#device-configuration">Device Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#parameters">Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="git/git_checkout.html">Checkout</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_checkout.html#going-back-to-an-old-commit">Going back to an old commit</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="git/git_branches.html">Branches</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#making-a-new-branch">Making a New Branch</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#navigating-branches">Navigating Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git/git_branches.html#example-workflow">Example Workflow</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contributing</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="projDocs.html">Project Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#installing-python-sphinx">Installing Python Sphinx</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#setup-your-sphinx-project">Setup your Sphinx Project</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projDocs.html#building">Building</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
 </ul>
 </div>
 </div>
@@ -225,10 +198,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dependencies/software.html" class="btn btn-neutral float-right" title="Project Software" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="arch_network.html" class="btn btn-neutral float-right" title="Network Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../intro/home.html" class="btn btn-neutral" title="Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../quickRef/quickRef.html" class="btn btn-neutral" title="Quick Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Background &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Error Handling &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,8 +36,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="next" title="Project How-To’s" href="../usage/main.html"/>
-        <link rel="prev" title="Table of Contents" href="../toc.html"/> 
+        <link rel="up" title="System Architecture" href="main.html"/>
+        <link rel="next" title="Encapsulation and State Variables" href="principles/encapsulation.html"/>
+        <link rel="prev" title="Sensor Host Configurations" href="sh_configurations.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -89,10 +90,17 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../toc.html">Table of Contents</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/home.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main.html">System Architecture</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="arch_network.html">Network Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="arch_sh.html">Sensor Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_implement/main.html">Implementation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_testingDeploy/main.html">Testing and Deployment</a></li>
 </ul>
@@ -139,13 +147,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Background</li>
+          <li><a href="main.html">System Architecture</a> &raquo;</li>
+        
+      <li>Error Handling</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/intro/home.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tech_arch/error_handling.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,10 +168,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="background">
-<span id="idx-home"></span><h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
-<p>This project is a UWA design project for ATAMO.</p>
-<p>The project’s code-base can found at <a class="reference external" href="https://github.com/kjph/c7c-atamo-dusty">https://github.com/kjph/c7c-atamo-dusty</a></p>
+  <div class="section" id="error-handling">
+<h1>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="55%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Level</th>
+<th class="head">System Usability</th>
+<th class="head">Response</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">CRITICAL</span></code></td>
+<td>System can no longer operate; attempts of recovery will cause meta-stability</td>
+<td>Report to Network Manager and go to sleep</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">ERROR_MAJOR</span></code></td>
+<td>Intermittent critical-error, or bug in code; caused a system reset, but working after reset</td>
+<td>Report to Network Manager and Continue from system reset</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ERROR_MINOR</span></code></td>
+<td>Issue in code causing data to be collected to be incorrect</td>
+<td>Report to NM and revert to default if possible</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">WARNING</span></code></td>
+<td>Potential Flags</td>
+<td>Log</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">INFO</span></code></td>
+<td>System Events (Business-as-Usual)</td>
+<td>Log if requested to</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">DEBUG</span></code></td>
+<td>Verbose output</td>
+<td>Log if requested to</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -174,10 +221,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../usage/main.html" class="btn btn-neutral float-right" title="Project How-To’s" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="principles/encapsulation.html" class="btn btn-neutral float-right" title="Encapsulation and State Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../toc.html" class="btn btn-neutral" title="Table of Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sh_configurations.html" class="btn btn-neutral" title="Sensor Host Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,0 +1,26 @@
+***********************************
+DuinoPro and ArduinoIDE integration
+***********************************
+
+To develop with the `ArduinoIDE <https://www.arduino.cc/en/Main/Software>`_:
+
+1. Download the DuinoPro installation ``.zip``
+
+.. note::
+   Waiting for Client approval to publish these files. CSC please refer to
+   folder# ``03.11``
+
+2. From the installation ``.zip`` copy files into your computer as follows:
+
+.. figure:: imgs/installation.png
+   :scale: 60%
+
+3. Open the Arduino IDE and open your preferences (``Ctrl+,``). Modify the *Additional Boards Manager URL* field to: ``http://10.0.0.156/mediawiki/images/1/1c/package_duinopro_index.json``
+
+.. figure:: imgs/installation02.png
+   :scale: 60%
+
+4. Select your board in ``Tools``
+
+.. figure:: imgs/installation03.png
+   :scale: 50%

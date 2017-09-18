@@ -1,16 +1,23 @@
 .. C7C.Atamo.Dusty documentation master file, created by Phan, J.
 
-C7C.Atamo.Dusty
-===============
+***********************
+C7C ATAMO Dusty Project
+***********************
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
+
+   toc
 
    intro/home
 
    usage/main
 
-   technical/main
+   quickRef/quickRef
 
-   standards/main
+   tech_arch/main
+   tech_implement/main
+   tech_testingDeploy/main
+
+

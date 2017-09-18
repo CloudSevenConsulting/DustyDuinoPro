@@ -1,0 +1,12 @@
+.. _idx-tech-testingDeploy:
+
+**********************
+Testing and Deployment
+**********************
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Testing:
+
+   testing/firmwareTesting_overview
+   testing/firmwareTesting_makingTests

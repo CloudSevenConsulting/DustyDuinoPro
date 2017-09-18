@@ -1,6 +1,8 @@
-****
-Home
-****
+.. _idx-home:
+
+**********
+Background
+**********
 
 This project is a UWA design project for ATAMO.
 

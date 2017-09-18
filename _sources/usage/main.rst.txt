@@ -1,14 +1,16 @@
-*****
-Usage
-*****
+.. _idx-usage:
+
+****************
+Project How-To's
+****************
 
 .. toctree::
    :maxdepth: 2
-   :caption: Software:
+   :caption: Software Required:
 
    dependencies/software
+   dependencies/duinoPro
    dependencies/otherPkgs_dustyQSL
-
 
 .. toctree::
    :caption: Git Tutorials

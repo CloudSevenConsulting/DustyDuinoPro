@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Checkout &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>DuinoPro and ArduinoIDE integration &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
         <link rel="up" title="Project How-To’s" href="../main.html"/>
-        <link rel="next" title="Branches" href="git_branches.html"/>
-        <link rel="prev" title="Git Basics" href="git_basics.html"/> 
+        <link rel="next" title="Dusty Quick Start Library" href="otherPkgs_dustyQSL.html"/>
+        <link rel="prev" title="Project Software" href="software.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -92,15 +92,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../main.html">Project How-To’s</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../dependencies/software.html">Project Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dependencies/duinoPro.html">DuinoPro and ArduinoIDE integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_basics.html">Git Basics</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Checkout</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#going-back-to-an-old-commit">Going back to an old commit</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="git_branches.html">Branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="software.html">Project Software</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">DuinoPro and ArduinoIDE integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_basics.html">Git Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_checkout.html">Checkout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_branches.html">Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projDocs.html">Project Documentation</a></li>
 </ul>
 </li>
@@ -154,13 +151,13 @@
         
           <li><a href="../main.html">Project How-To’s</a> &raquo;</li>
         
-      <li>Checkout</li>
+      <li>DuinoPro and ArduinoIDE integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/usage/git/git_checkout.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/usage/dependencies/duinoPro.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,45 +170,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="checkout">
-<h1>Checkout<a class="headerlink" href="#checkout" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="going-back-to-an-old-commit">
-<h2>Going back to an old commit<a class="headerlink" href="#going-back-to-an-old-commit" title="Permalink to this headline">¶</a></h2>
-<p>Use this <code class="docutils literal"><span class="pre">log</span></code> format to get a quick review of all the commits</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git log --pretty<span class="o">=</span>format:<span class="s1">&#39;%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s&#39;</span> --date<span class="o">=</span>short
-</pre></div>
-</div>
-<p>This will output something like this</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>d253315 <span class="m">2017</span>-05-19 Person A Modified timer <span class="k">for</span> TIMER0
-f106360 <span class="m">2017</span>-05-19 Jamie Phan Decouple SMB interrupt from main
-466ce7c <span class="m">2017</span>-05-19 Jamie Phan Add Design Documentation
-3d2496f <span class="m">2017</span>-05-19 Jamie Phan Unit <span class="nb">test</span> folder
-</pre></div>
-</div>
-<p>The cryptic looking string of text and numbers that start the line is the commit <code class="docutils literal"><span class="pre">SHA1</span></code> in shortened form</p>
-<p>To review that code use;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout <span class="o">[</span>cryptic-text-number-combo<span class="o">]</span>
-</pre></div>
-</div>
-<p>For example;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout 4552c5d
-
-Note: checking out <span class="s1">&#39;4552c5d&#39;</span>.
-
-You are in <span class="s1">&#39;detached HEAD&#39;</span> state. You can look around, make experimental
-changes and commit them, and you can discard any commits you make in this
-state without impacting any branches by performing another checkout.
-</pre></div>
-</div>
+  <div class="section" id="duinopro-and-arduinoide-integration">
+<h1>DuinoPro and ArduinoIDE integration<a class="headerlink" href="#duinopro-and-arduinoide-integration" title="Permalink to this headline">¶</a></h1>
+<p>To develop with the <a class="reference external" href="https://www.arduino.cc/en/Main/Software">ArduinoIDE</a>:</p>
+<ol class="arabic simple">
+<li>Download the DuinoPro installation <code class="docutils literal"><span class="pre">.zip</span></code></li>
+</ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Note that is says you’re in a <code class="docutils literal"><span class="pre">detached</span> <span class="pre">HEAD</span></code> state. Do not make any changes right now
-unless you know what you’re doing!</p>
+<p class="last">Waiting for Client approval to publish these files. CSC please refer to
+folder# <code class="docutils literal"><span class="pre">03.11</span></code></p>
 </div>
-<p>To go back do;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git checkout master
-</pre></div>
+<ol class="arabic simple" start="2">
+<li>From the installation <code class="docutils literal"><span class="pre">.zip</span></code> copy files into your computer as follows:</li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/installation.png"><img alt="../../_images/installation.png" src="../../_images/installation.png" style="width: 571.1999999999999px; height: 528.0px;" /></a>
 </div>
+<ol class="arabic simple" start="3">
+<li>Open the Arduino IDE and open your preferences (<code class="docutils literal"><span class="pre">Ctrl+,</span></code>). Modify the <em>Additional Boards Manager URL</em> field to: <code class="docutils literal"><span class="pre">http://10.0.0.156/mediawiki/images/1/1c/package_duinopro_index.json</span></code></li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/installation02.png"><img alt="../../_images/installation02.png" src="../../_images/installation02.png" style="width: 529.8px; height: 435.0px;" /></a>
+</div>
+<ol class="arabic simple" start="4">
+<li>Select your board in <code class="docutils literal"><span class="pre">Tools</span></code></li>
+</ol>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/installation03.png"><img alt="../../_images/installation03.png" src="../../_images/installation03.png" style="width: 462.0px; height: 536.0px;" /></a>
 </div>
 </div>
 
@@ -225,10 +211,10 @@ unless you know what you’re doing!</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="git_branches.html" class="btn btn-neutral float-right" title="Branches" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otherPkgs_dustyQSL.html" class="btn btn-neutral float-right" title="Dusty Quick Start Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="git_basics.html" class="btn btn-neutral" title="Git Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="software.html" class="btn btn-neutral" title="Project Software" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

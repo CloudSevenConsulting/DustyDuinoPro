@@ -1,0 +1,115 @@
+************
+Making Tests
+************
+
+To make a set of tests, 3 files must be modified/created:
+
+- A separate ``.c`` file must be created in ``tester\``
+- A corresponding ``.h`` file must be created in ``tester\``
+- ``debug.c`` must be modified to include the testing
+
+Ideally, each ``.c`` file should correspond to the testing for one logical
+grouping of peripherals/resources/types of tests. However no strict guidelines
+are in place and is *ad-hoc*.
+
+Creating the ``.c`` file
+========================
+
+The ``.c`` file contains the functions for testing. Each function should be one
+distinct test.
+
+The functions must be of ``int`` return type and must return ``1`` if the tests
+succeeds or ``0`` if the test fails.
+
+.. note::
+   Test outcome handling is not to be done locally in the tests. The tests **must**
+   return a boolean to represent the test outcome and shift the handling to
+   the caller (``debug.c`` or ``main.c``)
+
+Creating the ``.h`` file
+========================
+
+The ``.h`` file is a regular header file with an header include guard
+
+
+Modifying ``debug.c``
+=====================
+
+Three modifications must be made in ``debug.c`` for a new test:
+
+- Create a new macro for testing selection
+- Include the ``.h`` file for the test in question (with the necessary conditional build statements)
+- Call the testing functions in the ``tester()`` routine, handling the test outcome accordingly (and with the necessary conditional build statements)
+
+Macro for Test Selection
+------------------------
+
+The macro for test selection must be defined in ``debug.c`` as follows (for example,
+let's say we are testing 'a new thing');
+
+.. code-block:: c
+
+   /* ****************************************************************************
+    * Test Selection
+    * ***************************************************************************/
+   #define TEST_SMB_ENABLE 1
+   #define TEST_MEMORY_ENABLE 0
+
+   /* ... */
+
+   #define TEST_NEWTHING_ENABLE 1    /*<-- our new macro*/
+
+Include Testing Header
+----------------------
+
+The header must be included in ``debug.c`` **if the corresponding macro is set to 1**.
+This is done in the ``Test Headers`` section of the source code as follows (for example,
+let's say our header was ``test_newthing.h``)
+
+.. code-block:: c
+
+   /* ****************************************************************************
+    * Test Headers
+    * ***************************************************************************/
+   #if TEST_SMB_ENABLE
+   #include "test_smb.h"
+   #endif
+
+   /* ... */
+
+   #if TEST_NEWTHING_ENABLE         /*<-- our new test*/
+   #include "test_newthing.h"
+   #endif
+
+Calling the Test Functions
+--------------------------
+
+Finally, the ``tester()`` routine must call the relevant test functions
+from ``test_newthing.c`` (our example).
+
+Note, that the available testing functions for reporting (in this case ``TestFail()``) may
+change.
+
+.. code-block:: c
+
+   void tester(void)
+   {
+
+   #if TEST_SMB_ENABLE
+       ret = test_smb_eeprom_simple_write_read();
+       if (ret == 0)
+       {
+           TestFail();
+       }
+   #endif/*TEST_SMB*/
+
+   /* ... */
+
+   #if TEST_NEWTHING_ENABLE         /*<-- our new test*/
+        ret = test_some_unit_test_for_new_thing();
+        if (ret == 0)
+        {
+            TestFail();
+        }
+    #endif/*TEST_NEWTHING*/
+   }

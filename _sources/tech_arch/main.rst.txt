@@ -1,0 +1,15 @@
+.. _idx-tech-arch:
+
+*******************
+System Architecture
+*******************
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Architecture
+
+   arch_network
+   arch_sh
+   sh_configurations
+   error_handling
+   principles/encapsulation

@@ -65,6 +65,7 @@ Parameters
 =======================================  =================================================================================================
 Parameter                                Description
 =======================================  =================================================================================================
+``log_level``                            Logging level/granularity
 ``sampling_period_diagnostic``           The sampling period for diagnostic data
 ``sampling_period_sensor``               The sampling period for sensor data
 ``sleep_overhead_time``                  A safety-factor to prevent the system from over-sleeping and missing the required sampling time

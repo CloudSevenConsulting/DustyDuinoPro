@@ -108,6 +108,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/hardware.html">External Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../standards/main.html">Technical Guidelines and Standards</a></li>
@@ -250,34 +251,37 @@ to update the configuration as specified by the network manager</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sampling_period_diagnostic</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">log_level</span></code></td>
+<td>Logging level/granularity</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sampling_period_diagnostic</span></code></td>
 <td>The sampling period for diagnostic data</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sampling_period_sensor</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">sampling_period_sensor</span></code></td>
 <td>The sampling period for sensor data</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sleep_overhead_time</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sleep_overhead_time</span></code></td>
 <td>A safety-factor to prevent the system from over-sleeping and missing the required sampling time</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">network_join_duty_cycle_init</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">network_join_duty_cycle_init</span></code></td>
 <td>The initial duty cycle value when the sensor host joins the WSN</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">network_join_wait_time_init</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">network_join_wait_time_init</span></code></td>
 <td>The initial wait time before the sensor host will reattempt to join the WSN</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">network_join_wait_time_increment</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">network_join_wait_time_increment</span></code></td>
 <td>The extra amount of time to wait after every attempt of failed joining</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">network_join_wait_max</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">network_join_wait_max</span></code></td>
 <td>The maximum waiting time for attempting to join</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">network_join_duty_cycle_decrement</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">network_join_duty_cycle_decrement</span></code></td>
 <td>The amount to decrease the duty cycle for every reattempt</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">sensor_comm_type</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sensor_comm_type</span></code></td>
 <td>The communication protocol used for communicating with the sensor</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">sensor_clk_speed</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">sensor_clk_speed</span></code></td>
 <td>The communication speed for the sensor protocol</td>
 </tr>
 </tbody>

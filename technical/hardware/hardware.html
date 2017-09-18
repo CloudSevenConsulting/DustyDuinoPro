@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hardware &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>External Documentation &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -35,7 +35,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/> 
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Technical Documentation" href="../main.html"/>
+        <link rel="next" title="Technical Guidelines and Standards" href="../../standards/main.html"/>
+        <link rel="prev" title="Error Handling" href="../arch/error_handling.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -85,10 +88,19 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Home</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../main.html">Technical Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Technical Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_overview.html">Firmware Testing Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_makingTests.html">Making Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch_network.html">Network Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/arch_sh.html">Sensor Host</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../arch/error_handling.html">Error Handling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">External Documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../standards/main.html">Technical Guidelines and Standards</a></li>
 </ul>
 
@@ -134,7 +146,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>Hardware</li>
+          <li><a href="../main.html">Technical Documentation</a> &raquo;</li>
+        
+      <li>External Documentation</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,10 +167,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hardware">
-<h1>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h1>
-<p>Device  Ref.  Purpose
-UNO DuinoPro  AVR</p>
+  <div class="section" id="external-documentation">
+<h1>External Documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Device</th>
+<th class="head">Ref.</th>
+<th class="head">Documentation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>UNO DuinoPro</td>
+<td>Duino</td>
+<td><div class="first last line-block">
+<div class="line"><a class="reference external" href="https://www.duinopro.cc/">DuinoPro Brochure</a></div>
+<div class="line"><a class="reference external" href="https://github.com/duinoPRO/install">DuinoPro Github</a></div>
+<div class="line"><a class="reference download internal" href="../../_downloads/duinoPro_schematic.pdf" download=""><code class="xref download docutils literal"><span class="pre">UNO</span> <span class="pre">DuinoPro</span> <span class="pre">Schematic</span></code></a></div>
+<div class="line"><a class="reference download internal" href="../../_downloads/duinoPro_GettingStartedGuide.pdf" download=""><code class="xref download docutils literal"><span class="pre">DuinoPro</span> <span class="pre">User</span> <span class="pre">Guide</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>ATmega328P</td>
+<td>AVR</td>
+<td><div class="first last line-block">
+<div class="line"><a class="reference external" href="http://www.atmel.com/Images/Atmel-42735-8-bit-AVR-Microcontroller-ATmega328-328P_Datasheet.pdf">ATmega328P Datasheet</a></div>
+<div class="line"><a class="reference download internal" href="../../_downloads/ATmega328P_32TQFP_pinout.png" download=""><code class="xref download docutils literal"><span class="pre">Pinout</span> <span class="pre">32-TQFP</span></code></a></div>
+<div class="line"><a class="reference download internal" href="../../_downloads/ATmega328P_32TQFP_pinout_arduino.png" download=""><code class="xref download docutils literal"><span class="pre">Pintout</span> <span class="pre">32-TQFP/Arduino</span></code></a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>IoTeam Dusty</td>
+<td>Dusty</td>
+<td><div class="first last line-block">
+<div class="line"><a class="reference external" href="https://uploads.strikinglycdn.com/files/e6892882-b38a-49a0-b5a2-e78d664c8600/User%20Guide%20Dusty%20Rev%201.4.pdf?id=78523">Dusty User Guide</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>SmartMesh-IP</td>
+<td>SMIP</td>
+<td><div class="first last line-block">
+<div class="line"><a class="reference external" href="https://dustcloud.atlassian.net/wiki/spaces/QSL/pages/80609284/QuickStart+Library+Overview">Dust QSL</a></div>
+<div class="line">[SMIP01]: <a class="reference external" href="https://cds.linear.com/docs/en/application-note/SmartMesh_IP_Application_Notes.pdf">SMIP AN Index</a></div>
+<div class="line">[SMIP02]: <a class="reference external" href="https://cds.linear.com/docs/en/user-guide/SmartMesh_IP_User_s_Guide.pdf">SMIP User Guide</a></div>
+<div class="line">[SMIP03]: <a class="reference external" href="https://cds.linear.com/docs/en/software-and-simulation/SmartMesh_IP_Tools_Guide.pdf">SMIP Tools Guide</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>LTC5800-IPM</td>
+<td>Mote</td>
+<td><div class="first last line-block">
+<div class="line">[IPM01]: <a class="reference external" href="https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf">LTC5800-IPM</a></div>
+<div class="line">[IPM02]: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_Serial_API_Guide.pdf">SMIP Mote Serial API Guide</a></div>
+<div class="line">[IPM03]: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_CLI_Guide.pdf">SMIP Mote CLI Guide</a></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>LTC5800-IPR</td>
+<td>NM</td>
+<td><div class="first last line-block">
+<div class="line">[IPR01]: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_CLI_Guide.pdf">LTC5800-IPR</a></div>
+<div class="line">[IPR02]: <a class="reference external" href="https://cds.linear.com/docs/en/application-note/SmartMesh_IP_Easy_Start_Guide_for_the_Embedded_Manager.pdf">SMIP Easy Start Guide for the Embedded Manager</a></div>
+<div class="line">[IPR03]: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Embedded_Manager_API_Guide.pdf">SMIP Embedded Manager API Guide</a></div>
+<div class="line">[IPR04]: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Embedded_Manager_CLI_Guide.pdf">SMIP Embedded Manager CLI Guide</a></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -166,6 +248,15 @@ UNO DuinoPro  AVR</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../standards/main.html" class="btn btn-neutral float-right" title="Technical Guidelines and Standards" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../arch/error_handling.html" class="btn btn-neutral" title="Error Handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

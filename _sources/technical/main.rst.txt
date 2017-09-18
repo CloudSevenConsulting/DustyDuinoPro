@@ -18,3 +18,9 @@ Technical Documentation
    arch/sh_configurations
 
    arch/error_handling
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Implementation
+
+   hardware/hardware

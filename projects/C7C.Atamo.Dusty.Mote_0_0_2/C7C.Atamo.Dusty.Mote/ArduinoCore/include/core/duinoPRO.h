@@ -4,7 +4,7 @@
 // #include <Arduino.h>
 // #include <Pin.h>
 
-
+#ifdef __cplusplus
  
 class duinoPRO {
     private:
@@ -24,5 +24,8 @@ class duinoPRO {
 	void uartUsbMode();
 	void uartModule7Mode();
 };
+
+
+#endif
 
 #endif /* DUINOPRO_H */

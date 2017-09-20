@@ -9,7 +9,7 @@ Default values and common definitions for the QuickStart Library.
 #ifndef DN_DEFAULTS_H
 #define DN_DEFAULTS_H
 
-#include "sm_clib/dn_common.h"
+#include "../sm_clib/dn_common.h"
 
 //=========================== defines =========================================
 

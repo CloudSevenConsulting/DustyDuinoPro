@@ -1,0 +1,70 @@
+****************************
+Building with Atmel Studio 7
+****************************
+
+To build with Atmel Studio 7 (AS7), there are 2 steps:
+
+1. :ref:`Make an AVRDUDE tool in AS7 <sec-usage-developing-as7-building-avrdude>`
+2. :ref:`Use the tool <sec-usage-developing-as7-building-build>`
+
+.. _sec-usage-developing-as7-building-avrdude:
+
+AVRDUDE tool
+============
+
+We will make a new ``External Tool`` in AS7 for building with
+``avrdude.exe``
+
+In AS7 go to the ``Tools`` menu and click ``External Tools`` as seen below
+
+.. figure:: imgs/as7_building01.png
+
+A new dialog window should pop up as below.
+
+Fill in the following fields as follows:
+
+1. Name your new tool *Build to DuinoPro* (can be anything)
+2. Enter in the path to ``avrdude.exe``. This will be installation dependent, but if you are using Windows and you set everything to default, it should be ``C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\avrdude.exe``
+3. Enter in the following line:
+
+::
+
+    -C "C:\Program Files (x86)\Arduino\hardware\tools\avr\etc\avrdude.conf" -p atmega328p -c arduino -P COM4 -b 115200 -U flash:w:"$(ProjectDir)Debug\$(TargetName).hex":i
+
+4. Check the ``Use Output Window`` box
+
+**Note**:
+    - In step 3, the path ``C:\Program Files (x86)\Arduino\hardware\tools\avr\etc\avrdude.conf`` is also installation dependent
+    - In step 3, The ``COM4`` parameter may change, see :ref:`below <sec-usage-developing-as7-building-com>`
+
+.. figure:: imgs/as7_building02.png
+   :scale: 60%
+
+
+.. _sec-usage-developing-as7-building-com:
+
+Determining your COM Port
+-------------------------
+
+For Windows, open ``Device Manager`` (``Ctrl+x``, ``m``).
+
+**With the device connected** you should see a ``Ports (COM & LPT)`` section. Expand
+that section, and the device listed will be the COM port you use for your build parameter.
+
+.. figure:: imgs/as7_building03.png
+
+.. _sec-usage-developing-as7-building-build:
+
+Building with the Tool
+======================
+
+Once you have made your AVRDUDE tool, you can use that tool to build with AS7
+when your device is connected.
+
+.. figure:: imgs/as7_building04.png
+
+.. note::
+
+   *For administrators only*: For setting up Atmel Studio 7 integration please read:
+
+   - :ref:`DuinoPro and Arduino IDE <usage-duinoPro-arduino-integration>`

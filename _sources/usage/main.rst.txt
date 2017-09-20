@@ -21,6 +21,12 @@ Project How-To's
    git/git_branches
 
 .. toctree::
-   :caption: Contributing
+   :maxdepth: 2
+   :caption: Developing:
+
+   developing/as7_building
+
+.. toctree::
+   :caption: Documentation
 
    projDocs

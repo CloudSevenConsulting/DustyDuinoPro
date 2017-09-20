@@ -57,7 +57,6 @@ static void system_init (void)
 int main (void)
 {
 
-	digitalWrite(17, HIGH);
 	system_init();
 
 #if TEST_MODE

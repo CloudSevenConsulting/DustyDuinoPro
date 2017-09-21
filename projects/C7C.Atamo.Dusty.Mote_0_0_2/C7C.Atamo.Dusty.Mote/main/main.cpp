@@ -29,9 +29,7 @@ extern "C" {
  * ***************************************************************************/
  #if TEST_MODE
  #include "Testing/tester.h"
- #include "Testing/TestWsnJoin.h"
  tester test;
- TestWsnJoin t;
  #endif
 
 /*******************************************************************************
@@ -52,7 +50,6 @@ void loop()
 	while(1)
 	{
 		test.blink();
-		t.run();
 	}
 #else
 	while(1)

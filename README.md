@@ -6,5 +6,6 @@ AVR based Dust Network implementation using [Linear Technology's SmartMesh-IP](h
 | Name | Contact |
 | --- | --- |
 | Jamie Phan | jamie.kt.phan@gmail.com |
+| Aaron Hurst | https://github.com/aaron-hurst | 
 
 

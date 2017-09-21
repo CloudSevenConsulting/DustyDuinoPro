@@ -27,10 +27,10 @@ extern "C" {
 /* ****************************************************************************
  * DEBUG Includes
  * ***************************************************************************/
- #if TEST_MODE
- #include "Testing/tester.h"
- tester test;
- #endif
+#if TEST_MODE
+#include "Testing/tester.h"
+tester test;
+#endif
 
 /*******************************************************************************
  * System setup 

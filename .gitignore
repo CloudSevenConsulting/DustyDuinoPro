@@ -1,3 +1,6 @@
+# Custom
+*.commit-temp
+
 # Prerequisites
 *.d
 

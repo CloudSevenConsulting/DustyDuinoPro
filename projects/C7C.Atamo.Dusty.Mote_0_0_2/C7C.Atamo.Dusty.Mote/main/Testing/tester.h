@@ -17,6 +17,7 @@ class tester {
 	public:
 	tester(void);
 	void blink(void);
+	virtual void run(void);
 	void fail(void);
 };
 

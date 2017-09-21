@@ -21,6 +21,10 @@ void tester::blink()
 	board.setLed(true);
 }
 
+void tester::run()
+{
+}
+
 void tester::fail()
 {
 	while(1)

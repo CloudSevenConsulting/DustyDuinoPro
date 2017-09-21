@@ -287,6 +287,12 @@
     <Compile Include="Testing\tester.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Testing\TestWsnJoin.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestWsnJoin.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Content Include="readme.html">
     </Content>
   </ItemGroup>

@@ -41,16 +41,16 @@ void setup()
 	/*! Disable VBAT sense on INIT
 	 * This prevent energy waste
 	 */
-	board.disableVbatSense();
+	board.enableVbatSense(false);
 
 /*! Select UART TX/RX ties to AVR 
  * Serial debug mode (TEST_MODE) connects the AVR to USB
  * Serial module mode (!TEST_MODE) connects to module space 7
  */
 #if TEST_MODE
-	board.serialDebugMode();
+	board.uartUsbMode();
 #else
-	board.serialModuleMode(); 
+	board.uartModule7Mode(); 
 #endif
 
 }

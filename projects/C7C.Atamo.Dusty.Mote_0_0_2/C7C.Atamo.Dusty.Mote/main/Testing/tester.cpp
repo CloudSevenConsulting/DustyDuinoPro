@@ -20,3 +20,11 @@ void tester::blink()
 	delay(500);
 	board.setLed(true);
 }
+
+void tester::fail()
+{
+	while(1)
+	{
+		blink();
+	}
+}

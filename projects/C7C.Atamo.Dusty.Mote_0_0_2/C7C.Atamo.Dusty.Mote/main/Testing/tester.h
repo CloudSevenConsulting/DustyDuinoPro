@@ -17,6 +17,7 @@ class tester {
 	public:
 	tester(void);
 	void blink(void);
+	void fail(void);
 };
 
 #endif /* TESTER_H_ */

@@ -15,6 +15,7 @@ Debug macros (based on http://c.learncodethehardway.org/book/ex20.html ).
 
 /* Comment out this define to include debug messages */
 #define NDEBUG
+#define NLOG
 
 /* Comment out this define to include log messages */
 //#define NLOG

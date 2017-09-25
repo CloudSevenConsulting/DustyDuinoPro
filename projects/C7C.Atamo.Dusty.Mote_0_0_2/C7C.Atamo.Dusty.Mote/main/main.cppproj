@@ -314,12 +314,6 @@
     <Compile Include="usart\ISerial.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="usart\serial.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="usart\serial.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Content Include="readme.html">
     </Content>
   </ItemGroup>

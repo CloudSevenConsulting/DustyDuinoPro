@@ -284,6 +284,9 @@
     <Compile Include="sm_qsl\dn_qsl_api.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sm_qsl\dn_time.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sm_qsl\dn_time.h">
       <SubType>compile</SubType>
     </Compile>
@@ -297,6 +300,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\tester.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="time\ITime.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="time\ITime.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="usart\ISerial.cpp">
@@ -322,6 +331,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="time" />
     <Folder Include="usart" />
     <Folder Include="Testing" />
     <Folder Include="sm_qsl" />

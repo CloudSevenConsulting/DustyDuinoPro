@@ -1,6 +1,11 @@
-/*TODO: all*/
 
 #include "dn_uart.h"
+
+#include "../usart/ISerial.h"
+
+#define DP_PIN__TX 1
+#define DP_PIN__RX 2
+#define BAUD_RATE 9600
 
 //========== 
 /*! Initialise the UART peripheral on the Microcontroller 
@@ -11,6 +16,7 @@ void dn_uart_init(dn_uart_rxByte_cbt rxByte_cb)
 {
     /*This is done in setup*/
     /*TODO: this*/
+    dp_usart_init(BAUD_RATE);
 }
 
 //========== 
@@ -24,7 +30,7 @@ void dn_uart_init(dn_uart_rxByte_cbt rxByte_cb)
  */
 void dn_uart_txByte(uint8_t byte)
 {
-    /*TODO: this*/
+    dp_usart_write(byte);
 }
 
 //========== 
@@ -38,5 +44,5 @@ void dn_uart_txByte(uint8_t byte)
  */
 void dn_uart_txFlush()
 {
-    /*TODO: this*/
+    dp_usart_flush();
 }

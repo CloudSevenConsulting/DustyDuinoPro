@@ -10,5 +10,4 @@
 void dn_watchdog_feed(void)
 {
 	// Reset watchdog timer
-	continue;
 }

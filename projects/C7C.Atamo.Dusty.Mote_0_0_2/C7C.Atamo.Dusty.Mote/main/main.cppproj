@@ -299,6 +299,18 @@
     <Compile Include="Testing\tester.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="usart\ISerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usart\ISerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usart\serial.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usart\serial.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Content Include="readme.html">
     </Content>
   </ItemGroup>
@@ -310,6 +322,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="usart" />
     <Folder Include="Testing" />
     <Folder Include="sm_qsl" />
     <Folder Include="sm_clib" />

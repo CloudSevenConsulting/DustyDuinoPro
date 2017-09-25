@@ -15,7 +15,7 @@
  * Globals
  ******************************************************************************/
 #include "globals.h"
-duinoPRO board;
+duinoPRO Board;/*This is public globally in globals.h*/
 
 /* ****************************************************************************
  * SmartMesh QSL Includes
@@ -29,7 +29,7 @@ extern "C" {
  * ***************************************************************************/
 #if TEST_MODE
 #include "Testing/tester.h"
-tester test;
+tester SysTest;
 #endif
 
 /*******************************************************************************
@@ -41,16 +41,16 @@ void setup()
 	/*! Disable VBAT sense on INIT
 	 * This prevent energy waste
 	 */
-	board.enableVbatSense(false);
+	Board.enableVbatSense(false);
 
 /*! Select UART TX/RX ties to AVR 
  * Serial debug mode (TEST_MODE) connects the AVR to USB
  * Serial module mode (!TEST_MODE) connects to module space 7
  */
 #if TEST_MODE
-	board.uartUsbMode();
+	Board.uartUsbMode();
 #else
-	board.uartModule7Mode(); 
+	Board.uartModule7Mode();
 #endif
 
 }
@@ -61,10 +61,12 @@ void setup()
 void loop() 
 {
 
+	setup();
+
 #if TEST_MODE
 	while(1)
 	{
-		test.blink();
+		SysTest.blink();
 	}
 #else
 	while(1)

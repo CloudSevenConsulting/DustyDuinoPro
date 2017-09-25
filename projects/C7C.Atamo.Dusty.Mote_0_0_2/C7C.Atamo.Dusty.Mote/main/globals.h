@@ -10,7 +10,7 @@
 #define GLOBALS_H_
 #include <duinoPRO.h>
 
-extern duinoPRO board;
+extern duinoPRO Board;
 
 
 #endif /* GLOBALS_H_ */

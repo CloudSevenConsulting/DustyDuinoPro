@@ -16,9 +16,9 @@ tester::tester(void)
 void tester::blink()
 {
 	delay(500);
-	board.setLed(false);
+	Board.setLed(false);
 	delay(500);
-	board.setLed(true);
+	Board.setLed(true);
 }
 
 void tester::run()

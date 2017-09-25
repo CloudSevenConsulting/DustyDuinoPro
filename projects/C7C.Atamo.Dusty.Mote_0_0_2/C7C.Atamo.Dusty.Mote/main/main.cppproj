@@ -287,6 +287,9 @@
     <Compile Include="sm_qsl\dn_time.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sm_qsl\dn_watchdog.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sm_qsl\dn_watchdog.h">
       <SubType>compile</SubType>
     </Compile>

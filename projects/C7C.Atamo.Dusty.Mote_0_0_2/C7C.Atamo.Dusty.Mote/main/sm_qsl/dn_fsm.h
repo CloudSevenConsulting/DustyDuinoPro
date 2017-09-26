@@ -88,7 +88,7 @@ Finite State Machine for the QuickStart Library.
 #define DN_PACKET_ID_NO_NOTIF	0xffff // Do not generate txDone notification
 
 //===== Read
-#define DN_INBOX_SIZE	10 // Max number of buffered downstream messages
+#define DN_INBOX_SIZE	4 // Max number of buffered downstream messages
 
 //===== Reset/disconnect
 /*

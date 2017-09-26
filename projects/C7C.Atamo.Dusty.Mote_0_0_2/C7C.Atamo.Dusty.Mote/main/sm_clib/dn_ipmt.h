@@ -15,7 +15,7 @@ C library to connect to a SmartMesh IP Mote.
 
 //=========================== defines =========================================
 
-#define MAX_FRAME_LENGTH                    128
+#define MAX_FRAME_LENGTH                    8
 #define DN_SUBCMDID_NONE                    0xff
 
 //===== well-known IPv6 address of the SmartMesh IP manager

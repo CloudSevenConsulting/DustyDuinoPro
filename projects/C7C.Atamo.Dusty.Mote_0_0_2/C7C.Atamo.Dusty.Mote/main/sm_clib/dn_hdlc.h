@@ -55,7 +55,7 @@ static const uint16_t dn_hdlc_fcstab[256] = {
 #define DN_HDLC_CRCINIT                0xffff
 #define DN_HDLC_CRCGOOD                0xf0b8
 
-#define DN_HDLC_MAX_FRAME_LENGTH       128
+#define DN_HDLC_MAX_FRAME_LENGTH       8
 #define DN_HDLC_INPUT_BUFFER_SIZE      DN_HDLC_MAX_FRAME_LENGTH
 
 //=========================== typedef =========================================

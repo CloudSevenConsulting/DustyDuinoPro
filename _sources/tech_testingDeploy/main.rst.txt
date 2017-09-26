@@ -10,3 +10,9 @@ Testing and Deployment
 
    testing/firmwareTesting_overview
    testing/firmwareTesting_makingTests
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Design Test Procedures
+
+   test0003/test0003

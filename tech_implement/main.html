@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Implementation &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Sensor Host &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,7 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="next" title="Dusty-DuinoPro Mapping" href="hardware/hardware_dustyDuinoProMap.html"/>
+        <link rel="next" title="Sensor Host Design" href="sh_mainRoutine.html"/>
         <link rel="prev" title="Encapsulation and State Variables" href="../tech_arch/principles/encapsulation.html"/> 
 
   
@@ -92,9 +92,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../intro/home.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Architecture</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Implementation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html">Dusty-DuinoPro Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sensor Host</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html">Dusty API UART</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_testingDeploy/main.html">Testing and Deployment</a></li>
@@ -142,7 +146,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Implementation</li>
+      <li>Sensor Host</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -161,12 +165,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="implementation">
-<span id="idx-tech-implement"></span><h1>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sensor-host">
+<span id="idx-tech-implement-sh"></span><h1>Sensor Host<a class="headerlink" href="#sensor-host" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Implementation</span></p>
+<p class="caption"><span class="caption-text">Dusty</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html">Dusty-DuinoPro Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sh_mainRoutine.html">Sensor Host Design</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sh_mainRoutine.html#program-logic">Program Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_mainRoutine.html#state-control">State Control</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#background">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#configuration-lookup">Configuration Lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#device-configuration">Device Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html#parameters">Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html#gpio-pinout">GPIO Pinout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html#external-i-o-pinout">External I/O Pinout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html#serial-pinout">Serial Pinout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html#common-module-pinout">Common Module Pinout</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uart/dustyAvrIF.html">Dusty API UART</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#abstract">Abstract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#api-vs-cli">API vs CLI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#serial-modes">Serial Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#flow-control">Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#power-consumption-of-the-i-f">Power Consumption of the I/F</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html#references">References</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -181,7 +213,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hardware/hardware_dustyDuinoProMap.html" class="btn btn-neutral float-right" title="Dusty-DuinoPro Mapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sh_mainRoutine.html" class="btn btn-neutral float-right" title="Sensor Host Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../tech_arch/principles/encapsulation.html" class="btn btn-neutral" title="Encapsulation and State Variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

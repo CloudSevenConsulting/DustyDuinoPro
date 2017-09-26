@@ -29,6 +29,7 @@ External Documentation
 | LTC5800-IPM  | Mote   | | [IPM01]: `LTC5800-IPM`_                                                          |
 |              |        | | [IPM02]: `SMIP Mote Serial API Guide`_                                           |
 |              |        | | [IPM03]: `SMIP Mote CLI Guide`_                                                  |
+|              |        | | [IPM04]: `Eterna Board Specific Configuration Guide`_ (Fuse tables)              |
 +--------------+--------+------------------------------------------------------------------------------------+
 | LTC5800-IPR  | NM     | | [IPR01]: `LTC5800-IPR`_                                                          |
 |              |        | | [IPR02]: `SMIP Easy Start Guide for the Embedded Manager`_                       |
@@ -51,6 +52,7 @@ External Documentation
 .. _LTC5800-IPM: https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf
 .. _SMIP Mote Serial API Guide: https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_Serial_API_Guide.pdf
 .. _SMIP Mote CLI Guide: https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_CLI_Guide.pdf
+.. _Eterna Board Specific Configuration Guide: https://cds.linear.com/docs/en/design-note/Board_Specific_Configuration_Guide.pdf
 
 .. _LTC5800-IPR: https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_CLI_Guide.pdf
 .. _SMIP Easy Start Guide for the Embedded Manager: https://cds.linear.com/docs/en/application-note/SmartMesh_IP_Easy_Start_Guide_for_the_Embedded_Manager.pdf

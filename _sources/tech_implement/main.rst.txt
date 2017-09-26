@@ -1,11 +1,15 @@
-.. _idx-tech-implement:
+.. _idx-tech-implement-sh:
 
-**************
-Implementation
-**************
+***********
+Sensor Host
+***********
 
 .. toctree::
    :maxdepth: 2
-   :caption: Implementation
+   :caption: Dusty
 
+   sh_mainRoutine
+   sleep/sleep
+   sh_configurations
    hardware/hardware_dustyDuinoProMap
+   uart/dustyAvrIF

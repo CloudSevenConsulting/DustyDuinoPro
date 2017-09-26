@@ -1,0 +1,70 @@
+**************
+Dusty API UART
+**************
+
+.. note::
+
+   This section will refer to the companion/external processor (the UNO DuinoPro)
+   as the MCU.
+
+Abstract
+========
+
+The Dusty module (the Eterna) is connected to the MCU through the API UART and is solely
+used as a networking device. The Dusty module is in slave mode and none of the built in I/Os
+are accessible in this mode [#IPM01_2]_
+
+Key design decisions:
+
+1. The Dusty module is set to **slave mode**
+2. The Dusty module will use the API UART to I/F with the MCU
+3. The API UART is used with **mode 4**
+
+API vs CLI
+==========
+
+There are two interfaces to the Dusty (LTC5800-IPM) module [#IPM01]_:
+
+1. The API UART is the principle network interface.
+2. The CLI UART is an additional interface for testing and debugging
+
+Serial Modes
+============
+
+The fuse table for the LTC5800-IPM is normally developed as part of the board level design process. Either mode 2 or mode 4 may be used on the API port, at either baud rate. For modularly certified products such as the LTP5901-IPM, or the Starter Kit mote (DC9003A-B) the fuse table has been pre-programmed for mode 4 at 115.2 Kbps and cannot be changed [#IPM02]_.
+
+======  =========================================  ================  =====  =====
+Mode    I/F                                        Baud Rate         API    CLI
+======  =========================================  ================  =====  =====
+0       2w; ``RX`` and ``TX``                      9600              No     Yes
+2       6w; All lines                              9600 or 115.2k    Yes    No
+4       4w; ``TX``, ``RX``, ``_CTSn``, ``RTSn``    9600 or 115.2k    Yes    No
+======  =========================================  ================  =====  =====
+
+Flow Control
+============
+
+1. MCU-to-Dusty transfers are initiated by the MCU driving the ``UART_RX_RTSn`` line
+2. Dusty responds by asserting the ``UART_RX_CTSn``
+
+Power Consumption of the I/F
+============================
+
+Both UART I/Fs (API and CLI) sense activity continuously, consuming virtually no
+power until data is transferred and automatically returning to their lowest
+power state after the conclusion of a transfer [#IPM01]_
+
+Mode 2 is said to be the more energy efficient mode
+
+References
+==========
+
+.. [#IPM01] IPM01: https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf
+.. [#IPM01_2] See pg. 33 'Slave Mode' in IPM01: https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf
+.. [#IPM02] See section 3 of IPM02: https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_Serial_API_Guide.pdf
+
+.. SPHINX QUCIK REFERENCE
+
+    Footnotes
+        Place [#<footnote-id>]_ at the reference point, and at the bottom of the
+        document put ".. [#f1] Text of footnote"

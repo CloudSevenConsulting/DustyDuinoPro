@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dusty API UART &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Sensor Host" href="../main.html"/>
+        <link rel="next" title="Testing and Deployment" href="../../tech_testingDeploy/main.html"/>
+        <link rel="prev" title="Dusty-to-M7 Interface" href="../hardware/hardware_dustyDuinoProMap.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dusty API UART</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#abstract">Abstract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-vs-cli">API vs CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-modes">Serial Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow-control">Flow Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#power-consumption-of-the-i-f">Power Consumption of the I/F</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../main.html">Sensor Host</a> &raquo;</li>
+        
+      <li>Dusty API UART</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tech_implement/uart/dustyAvrIF.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dusty-api-uart">
+<h1>Dusty API UART<a class="headerlink" href="#dusty-api-uart" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This section will refer to the companion/external processor (the UNO DuinoPro)
+as the MCU.</p>
+</div>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>The Dusty module (the Eterna) is connected to the MCU through the API UART and is solely
+used as a networking device. The Dusty module is in slave mode and none of the built in I/Os
+are accessible in this mode <a class="footnote-reference" href="#ipm01-2" id="id1">[2]</a></p>
+<p>Key design decisions:</p>
+<ol class="arabic simple">
+<li>The Dusty module is set to <strong>slave mode</strong></li>
+<li>The Dusty module will use the API UART to I/F with the MCU</li>
+<li>The API UART is used with <strong>mode 4</strong></li>
+</ol>
+</div>
+<div class="section" id="api-vs-cli">
+<h2>API vs CLI<a class="headerlink" href="#api-vs-cli" title="Permalink to this headline">¶</a></h2>
+<p>There are two interfaces to the Dusty (LTC5800-IPM) module <a class="footnote-reference" href="#ipm01" id="id2">[1]</a>:</p>
+<ol class="arabic simple">
+<li>The API UART is the principle network interface.</li>
+<li>The CLI UART is an additional interface for testing and debugging</li>
+</ol>
+</div>
+<div class="section" id="serial-modes">
+<h2>Serial Modes<a class="headerlink" href="#serial-modes" title="Permalink to this headline">¶</a></h2>
+<p>The fuse table for the LTC5800-IPM is normally developed as part of the board level design process. Either mode 2 or mode 4 may be used on the API port, at either baud rate. For modularly certified products such as the LTP5901-IPM, or the Starter Kit mote (DC9003A-B) the fuse table has been pre-programmed for mode 4 at 115.2 Kbps and cannot be changed <a class="footnote-reference" href="#ipm02" id="id3">[3]</a>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="56%" />
+<col width="22%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Mode</th>
+<th class="head">I/F</th>
+<th class="head">Baud Rate</th>
+<th class="head">API</th>
+<th class="head">CLI</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>2w; <code class="docutils literal"><span class="pre">RX</span></code> and <code class="docutils literal"><span class="pre">TX</span></code></td>
+<td>9600</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>6w; All lines</td>
+<td>9600 or 115.2k</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr class="row-even"><td>4</td>
+<td>4w; <code class="docutils literal"><span class="pre">TX</span></code>, <code class="docutils literal"><span class="pre">RX</span></code>, <code class="docutils literal"><span class="pre">_CTSn</span></code>, <code class="docutils literal"><span class="pre">RTSn</span></code></td>
+<td>9600 or 115.2k</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="flow-control">
+<h2>Flow Control<a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>MCU-to-Dusty transfers are initiated by the MCU driving the <code class="docutils literal"><span class="pre">UART_RX_RTSn</span></code> line</li>
+<li>Dusty responds by asserting the <code class="docutils literal"><span class="pre">UART_RX_CTSn</span></code></li>
+</ol>
+</div>
+<div class="section" id="power-consumption-of-the-i-f">
+<h2>Power Consumption of the I/F<a class="headerlink" href="#power-consumption-of-the-i-f" title="Permalink to this headline">¶</a></h2>
+<p>Both UART I/Fs (API and CLI) sense activity continuously, consuming virtually no
+power until data is transferred and automatically returning to their lowest
+power state after the conclusion of a transfer <a class="footnote-reference" href="#ipm01" id="id4">[1]</a></p>
+<p>Mode 2 is said to be the more energy efficient mode</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="ipm01" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> IPM01: <a class="reference external" href="https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf">https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="ipm01-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[2]</a></td><td>See pg. 33 ‘Slave Mode’ in IPM01: <a class="reference external" href="https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf">https://cds.linear.com/docs/en/datasheet/5800ipmfa.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="ipm02" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>See section 3 of IPM02: <a class="reference external" href="https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_Serial_API_Guide.pdf">https://cds.linear.com/docs/en/design-note/SmartMesh_IP_Mote_Serial_API_Guide.pdf</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../tech_testingDeploy/main.html" class="btn btn-neutral float-right" title="Testing and Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../hardware/hardware_dustyDuinoProMap.html" class="btn btn-neutral" title="Dusty-to-M7 Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

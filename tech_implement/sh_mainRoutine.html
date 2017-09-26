@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sensor Host &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Sensor Host Design &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,9 +36,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
-        <link rel="up" title="System Architecture" href="main.html"/>
-        <link rel="next" title="Sensor Host Configurations" href="sh_configurations.html"/>
-        <link rel="prev" title="Network Architecture" href="arch_network.html"/> 
+        <link rel="up" title="Sensor Host" href="main.html"/>
+        <link rel="next" title="Sleep Management" href="sleep/sleep.html"/>
+        <link rel="prev" title="Sensor Host" href="main.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -93,15 +93,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../intro/home.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="main.html">System Architecture</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="arch_network.html">Network Architecture</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensor Host</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error_handling.html">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="principles/encapsulation.html">Encapsulation and State Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sensor Host Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#program-logic">Program Logic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-control">State Control</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tech_implement/main.html">Implementation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uart/dustyAvrIF.html">Dusty API UART</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_testingDeploy/main.html">Testing and Deployment</a></li>
 </ul>
 
@@ -147,15 +151,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="main.html">System Architecture</a> &raquo;</li>
+          <li><a href="main.html">Sensor Host</a> &raquo;</li>
         
-      <li>Sensor Host</li>
+      <li>Sensor Host Design</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tech_arch/arch_sh.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tech_implement/sh_mainRoutine.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,11 +172,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sensor-host">
-<h1>Sensor Host<a class="headerlink" href="#sensor-host" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sensor-host-design">
+<h1>Sensor Host Design<a class="headerlink" href="#sensor-host-design" title="Permalink to this headline">¶</a></h1>
+<p>Sensor hosts are the devices deployed at site which wirelessly communicate
+sampled data to the cloud server (through a intermediate central node, the Network Manager).</p>
+<div class="section" id="program-logic">
+<h2>Program Logic<a class="headerlink" href="#program-logic" title="Permalink to this headline">¶</a></h2>
 <p>The main routine of the sensor host can be seen below</p>
 <div class="figure">
-<img alt="../_images/sh_main.png" src="../_images/sh_main.png" />
+<a class="reference internal image-reference" href="../_images/sh_main.png"><img alt="../_images/sh_main.png" src="../_images/sh_main.png" style="width: 517.1999999999999px; height: 781.8px;" /></a>
+</div>
+</div>
+<div class="section" id="state-control">
+<h2>State Control<a class="headerlink" href="#state-control" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/sh_states_2.png"><img alt="../_images/sh_states_2.png" src="../_images/sh_states_2.png" style="width: 388.0px; height: 415.5px;" /></a>
+</div>
 </div>
 </div>
 
@@ -186,10 +201,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sh_configurations.html" class="btn btn-neutral float-right" title="Sensor Host Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sleep/sleep.html" class="btn btn-neutral float-right" title="Sleep Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="arch_network.html" class="btn btn-neutral" title="Network Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="main.html" class="btn btn-neutral" title="Sensor Host" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

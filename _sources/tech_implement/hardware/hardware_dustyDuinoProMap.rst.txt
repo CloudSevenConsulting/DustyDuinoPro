@@ -1,5 +1,69 @@
-**********************
-Dusty-DuinoPro Mapping
-**********************
+*********************
+Dusty-to-M7 Interface
+*********************
 
+This section describes the physical I/F between the Dusty module and the M7 space
+on the DuinoPro.
 
+The ``Pin Name`` and ``Pin No.`` in the following tables refer to the references
+used in the module (see UNO DuinoPro Schematic).
+
+``Net`` refers to anything immediately connected to those pins (``N/C`` indicates no connection).
+
+GPIO Pinout
+===========
+
+=================  =========  ====================  =========  =======
+Pin Name           Pin No.    Net                   Purpose    Drive
+=================  =========  ====================  =========  =======
+GPIO1/INT          25         Dusty/UART_TX_RTSn               Dusty
+GPIO2/USART_CTS    7          Dusty/UART_RX_CTSn               Dusty
+GPIO3/USART_RTS    8          Dusty/UART_RX_RTSn               AVR
+GPIO4/USART_RX     9          Dusty/UART_TX                    Dusty
+GPIO5/USART_TX     10         Dusty/UART_RX                    AVR
+GPIO6/USART_SCK    11         Dusty/UART_TX_CTSn               AVR
+=================  =========  ====================  =========  =======
+
+External I/O Pinout
+===================
+
+==========  =========  =========  =========
+Pin Name    Pin No.    Net        Purpose
+==========  =========  =========  =========
+EXTIO1      1          ``N/C``
+EXTIO2      27         ``N/C``
+EXTIO3      28         ``N/C``
+EXTIO4      29         ``N/C``
+==========  =========  =========  =========
+
+Serial Pinout
+=============
+
+==========  =========  =========  =========
+Pin Name    Pin No.    Net        Purpose
+==========  =========  =========  =========
+SDA1        12
+SCL1        13
+SDA2        20         ``N/C``
+SCL2        21         ``N/C``
+MOSI        17
+MISO        18
+SCK         14
+SPI_CS      24
+==========  =========  =========  =========
+
+Common Module Pinout
+====================
+
+=============  =========  ========  ==================================
+Pin Name       Pin No.    Net       Purpose
+=============  =========  ========  ==================================
+VBAT           19         ``N/C``   External power source for device
+3v3            16         3v3       Power to module
+GND@1          2          Ground    Grounding
+GND@2          15         Ground    Grounding
+GND@3          26         Ground    Grounding
+MCU_RESET_N    22         ``N/C``   To externally reset devices
+RESERVED       23         ``N/C``
+ADDRESSn                            I2C slave addressing (``0111``)
+=============  =========  ========  ==================================

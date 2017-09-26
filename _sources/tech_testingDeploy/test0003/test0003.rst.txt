@@ -1,0 +1,85 @@
+**********
+Test #0003
+**********
+
+Goals
+=====
+
+- Prove UART I/F (dn-dp) is operational
+
+Procedure
+=========
+
+- Build ``dp`` with ``C7C.Atamo.Dusty.Mote_0_0_2`` (branch: ``qsl-port``) commit:``414e44b3203b26485e4991362e4d27ab8231b4f1``
+
+    + Modify with:
+
+        * ``#define NETID 0``
+        * ``#define JOINKEY NULL``
+        * ``#define BANDWIDTH_MS 9000``
+        * ``#define SRC_PORT 60000``
+
+- Dusty/DP connections:
+
+    + 3v3             <--> Dusty/VCC
+    + GND@2           <--> Dusty/GND
+    + GPIO1/INT       <--> Dusty/UART_TX_RTSn
+    + GPIO2/USART_CTS <--> Dusty/UART_RX_CTSn
+    + GPIO3/USART_RTS <--> Dusty/UART_RX_RTSn
+    + GPIO4/USART_RX  <--> Dusty/UART_TX
+    + GPIO5/USART_TX  <--> Dusty/UART_RX
+    + GPIO6/USART_SCK <--> Dusty/UART_TX_CTSn
+
+- ``DC2774A-A`` Connected to computer (``COM7``; CLI)
+
+    + Poll ``sm`` until ``dp`` shows on network
+
+- Place ``Board.setLed(true);`` at points in code to show breakpoints (visually) (see test-loop)
+
+Test Loop
+---------
+
+.. code-block:: c
+
+    while(1)
+        {
+            if(dn_qsl_isConnected())
+            {
+                Board.setLed(true);
+                delay(500);
+                Board.setLed(false);
+                delay(500);
+            }
+            else
+            {
+                Board.setLed(true);
+                if (dn_qsl_connect(NETID, JOINKEY, SRC_PORT, BANDWIDTH_MS))
+                {
+                } else
+                {
+                    Board.setLed(false);
+                }
+            }
+        }
+
+Results
+=======
+
+- ``sm`` does not show a new mote (only 1 mote appears, which is the NM itself)
+
+    + Confirm that the mote that appears on ``sm`` is the Network manager by comparing MAC address
+    + See ``minfo``
+
+- DP has ``Board.setLed(true);`` indicating that ``dn_qsl_connect()`` does not break and turn off the led in the ``else`` condition
+
+Conclusions
+===========
+
+- The results do not definitively indicate any *single* point of failure. Various issues may be the cause:
+
+    + DN is not operational *at all*
+    + DN is operational but communication is failing (e.g. out-of-range)
+    + DN is operational but not actively communicating (DN never got command to initiate comms; UART failure)
+    + NM is operational (we are certain of this because of computer feedback) but communication is failing
+
+- Suspect that DN is not operational *at all*

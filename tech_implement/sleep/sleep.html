@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Firmware Testing Overview &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Sleep Management &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,9 +36,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
-        <link rel="up" title="Testing and Deployment" href="../main.html"/>
-        <link rel="next" title="Making Tests" href="firmwareTesting_makingTests.html"/>
-        <link rel="prev" title="Testing and Deployment" href="../main.html"/> 
+        <link rel="up" title="Sensor Host" href="../main.html"/>
+        <link rel="next" title="Sensor Host Configurations" href="../sh_configurations.html"/>
+        <link rel="prev" title="Sensor Host Design" href="../sh_mainRoutine.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -94,19 +94,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tech_implement/main.html">Sensor Host</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Testing and Deployment</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Firmware Testing Overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#building-test-mode">Building Test Mode</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#testing-configuration">Testing Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart/dustyAvrIF.html">Dusty API UART</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="firmwareTesting_makingTests.html">Making Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../test0003/test0003.html">Test #0003</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
 </ul>
 
             
@@ -151,15 +147,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../main.html">Testing and Deployment</a> &raquo;</li>
+          <li><a href="../main.html">Sensor Host</a> &raquo;</li>
         
-      <li>Firmware Testing Overview</li>
+      <li>Sleep Management</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/tech_testingDeploy/testing/firmwareTesting_overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/tech_implement/sleep/sleep.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,45 +168,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="firmware-testing-overview">
-<h1>Firmware Testing Overview<a class="headerlink" href="#firmware-testing-overview" title="Permalink to this headline">¶</a></h1>
-<p>Testing is performed with a separate build from the production build.</p>
-<p>Selecting the build mode is done in software source code.</p>
-<div class="section" id="building-test-mode">
-<h2>Building Test Mode<a class="headerlink" href="#building-test-mode" title="Permalink to this headline">¶</a></h2>
-<p>In <code class="docutils literal"><span class="pre">main.c</span></code> the following code enables Test mode.</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
-<span class="cm"> * DEBUG Settings</span>
-<span class="cm"> * ***************************************************************************/</span>
-
-<span class="cm">/*Comment this out to turn off debug*/</span>
-<span class="cp">#define TEST_MODE 1</span>
-
-<span class="cp">#if TEST_MODE</span>
-<span class="cp">#include</span> <span class="cpf">&quot;tester/debug.h&quot;</span><span class="cp"></span>
-<span class="cp">#endif</span>
-</pre></div>
+  <div class="section" id="sleep-management">
+<h1>Sleep Management<a class="headerlink" href="#sleep-management" title="Permalink to this headline">¶</a></h1>
+<p>The sensor host follows a periodic sleep routine as described below.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/sh_sleep_timeline.png"><img alt="../../_images/sh_sleep_timeline.png" src="../../_images/sh_sleep_timeline.png" style="width: 916.0px; height: 405.5px;" /></a>
 </div>
-<p>The <strong>pre-processor</strong> macro <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is a boolean which is checked in source
-code. If it is set, then the compiler will only build the test mode code.
-If instead <code class="docutils literal"><span class="pre">TEST_MODE</span></code> is zero, then the compiler will build into production</p>
-<div class="section" id="testing-configuration">
-<h3>Testing Configuration<a class="headerlink" href="#testing-configuration" title="Permalink to this headline">¶</a></h3>
-<p>Certain tests can be enabled or disabled in <code class="docutils literal"><span class="pre">tester/debug.c</span></code></p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cm">/* ****************************************************************************</span>
-<span class="cm"> * Test Selection</span>
-<span class="cm"> * ***************************************************************************/</span>
-<span class="cp">#define TEST_SMB_ENABLE 1</span>
-<span class="cp">#define TEST_MEMORY_ENABLE 0</span>
-</pre></div>
-</div>
-<p>As seen in the code-block above, similar macros are defined to enable or disable
-certain tests. When the macros are set to 1, then the compiler will build the
-relevant test functions and then run them. If the macros are set to 0, no build
-will occur for the tests in question.</p>
-<p>The example above has SMB testing enables and Memory testing disabled</p>
-</div>
-</div>
+<p>The following actions are described below:</p>
+<ol class="arabic simple">
+<li><strong>Start</strong>: At the start of this periodic routine, the sensor host must determine how long it needs to sleep for, this period denoted <em>Processing</em> is reserved for this calculation. The routine responsible for this calculation is <code class="docutils literal"><span class="pre">calc_time_sleep</span></code>, returning the value <span class="math">\(T_{AVR,sleep}\)</span></li>
+<li><strong>Periodic Sleep</strong>: The device then sleeps for the prescribed time.</li>
+<li><strong>Timer Wake</strong>: An interrupt generated by <code class="docutils literal"><span class="pre">Timer2</span></code> wakes the device. As this wake state requires a period of time to re-initialise the system, the time returned from <code class="docutils literal"><span class="pre">calc_time_sleep</span></code> is reduced by an overhead time</li>
+<li><strong>Pre-Sample Wait</strong>: With the device ready to sample, the device makes a final calculation to ensure the sample is received at the correct time</li>
+</ol>
 </div>
 
 
@@ -223,10 +193,10 @@ will occur for the tests in question.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="firmwareTesting_makingTests.html" class="btn btn-neutral float-right" title="Making Tests" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../sh_configurations.html" class="btn btn-neutral float-right" title="Sensor Host Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../main.html" class="btn btn-neutral" title="Testing and Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../sh_mainRoutine.html" class="btn btn-neutral" title="Sensor Host Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

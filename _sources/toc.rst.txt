@@ -26,9 +26,9 @@ Table of Contents
 
 ------------
 
-.. topic:: :ref:`idx-tech-implement`
+.. topic:: :ref:`idx-tech-implement-sh`
 
-   *Implementation of system; reveals details and assists developers to understand system*
+   *Implementation of sensor-host (mote)*
 
 ------------
 

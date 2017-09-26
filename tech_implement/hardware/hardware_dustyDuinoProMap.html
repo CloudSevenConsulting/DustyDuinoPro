@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dusty-DuinoPro Mapping &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Dusty-to-M7 Interface &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,9 +36,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
-        <link rel="up" title="Implementation" href="../main.html"/>
-        <link rel="next" title="Testing and Deployment" href="../../tech_testingDeploy/main.html"/>
-        <link rel="prev" title="Implementation" href="../main.html"/> 
+        <link rel="up" title="Sensor Host" href="../main.html"/>
+        <link rel="next" title="Dusty API UART" href="../uart/dustyAvrIF.html"/>
+        <link rel="prev" title="Sensor Host Configurations" href="../sh_configurations.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -93,9 +93,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Architecture</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Implementation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dusty-DuinoPro Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Dusty-to-M7 Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gpio-pinout">GPIO Pinout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-i-o-pinout">External I/O Pinout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serial-pinout">Serial Pinout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-module-pinout">Common Module Pinout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../uart/dustyAvrIF.html">Dusty API UART</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
@@ -143,9 +153,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../main.html">Implementation</a> &raquo;</li>
+          <li><a href="../main.html">Sensor Host</a> &raquo;</li>
         
-      <li>Dusty-DuinoPro Mapping</li>
+      <li>Dusty-to-M7 Interface</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,8 +174,231 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dusty-duinopro-mapping">
-<h1>Dusty-DuinoPro Mapping<a class="headerlink" href="#dusty-duinopro-mapping" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dusty-to-m7-interface">
+<h1>Dusty-to-M7 Interface<a class="headerlink" href="#dusty-to-m7-interface" title="Permalink to this headline">¶</a></h1>
+<p>This section describes the physical I/F between the Dusty module and the M7 space
+on the DuinoPro.</p>
+<p>The <code class="docutils literal"><span class="pre">Pin</span> <span class="pre">Name</span></code> and <code class="docutils literal"><span class="pre">Pin</span> <span class="pre">No.</span></code> in the following tables refer to the references
+used in the module (see UNO DuinoPro Schematic).</p>
+<p><code class="docutils literal"><span class="pre">Net</span></code> refers to anything immediately connected to those pins (<code class="docutils literal"><span class="pre">N/C</span></code> indicates no connection).</p>
+<div class="section" id="gpio-pinout">
+<h2>GPIO Pinout<a class="headerlink" href="#gpio-pinout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="15%" />
+<col width="32%" />
+<col width="15%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin Name</th>
+<th class="head">Pin No.</th>
+<th class="head">Net</th>
+<th class="head">Purpose</th>
+<th class="head">Drive</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GPIO1/INT</td>
+<td>25</td>
+<td>Dusty/UART_TX_RTSn</td>
+<td>&#160;</td>
+<td>Dusty</td>
+</tr>
+<tr class="row-odd"><td>GPIO2/USART_CTS</td>
+<td>7</td>
+<td>Dusty/UART_RX_CTSn</td>
+<td>&#160;</td>
+<td>Dusty</td>
+</tr>
+<tr class="row-even"><td>GPIO3/USART_RTS</td>
+<td>8</td>
+<td>Dusty/UART_RX_RTSn</td>
+<td>&#160;</td>
+<td>AVR</td>
+</tr>
+<tr class="row-odd"><td>GPIO4/USART_RX</td>
+<td>9</td>
+<td>Dusty/UART_TX</td>
+<td>&#160;</td>
+<td>Dusty</td>
+</tr>
+<tr class="row-even"><td>GPIO5/USART_TX</td>
+<td>10</td>
+<td>Dusty/UART_RX</td>
+<td>&#160;</td>
+<td>AVR</td>
+</tr>
+<tr class="row-odd"><td>GPIO6/USART_SCK</td>
+<td>11</td>
+<td>Dusty/UART_TX_CTSn</td>
+<td>&#160;</td>
+<td>AVR</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="external-i-o-pinout">
+<h2>External I/O Pinout<a class="headerlink" href="#external-i-o-pinout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin Name</th>
+<th class="head">Pin No.</th>
+<th class="head">Net</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>EXTIO1</td>
+<td>1</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>EXTIO2</td>
+<td>27</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>EXTIO3</td>
+<td>28</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>EXTIO4</td>
+<td>29</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="serial-pinout">
+<h2>Serial Pinout<a class="headerlink" href="#serial-pinout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="24%" />
+<col width="24%" />
+<col width="24%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin Name</th>
+<th class="head">Pin No.</th>
+<th class="head">Net</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SDA1</td>
+<td>12</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SCL1</td>
+<td>13</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>SDA2</td>
+<td>20</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SCL2</td>
+<td>21</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>MOSI</td>
+<td>17</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>MISO</td>
+<td>18</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>SCK</td>
+<td>14</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SPI_CS</td>
+<td>24</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="common-module-pinout">
+<h2>Common Module Pinout<a class="headerlink" href="#common-module-pinout" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="14%" />
+<col width="13%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Pin Name</th>
+<th class="head">Pin No.</th>
+<th class="head">Net</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>VBAT</td>
+<td>19</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>External power source for device</td>
+</tr>
+<tr class="row-odd"><td>3v3</td>
+<td>16</td>
+<td>3v3</td>
+<td>Power to module</td>
+</tr>
+<tr class="row-even"><td>GND&#64;1</td>
+<td>2</td>
+<td>Ground</td>
+<td>Grounding</td>
+</tr>
+<tr class="row-odd"><td>GND&#64;2</td>
+<td>15</td>
+<td>Ground</td>
+<td>Grounding</td>
+</tr>
+<tr class="row-even"><td>GND&#64;3</td>
+<td>26</td>
+<td>Ground</td>
+<td>Grounding</td>
+</tr>
+<tr class="row-odd"><td>MCU_RESET_N</td>
+<td>22</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>To externally reset devices</td>
+</tr>
+<tr class="row-even"><td>RESERVED</td>
+<td>23</td>
+<td><code class="docutils literal"><span class="pre">N/C</span></code></td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ADDRESSn</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>I2C slave addressing (<code class="docutils literal"><span class="pre">0111</span></code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -178,10 +411,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../tech_testingDeploy/main.html" class="btn btn-neutral float-right" title="Testing and Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../uart/dustyAvrIF.html" class="btn btn-neutral float-right" title="Dusty API UART" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../main.html" class="btn btn-neutral" title="Implementation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../sh_configurations.html" class="btn btn-neutral" title="Sensor Host Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

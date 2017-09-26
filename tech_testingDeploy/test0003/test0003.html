@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Test #0003 &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Testing and Deployment" href="../main.html"/>
+        <link rel="prev" title="Making Tests" href="../testing/firmwareTesting_makingTests.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_implement/main.html">Sensor Host</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Testing and Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_overview.html">Firmware Testing Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_makingTests.html">Making Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Test #0003</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goals">Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#procedure">Procedure</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#test-loop">Test Loop</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../main.html">Testing and Deployment</a> &raquo;</li>
+        
+      <li>Test #0003</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tech_testingDeploy/test0003/test0003.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="test-0003">
+<h1>Test #0003<a class="headerlink" href="#test-0003" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Prove UART I/F (dn-dp) is operational</li>
+</ul>
+</div>
+<div class="section" id="procedure">
+<h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Build <code class="docutils literal"><span class="pre">dp</span></code> with <code class="docutils literal"><span class="pre">C7C.Atamo.Dusty.Mote_0_0_2</span></code> (branch: <code class="docutils literal"><span class="pre">qsl-port</span></code>) commit:<code class="docutils literal"><span class="pre">414e44b3203b26485e4991362e4d27ab8231b4f1</span></code></p>
+<blockquote>
+<div><ul>
+<li><p class="first">Modify with:</p>
+<blockquote>
+<div><ul class="simple">
+<li><code class="docutils literal"><span class="pre">#define</span> <span class="pre">NETID</span> <span class="pre">0</span></code></li>
+<li><code class="docutils literal"><span class="pre">#define</span> <span class="pre">JOINKEY</span> <span class="pre">NULL</span></code></li>
+<li><code class="docutils literal"><span class="pre">#define</span> <span class="pre">BANDWIDTH_MS</span> <span class="pre">9000</span></code></li>
+<li><code class="docutils literal"><span class="pre">#define</span> <span class="pre">SRC_PORT</span> <span class="pre">60000</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Dusty/DP connections:</p>
+<blockquote>
+<div><ul class="simple">
+<li>3v3             &lt;–&gt; Dusty/VCC</li>
+<li>GND&#64;2           &lt;–&gt; Dusty/GND</li>
+<li>GPIO1/INT       &lt;–&gt; Dusty/UART_TX_RTSn</li>
+<li>GPIO2/USART_CTS &lt;–&gt; Dusty/UART_RX_CTSn</li>
+<li>GPIO3/USART_RTS &lt;–&gt; Dusty/UART_RX_RTSn</li>
+<li>GPIO4/USART_RX  &lt;–&gt; Dusty/UART_TX</li>
+<li>GPIO5/USART_TX  &lt;–&gt; Dusty/UART_RX</li>
+<li>GPIO6/USART_SCK &lt;–&gt; Dusty/UART_TX_CTSn</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">DC2774A-A</span></code> Connected to computer (<code class="docutils literal"><span class="pre">COM7</span></code>; CLI)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Poll <code class="docutils literal"><span class="pre">sm</span></code> until <code class="docutils literal"><span class="pre">dp</span></code> shows on network</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Place <code class="docutils literal"><span class="pre">Board.setLed(true);</span></code> at points in code to show breakpoints (visually) (see test-loop)</p>
+</li>
+</ul>
+<div class="section" id="test-loop">
+<h3>Test Loop<a class="headerlink" href="#test-loop" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">dn_qsl_isConnected</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="n">Board</span><span class="p">.</span><span class="n">setLed</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+            <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+            <span class="n">Board</span><span class="p">.</span><span class="n">setLed</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+            <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">Board</span><span class="p">.</span><span class="n">setLed</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dn_qsl_connect</span><span class="p">(</span><span class="n">NETID</span><span class="p">,</span> <span class="n">JOINKEY</span><span class="p">,</span> <span class="n">SRC_PORT</span><span class="p">,</span> <span class="n">BANDWIDTH_MS</span><span class="p">))</span>
+            <span class="p">{</span>
+            <span class="p">}</span> <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">Board</span><span class="p">.</span><span class="n">setLed</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first"><code class="docutils literal"><span class="pre">sm</span></code> does not show a new mote (only 1 mote appears, which is the NM itself)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Confirm that the mote that appears on <code class="docutils literal"><span class="pre">sm</span></code> is the Network manager by comparing MAC address</li>
+<li>See <code class="docutils literal"><span class="pre">minfo</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">DP has <code class="docutils literal"><span class="pre">Board.setLed(true);</span></code> indicating that <code class="docutils literal"><span class="pre">dn_qsl_connect()</span></code> does not break and turn off the led in the <code class="docutils literal"><span class="pre">else</span></code> condition</p>
+</li>
+</ul>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">The results do not definitively indicate any <em>single</em> point of failure. Various issues may be the cause:</p>
+<blockquote>
+<div><ul class="simple">
+<li>DN is not operational <em>at all</em></li>
+<li>DN is operational but communication is failing (e.g. out-of-range)</li>
+<li>DN is operational but not actively communicating (DN never got command to initiate comms; UART failure)</li>
+<li>NM is operational (we are certain of this because of computer feedback) but communication is failing</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Suspect that DN is not operational <em>at all</em></p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../testing/firmwareTesting_makingTests.html" class="btn btn-neutral" title="Making Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

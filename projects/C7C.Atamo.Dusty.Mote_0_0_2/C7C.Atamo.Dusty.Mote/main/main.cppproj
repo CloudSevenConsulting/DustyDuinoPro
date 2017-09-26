@@ -296,10 +296,22 @@
     <Compile Include="sm_qsl\dn_watchdog.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Testing\tester.cpp">
+    <Compile Include="tester.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Testing\tester.h">
+    <Compile Include="tester.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestCase.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestCase.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDnJoin.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDnJoin.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="time\ITime.cpp">

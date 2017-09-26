@@ -1,7 +1,8 @@
 ﻿/*******************************************************************************
  * Build settings
  ******************************************************************************/
-#define TEST_MODE 0
+#define DP_BUILD__TEST_MODE 1
+#define DP_BUILD__UART_USB_MODE 0
 
 /*******************************************************************************
  * Arduino Libraries
@@ -27,9 +28,8 @@ extern "C" {
 /* ****************************************************************************
  * DEBUG Includes
  * ***************************************************************************/
-#if TEST_MODE
-#include "Testing/tester.h"
-tester SysTest;
+#if DP_BUILD__TEST_MODE
+	#include "tester.h"
 #endif
 
 /*******************************************************************************
@@ -37,23 +37,27 @@ tester SysTest;
  ******************************************************************************/
 void setup() 
 {
-
 	/*! Disable VBAT sense on INIT
 	 * This prevent energy waste
 	 */
-	Board.enableVbatSense(false);
+	 Board.enableVbatSense(false);
 
 /*! Select UART TX/RX ties to AVR 
  * Serial debug mode (TEST_MODE) connects the AVR to USB
  * Serial module mode (!TEST_MODE) connects to module space 7
  */
-#if TEST_MODE
+#if DP_BUILD__UART_USB_MODE
 	Board.uartUsbMode();
 #else
 	Board.uartModule7Mode();
 #endif
-
-	dn_qsl_init();
+	
+/*! Production specific build environment
+ * Tests should setup their own environments to ensure controlled testing
+ */
+ #if !DP_BUILD__TEST_MODE
+	 dn_qsl_init();
+ #endif
 
 }
 
@@ -65,15 +69,11 @@ void loop()
 
 	setup();
 
-#if TEST_MODE
-	while(1)
-	{
-		SysTest.blink();
-	}
+#if DP_BUILD__TEST_MODE
+	do_system_test();
 #else
 	while(1)
 	{
-
 	}
 #endif
 }

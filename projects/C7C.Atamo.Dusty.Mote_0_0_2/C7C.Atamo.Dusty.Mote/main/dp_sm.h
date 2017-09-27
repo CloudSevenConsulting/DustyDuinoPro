@@ -18,7 +18,7 @@ typedef struct {
 	uint8_t _sys_ready_flag;
 	uint8_t _sensor_type;
 	uint8_t _sensor_addr;
-	uint8_t _sensor_conf_flag; /*Has the sensor been found and is it set?*/
+	uint8_t _sensor_conf_set; /*Has the sensor been found and is it set?*/
 } sys_state;
 
 void dp_state_init(void);

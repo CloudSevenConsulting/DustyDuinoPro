@@ -23,6 +23,7 @@ duinoPRO Board;/*This is public globally in globals.h*/
  ******************************************************************************/
 #include "dp_sm.h"
 #include "dp_conf.h"
+#include "sample/sensor.h"
 
 /* ****************************************************************************
  * SmartMesh QSL Includes
@@ -43,7 +44,7 @@ extern "C" {
  ******************************************************************************/
 void setup() 
 {
-	
+
 	dp_state_init();
 	dp_conf_default();
 

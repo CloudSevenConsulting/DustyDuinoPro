@@ -11,6 +11,22 @@
 
 #include <stdint.h>
 
+/*******************************************************************************
+ * DP Look-Up Table
+ ******************************************************************************/
+ #define DP_LUT__N_PARAM 10
+ 
+ #define DP_LUT__LOG_LEVEL               0x00
+ #define DP_LUT__SAMPLE_PERIOD           0x01
+ #define DP_LUT__SLEEP_OVERHEAD          0x02
+ #define DP_LUT__SENSOR_COMM_TYPE        0x03
+ #define DP_LUT__SENSOR_RESOLUTION       0x04
+ #define DP_LUT__SENSOR_CLK_SPEED        0x05
+ #define DP_LUT__WSN_JOIN_DC_INIT        0x06
+ #define DP_LUT__WSN_JOIN_DC_DECR        0x07
+ #define DP_LUT__WSN_JOIN_WAIT_INIT      0x08
+ #define DP_LUT__WSN_JOIN_WAIT_INCR      0x09
+
 //========== config_set
 /** @brief Ensures configuration parameters are set. If not set, default
  *         parameters are loaded from non-volatile memory. Once set, if a packet

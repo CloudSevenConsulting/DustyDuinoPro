@@ -236,6 +236,12 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sample\sensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\sensor.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sm_clib\dn_clib_build.h">
       <SubType>compile</SubType>
     </Compile>
@@ -349,6 +355,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="sample" />
     <Folder Include="time" />
     <Folder Include="usart" />
     <Folder Include="Testing" />

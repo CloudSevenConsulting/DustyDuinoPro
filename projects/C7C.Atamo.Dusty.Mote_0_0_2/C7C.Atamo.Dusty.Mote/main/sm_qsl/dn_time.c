@@ -7,7 +7,7 @@
 
 #include "../time/ITime.h"
 
-typedef unsigned long int uint32_t;//TODO: fix this hack lol
+//typedef unsigned long int uint32_t;//TODO: fix this hack lol
 
 uint32_t dn_time_ms(void)
 {

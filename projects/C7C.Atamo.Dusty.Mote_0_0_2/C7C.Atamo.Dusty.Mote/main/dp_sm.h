@@ -12,8 +12,8 @@
 #include <stdint.h>
 
 typedef struct {
-	uint8_t _config_set_flag;
-	char *_config;
+	uint8_t _conf_set_flag;
+	char *_conf;
 	uint8_t _sys_sleepguard;
 	uint8_t _sys_ready_flag;
 	uint8_t _sensor_type;

@@ -14,7 +14,7 @@ uint8_t sensor_read(uint8_t *buf)
     int ret;
  
     /*Check if the buffer is the correct size*/
-    if (sizeof(buf) < dp_conf_param_get_cur(DP_LUT__SENSOR_RESOLUTION))
+    if (sizeof(buf) < dp_conf_param_get_cur(LUT_IDX__SENSOR_RESOLUTION))
     {
         return FAILURE;
     }

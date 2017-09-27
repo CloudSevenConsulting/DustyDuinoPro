@@ -17,7 +17,7 @@ sys_state SystemState;
 void dp_state_init(void)
 {
     memset(&SystemState, 0, sizeof(SystemState));
-    SystemState._config = sys_config;
+    SystemState._conf = sys_conf;
 }
 
 void dp_sleep(uint32_t milliseconds)

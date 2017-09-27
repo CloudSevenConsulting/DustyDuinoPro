@@ -24,6 +24,6 @@
  ******************************************************************************/
 extern duinoPRO Board;
 extern sys_state SystemState;
-extern char sys_config[DP_LUT__N_PARAM];
+extern char sys_conf[DP_LUT__N_PARAM];
 
 #endif /* GLOBALS_H_ */

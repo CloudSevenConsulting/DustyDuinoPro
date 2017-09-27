@@ -14,7 +14,7 @@
 /*******************************************************************************
  * DP Look-Up Table
  ******************************************************************************/
-#define DP_LUT__N_PARAM 10
+#define DP_LUT__N_PARAM 11
  
 #define DP_LUT__COL_FIELD_LEN 0
 #define DP_LUT__COL_MAX_VAL 1
@@ -30,6 +30,7 @@
 #define LUT_IDX__WSN_JOIN_DC_DECR        0x07
 #define LUT_IDX__WSN_JOIN_WAIT_INIT      0x08
 #define LUT_IDX__WSN_JOIN_WAIT_INCR      0x09
+#define LUT_IDX__SLEEP_GUARD_TIMEOUT     0x10
 
 //========== config_set
 /** @brief Ensures configuration parameters are set. If not set, default

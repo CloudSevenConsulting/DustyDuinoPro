@@ -11,6 +11,9 @@
 
 #include <stdint.h>
 
+#define DP_SYS__SYS_READY 1
+#define DP_SYS__SYS_NOT_READY 0
+
 typedef struct {
 	uint8_t _conf_set_flag;
 	char *_conf;
@@ -22,6 +25,7 @@ typedef struct {
 } sys_state;
 
 void dp_state_init(void);
+void dp_is_sys_ready(void);
 
 //========== sys_sleep
 /** @brief Put the system to sleep

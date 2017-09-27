@@ -25,7 +25,7 @@ typedef struct {
 } sys_state;
 
 void dp_state_init(void);
-void dp_is_sys_ready(void);
+int dp_is_sys_ready(void);
 
 //========== sys_sleep
 /** @brief Put the system to sleep

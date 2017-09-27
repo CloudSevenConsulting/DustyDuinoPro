@@ -22,7 +22,7 @@ void dp_state_init(void)
     SystemState._sys_ready_flag = DP_SYS__SYS_READY;
 }
 
-void dp_is_sys_ready(void)
+int dp_is_sys_ready(void)
 {
     return SystemState._sys_ready_flag;
 }

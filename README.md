@@ -2,15 +2,20 @@
 
 AVR based Dust Network implementation using [Linear Technology's SmartMesh-IP](http://www.linear.com/products/smartmesh_ip) network protocol.
 
-# Documentation
+## Documentation
 
 Project documentation can be found [here](https://kjph.github.io/c7c-atamo-dusty/toc.html)
 
+## Projects
 
-# Authors
-| Name | Contact |
-| --- | --- |
-| Jamie Phan | jamie.kt.phan@gmail.com |
-| Aaron Hurst | https://github.com/aaron-hurst | 
+This repository contains all projects relevant in the UWA Design Project with Atamo.
 
+the `projects\` directory contains these projects as follows:
+
+| Project                          | Description                                                                         |
+| ---                              | ---                                                                                 |
+| C7C.Atamo.Dusty.Mote             | The embedded application/firmware for the Sensor-Hosts (DuinoPros w. Dusty modules) |
+| C7C.Atamo.Dusty.Mote_0_0_2       | Revision 2 of the Mote project                                                      |
+| C7C.Atamo.Dusty.LTC5800FuseTable | The fuse settings for the IoTeam Dusty used in the Motes                            |
+| C7C.Atamo.Dusty.PullQSL          | Python 3.x package to automate updates to the Dusty Quick Start Library             |
 

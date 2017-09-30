@@ -236,6 +236,12 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sample\sample.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\sample.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sample\sensor.cpp">
       <SubType>compile</SubType>
     </Compile>

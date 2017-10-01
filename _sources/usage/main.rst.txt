@@ -25,6 +25,8 @@ Project How-To's
    :caption: Developing:
 
    developing/as7_building
+   developing/sh_flashingTheDust
+
 
 .. toctree::
    :caption: Documentation

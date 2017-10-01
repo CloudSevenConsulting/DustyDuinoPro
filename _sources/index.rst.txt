@@ -17,7 +17,5 @@ C7C ATAMO Dusty Project
    quickRef/quickRef
 
    tech_arch/main
-   tech_implement/main
+   tech_mote/main
    tech_testingDeploy/main
-
-

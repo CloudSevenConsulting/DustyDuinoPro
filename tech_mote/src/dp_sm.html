@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dp_sm.h &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Sensor Host" href="../main.html"/>
+        <link rel="next" title="usart/ISerial.h" href="usart-ISerial.html"/>
+        <link rel="prev" title="dp_conf.h" href="dp_conf.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart/dustyAvrIF.html">Dusty API UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dp_conf.html">dp_conf.h</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">dp_sm.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usart-ISerial.html">usart/ISerial.h</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../main.html">Sensor Host</a> &raquo;</li>
+        
+      <li>dp_sm.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tech_mote/src/dp_sm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dp-sm-h">
+<h1>dp_sm.h<a class="headerlink" href="#dp-sm-h" title="Permalink to this headline">¶</a></h1>
+<p>State Machine (SM) Module for DuinoPro (DP) </p>
+<p>The SM module is responsible for controlling the state of the system. It provides an interface to the state variables that define the system and ensures resources have correct control over state resoruces</p>
+<p><dl class="docutils">
+<dt><strong>Date</strong></dt>
+<dd>2017/10/01 </dd>
+<dt><strong>Author</strong></dt>
+<dd>Jamie K. Phan </dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.DP_SYS__SYS_READY">
+<span class="target" id="dp__sm_8h_1af7a356062d3adb073f8c2a206c805558"></span><code class="descname">DP_SYS__SYS_READY</code><a class="headerlink" href="#c.DP_SYS__SYS_READY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.DP_SYS__SYS_NOT_READY">
+<span class="target" id="dp__sm_8h_1a486617724ebef83b1f120104b463d3e0"></span><code class="descname">DP_SYS__SYS_NOT_READY</code><a class="headerlink" href="#c.DP_SYS__SYS_NOT_READY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv213dp_state_initv">
+<span id="dp_state_init__void"></span><span class="target" id="dp__sm_8h_1a4a6000498ac34d217eacf2a29ae2801d"></span>void <code class="descname">dp_state_init</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv213dp_state_initv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialise state variables. </p>
+<p>Ensures memory for system state variables is allocated correctly </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215dp_is_sys_readyv">
+<span id="dp_is_sys_ready__void"></span><span class="target" id="dp__sm_8h_1a2b76aac04c646205bda87f29a9c8678c"></span>int <code class="descname">dp_is_sys_ready</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv215dp_is_sys_readyv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Checks if system is ready for use. </p>
+<p>Interface for external modules to check if system is ready. This is relevant after the system has woke up from a sleep.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>DP_SYS__SYS_READY=1 if system ready, DP_SYS__SYS_NOT_READY=0 elsewise </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">param</span></code>: </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv28dp_sleep8uint32_t">
+<span id="dp_sleep__uint32_t"></span><span class="target" id="dp__sm_8h_1a6e05ece747fba4de6767c9546bc093e8"></span>void <code class="descname">dp_sleep</code><span class="sig-paren">(</span>uint32_t <em>time_milliseconds</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv28dp_sleep8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Put the system to sleep. </p>
+<p>Sleep in this context refers to a low-power mode in which pre-determined peripherals are turned off to reduce energy consumption by the device. Note that these peripherals will require rebooting on wakeup. This routine can fail if the sleepguard is set, preventing the system from sleeping</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, 1 on failure </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">time_milliseconds</span></code>: The time to put the system to sleep for in milliseconds</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv27dp_wakev">
+<span id="dp_wake__void"></span><span class="target" id="dp__sm_8h_1af0238d99eead5fcd403af24ada634341"></span>int <code class="descname">dp_wake</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv27dp_wakev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reboots system peripherals that were turned off in sys_sleep. </p>
+<p>Note that this routine will take time before all peripherals are operational. The routine will set a global flag when this is done</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, 1 on failure </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217dp_sleepguard_setv">
+<span id="dp_sleepguard_set__void"></span><span class="target" id="dp__sm_8h_1af1039f9ef50a1c8148aa9ab8dfae55f4"></span>void <code class="descname">dp_sleepguard_set</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv217dp_sleepguard_setv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Public function to set the global sleepguard flag. </p>
+<p>Note that if the flag is already set, this will increment the flag to indicate how many resources require the system to be on. The complimentary function sleepguard_free will decrease this flag value, until eventually the the value is zero (false) </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv218dp_sleepguard_freev">
+<span id="dp_sleepguard_free__void"></span><span class="target" id="dp__sm_8h_1ab4bbc6e9e1dd54f73e34cd54e8add3b6"></span>void <code class="descname">dp_sleepguard_free</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv218dp_sleepguard_freev" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Public function to free the global sleepguard flag. </p>
+</dd></dl>
+
+</div>
+<dl class="class">
+<dt id="_CPPv29sys_state">
+<span id="sys_state"></span><span class="target" id="structsys__state"></span><em class="property">struct </em><code class="descname">sys_state</code><a class="headerlink" href="#_CPPv29sys_state" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1a59266639a126d10200a8e75c19f5f539"></span><code class="descname">sys_state::_conf_set_flag</code></dt>
+<dd><p>Used by configuration module to determine if system has loaded a config into memory or not. </p>
+</dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1a8d27e1b467a76a698e7ea04c70b0517a"></span><code class="descname">sys_state::_conf</code></dt>
+<dd><p>Pointer to the configuration used during run-time </p>
+</dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1a9ab2104e87e5e9bf16bacdc5a445bfb9"></span><code class="descname">sys_state::_sys_sleepguard</code></dt>
+<dd><p>Prevents system from sleeping wheng greater than 0 </p>
+</dd></dl>
+
+<dl class="member">
+<dt id="_CPPv2N9sys_state15_sys_ready_flagE">
+<span id="sys_state::_sys_ready_flag__uint8_t"></span><span class="target" id="structsys__state_1aab3c50a704cfad2f09f6a0ce69396841"></span>uint8_t <code class="descname">_sys_ready_flag</code><a class="headerlink" href="#_CPPv2N9sys_state15_sys_ready_flagE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1af6db2ff58fbf0d7ed951c19e0af89476"></span><code class="descname">sys_state::_sensor_status</code></dt>
+<dd><p>Indicates the status of the sensor module </p>
+</dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1a84e2260f973f1ad5c4de77151909e87a"></span><code class="descname">sys_state::_sensor_type</code></dt>
+<dd><p>Indicates which sensor driver to use for current session </p>
+</dd></dl>
+
+<dl class="member">
+<dt>
+<span class="target" id="structsys__state_1a3cb6ca8a8fa7dff59d246f6555bf1225"></span><code class="descname">sys_state::_sensor_addr</code></dt>
+<dd><p>Indicates the sensor’s slave address. Depends on communication (drive) used. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usart-ISerial.html" class="btn btn-neutral float-right" title="usart/ISerial.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dp_conf.html" class="btn btn-neutral" title="dp_conf.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

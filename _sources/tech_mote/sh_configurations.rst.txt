@@ -77,3 +77,8 @@ Parameter                                Description
 ``sensor_comm_type``                     The communication protocol used for communicating with the sensor
 ``sensor_clk_speed``                     The communication speed for the sensor protocol
 =======================================  =================================================================================================
+
+Implementation
+==============
+
+

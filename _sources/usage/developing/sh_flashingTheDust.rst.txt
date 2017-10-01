@@ -1,0 +1,45 @@
+*************************
+Flashing The Dusty Module
+*************************
+
+Required Software
+=================
+
+All software from `Eterna04`_ is required (exclusing FTDI drivers if you have a normal
+laptop...)
+
+.. _Eterna04: http://www.linear.com/solutions/4260
+
+Backing-Up the Existing Flash
+=============================
+
+.. warning::
+
+   Flashing the Dusty module will overwrite the existing flash. Back up the existing
+   flash in case things go wrong!
+
+.. code-block:: bat
+
+    PS C: esp_1.1.1.6> .\ESP.exe -r IPM_Flash_01_Orig.bin
+
+            ESP, Eterna SPI Programmer, version 1.1.1-6
+            cfg.devName = Auto, type = 0, flashID = 0x1f24, locID = 0x0, spiClkHz = 3000000
+            FTCSPI.dll = 2.1.2.2
+            INFO: clkHz set to 3000000
+            Open ok, flash emulation mode enabled, devName = Dust Interface Board B
+            Read: fileName = IPM_Flash_01_Orig.bin, offset = 0, len = 524288
+            ................
+
+            setup = 1843 ms, dt = 1625 ms
+            ESP exiting: tries remaining = 0, err = 0
+
+    PS C: esp_1.1.1.6> ls
+
+            Directory: ..\Eterna-Serial-Programmer\esp_1.1.1.6
+
+
+            Mode                LastWriteTime         Length Name
+            ----                -------------         ------ ----
+            ------       2015-03-28     12:55         101376 ESP.exe
+            ------       2015-03-28     12:55         102400 ftcspi.dll
+            -a----       2017-09-29     18:27         524288 IPM_Flash_01_Orig.bin

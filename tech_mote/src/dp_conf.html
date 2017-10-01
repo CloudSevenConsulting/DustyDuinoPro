@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dp_conf.h &mdash; C7C.Atamo.Dusty  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
+        <link rel="up" title="Sensor Host" href="../main.html"/>
+        <link rel="next" title="dp_sm.h" href="dp_sm.html"/>
+        <link rel="prev" title="Dusty API UART" href="../uart/dustyAvrIF.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> C7C.Atamo.Dusty
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep/sleep.html">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uart/dustyAvrIF.html">Dusty API UART</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">dp_conf.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dp_sm.html">dp_sm.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usart-ISerial.html">usart/ISerial.h</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">C7C.Atamo.Dusty</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../main.html">Sensor Host</a> &raquo;</li>
+        
+      <li>dp_conf.h</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tech_mote/src/dp_conf.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dp-conf-h">
+<h1>dp_conf.h<a class="headerlink" href="#dp-conf-h" title="Permalink to this headline">¶</a></h1>
+<p>Configuartion Module for DuinoPro (DP) </p>
+<p>Handles dynamic configuration of DP</p>
+<p><dl class="docutils">
+<dt><strong>Date</strong></dt>
+<dd>2017/10/01 </dd>
+<dt><strong>Author</strong></dt>
+<dd>Jamie K. Phan </dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.DP_LUT__N_PARAM">
+<span class="target" id="dp__conf_8h_1a8a1cb2f17ac8a7df0d8c90df27ac4be2"></span><code class="descname">DP_LUT__N_PARAM</code><a class="headerlink" href="#c.DP_LUT__N_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.DP_LUT__COL_FIELD_LEN">
+<span class="target" id="dp__conf_8h_1a46dd1447dfe0c6ca2c9b97ec57f54262"></span><code class="descname">DP_LUT__COL_FIELD_LEN</code><a class="headerlink" href="#c.DP_LUT__COL_FIELD_LEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.DP_LUT__COL_MAX_VAL">
+<span class="target" id="dp__conf_8h_1a388753ed4daefe4296fedebd39e1bddc"></span><code class="descname">DP_LUT__COL_MAX_VAL</code><a class="headerlink" href="#c.DP_LUT__COL_MAX_VAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.DP_LUT__COL_MIN_VAL">
+<span class="target" id="dp__conf_8h_1ab42fee7721c514d904088bcec9edf757"></span><code class="descname">DP_LUT__COL_MIN_VAL</code><a class="headerlink" href="#c.DP_LUT__COL_MIN_VAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__LOG_LEVEL">
+<span class="target" id="dp__conf_8h_1aabffc915ea9536bd61433fd65bf10313"></span><code class="descname">LUT_IDX__LOG_LEVEL</code><a class="headerlink" href="#c.LUT_IDX__LOG_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SAMPLE_PERIOD">
+<span class="target" id="dp__conf_8h_1a7ef9b2f9396ff2a0d532d53eddbd9dad"></span><code class="descname">LUT_IDX__SAMPLE_PERIOD</code><a class="headerlink" href="#c.LUT_IDX__SAMPLE_PERIOD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SLEEP_OVERHEAD">
+<span class="target" id="dp__conf_8h_1af0e132b2fb7244c620ca2058c407236a"></span><code class="descname">LUT_IDX__SLEEP_OVERHEAD</code><a class="headerlink" href="#c.LUT_IDX__SLEEP_OVERHEAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SENSOR_COMM_TYPE">
+<span class="target" id="dp__conf_8h_1a5892264f47a1902deb57960758d8b06c"></span><code class="descname">LUT_IDX__SENSOR_COMM_TYPE</code><a class="headerlink" href="#c.LUT_IDX__SENSOR_COMM_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SENSOR_RESOLUTION">
+<span class="target" id="dp__conf_8h_1a89c18333b165fc4d51f78c203ad3bf4e"></span><code class="descname">LUT_IDX__SENSOR_RESOLUTION</code><a class="headerlink" href="#c.LUT_IDX__SENSOR_RESOLUTION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SENSOR_CLK_SPEED">
+<span class="target" id="dp__conf_8h_1a59fa90c0a26ee63297f48820bb49ec3a"></span><code class="descname">LUT_IDX__SENSOR_CLK_SPEED</code><a class="headerlink" href="#c.LUT_IDX__SENSOR_CLK_SPEED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__WSN_JOIN_DC_INIT">
+<span class="target" id="dp__conf_8h_1a203483c52f7c69e0264bd1b4da45d864"></span><code class="descname">LUT_IDX__WSN_JOIN_DC_INIT</code><a class="headerlink" href="#c.LUT_IDX__WSN_JOIN_DC_INIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__WSN_JOIN_DC_DECR">
+<span class="target" id="dp__conf_8h_1a707c6dee746eb7a5d920abfb19448aa6"></span><code class="descname">LUT_IDX__WSN_JOIN_DC_DECR</code><a class="headerlink" href="#c.LUT_IDX__WSN_JOIN_DC_DECR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__WSN_JOIN_WAIT_INIT">
+<span class="target" id="dp__conf_8h_1a53743730fec7957864d9804f5a1d0d68"></span><code class="descname">LUT_IDX__WSN_JOIN_WAIT_INIT</code><a class="headerlink" href="#c.LUT_IDX__WSN_JOIN_WAIT_INIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__WSN_JOIN_WAIT_INCR">
+<span class="target" id="dp__conf_8h_1ad278a369ae301952e70359b96509abfb"></span><code class="descname">LUT_IDX__WSN_JOIN_WAIT_INCR</code><a class="headerlink" href="#c.LUT_IDX__WSN_JOIN_WAIT_INCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.LUT_IDX__SLEEP_GUARD_TIMEOUT">
+<span class="target" id="dp__conf_8h_1ae75a48d0056bc26599a957d2103fc802"></span><code class="descname">LUT_IDX__SLEEP_GUARD_TIMEOUT</code><a class="headerlink" href="#c.LUT_IDX__SLEEP_GUARD_TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv211dp_conf_setPc">
+<span id="dp_conf_set__cP"></span><span class="target" id="dp__conf_8h_1a68402aaa0ca72da25e02f40962fd8e72"></span>uint8_t <code class="descname">dp_conf_set</code><span class="sig-paren">(</span>char *<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv211dp_conf_setPc" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Ensures configuration parameters are set. If not set, default parameters are loaded from non-volatile memory. Once set, if a packet payload is passed as an argument, then the payload is parsed and the parameters contained therein are updated accordingly. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, 1 on failure </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">package_payload</span></code>: The full packet payload received in a configuration packet sent by the Dusty network manager</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv215dp_conf_defaultv">
+<span id="dp_conf_default__void"></span><span class="target" id="dp__conf_8h_1a1829e16f613df6587360dee94d64e782"></span>uint8_t <code class="descname">dp_conf_default</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv215dp_conf_defaultv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Loads configuration from non-volatile memory and sets their values in volatile memory. </p>
+<p>Default configurations will be set in non-volatile memory to ensure that the device does not need to rely on a central host to broadcast configuration information at startup. This will drastically reduce network startup loads.</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, 1 on failure </dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv217dp_conf_param_set7uint8_t7uint8_t">
+<span id="dp_conf_param_set__uint8_t.uint8_t"></span><span class="target" id="dp__conf_8h_1ac2f8c54cd25dc8900b3dca836d2ab240"></span>uint8_t <code class="descname">dp_conf_param_set</code><span class="sig-paren">(</span>uint8_t, uint8_t<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv217dp_conf_param_set7uint8_t7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set the parameter’s value in volatile memory. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>0 on success, 1 on failure </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">param</span></code>: the parameter type byte received in the configuration packet </li>
+<li><code class="docutils literal"><span class="pre">value</span></code>: the parameter value byte(s) received in the configuration packet</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv221dp_conf_param_get_cur7uint8_t">
+<span id="dp_conf_param_get_cur__uint8_t"></span><span class="target" id="dp__conf_8h_1ade54ab17258d9e63d26e956d63753631"></span>uint8_t <code class="descname">dp_conf_param_get_cur</code><span class="sig-paren">(</span>uint8_t<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv221dp_conf_param_get_cur7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the current value of the param set in volatile memory. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the current value of the parameter </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">param</span></code>: the parameter index</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv224dp_conf_param_lookup_max7uint8_t">
+<span id="dp_conf_param_lookup_max__uint8_t"></span><span class="target" id="dp__conf_8h_1aed69579e1fcc764c4cde73ac2fb348c7"></span>uint8_t <code class="descname">dp_conf_param_lookup_max</code><span class="sig-paren">(</span>uint8_t<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv224dp_conf_param_lookup_max7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a parameter’s maximum allowable value. </p>
+<p>This should be privately called</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the maximum value of the parameter </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">param</span></code>: the parameter index</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv224dp_conf_param_lookup_min7uint8_t">
+<span id="dp_conf_param_lookup_min__uint8_t"></span><span class="target" id="dp__conf_8h_1a77c0365a04c60f8de46c3254dc8f6346"></span>uint8_t <code class="descname">dp_conf_param_lookup_min</code><span class="sig-paren">(</span>uint8_t<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv224dp_conf_param_lookup_min7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get a parameter’s minimum allowable value. </p>
+<p>This should be privately called</p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>the minimum value of the parameter </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">param</span></code>: the parameter index</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dp_sm.html" class="btn btn-neutral float-right" title="dp_sm.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../uart/dustyAvrIF.html" class="btn btn-neutral" title="Dusty API UART" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, C7C.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

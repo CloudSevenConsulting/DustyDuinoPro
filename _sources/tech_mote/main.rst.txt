@@ -6,10 +6,18 @@ Sensor Host
 
 .. toctree::
    :maxdepth: 2
-   :caption: Dusty
+   :caption: Mote Design
 
    sh_mainRoutine
    sleep/sleep
    sh_configurations
    hardware/hardware_dustyDuinoProMap
    uart/dustyAvrIF
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Source
+
+   src/dp_conf
+   src/dp_sm
+   src/usart-ISerial

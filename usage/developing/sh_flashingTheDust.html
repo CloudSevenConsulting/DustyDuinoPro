@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Git Basics &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>Flashing The Dusty Module &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
         <link rel="up" title="Project How-To’s" href="../main.html"/>
-        <link rel="next" title="Checkout" href="git_checkout.html"/>
-        <link rel="prev" title="Dusty Quick Start Library" href="../dependencies/otherPkgs_dustyQSL.html"/> 
+        <link rel="next" title="Project Documentation" href="../projDocs.html"/>
+        <link rel="prev" title="Building with Atmel Studio 7" href="as7_building.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -95,16 +95,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../dependencies/software.html">Project Software</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dependencies/duinoPro.html">DuinoPro and ArduinoIDE integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../dependencies/otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Git Basics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#workflow">Workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-theory">Git Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_basics.html">Git Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_checkout.html">Checkout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../git/git_branches.html">Branches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="as7_building.html">Building with Atmel Studio 7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Flashing The Dusty Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-software">Required Software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backing-up-the-existing-flash">Backing-Up the Existing Flash</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="git_checkout.html">Checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git_branches.html">Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developing/as7_building.html">Building with Atmel Studio 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developing/sh_flashingTheDust.html">Flashing The Dusty Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../projDocs.html">Project Documentation</a></li>
 </ul>
 </li>
@@ -158,13 +157,13 @@
         
           <li><a href="../main.html">Project How-To’s</a> &raquo;</li>
         
-      <li>Git Basics</li>
+      <li>Flashing The Dusty Module</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/usage/git/git_basics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/usage/developing/sh_flashingTheDust.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -177,56 +176,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="git-basics">
-<h1>Git Basics<a class="headerlink" href="#git-basics" title="Permalink to this headline">¶</a></h1>
-<p>This section will <strong>not</strong> go into the details of <code class="docutils literal"><span class="pre">git</span></code>, there are better
-tutorials online that can be read.</p>
-<p>This tutorial will be tailored for <em>this</em> project.</p>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>With <code class="docutils literal"><span class="pre">git</span></code> installed on your system, clone the repo;</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ git clone https://github.com/kjph/c7c-atamo-dusty.git
-$ <span class="nb">cd</span> c7c-atamo-dusty
+  <div class="section" id="flashing-the-dusty-module">
+<h1>Flashing The Dusty Module<a class="headerlink" href="#flashing-the-dusty-module" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="required-software">
+<h2>Required Software<a class="headerlink" href="#required-software" title="Permalink to this headline">¶</a></h2>
+<p>All software from <a class="reference external" href="http://www.linear.com/solutions/4260">Eterna04</a> is required (exclusing FTDI drivers if you have a normal
+laptop…)</p>
+</div>
+<div class="section" id="backing-up-the-existing-flash">
+<h2>Backing-Up the Existing Flash<a class="headerlink" href="#backing-up-the-existing-flash" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Flashing the Dusty module will overwrite the existing flash. Back up the existing
+flash in case things go wrong!</p>
+</div>
+<div class="highlight-bat"><div class="highlight"><pre><span></span>PS C: esp_1.1.1.6<span class="p">&gt;</span> .\ESP.exe -r IPM_Flash_01_Orig.bin
+
+        ESP, Eterna SPI Programmer, version 1.1.1-6
+        cfg.devName = Auto, type = 0, flashID = 0x1f24, locID = 0x0, spiClkHz = 3000000
+        FTCSPI.dll = 2.1.2.2
+        INFO: clkHz set to 3000000
+        Open ok, flash emulation mode enabled, devName = Dust Interface Board B
+        Read: fileName = IPM_Flash_01_Orig.bin, offset = 0, len = 524288
+        ................
+
+        setup = 1843 ms, dt = 1625 ms
+        ESP exiting: tries remaining = 0, err = 0
+
+PS C: esp_1.1.1.6<span class="p">&gt;</span> ls
+
+        Directory: ..\Eterna-Serial-Programmer\esp_1.1.1.6
+
+
+        Mode                LastWriteTime         Length Name
+        ----                -------------         ------ ----
+        ------       2015-03-28     12:55         101376 ESP.exe
+        ------       2015-03-28     12:55         102400 ftcspi.dll
+        -a----       2017-09-29     18:27         524288 IPM_Flash_01_Orig.bin
 </pre></div>
 </div>
-</div>
-<div class="section" id="workflow">
-<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
-<p>The workflow used for this project will be basic.
-Despite this, it is still recommended to read up on the basic <code class="docutils literal"><span class="pre">git</span></code> <a class="reference external" href="https://guides.github.com/introduction/flow/">workflows</a>.</p>
-<p>A daily build process is provided below:</p>
-<ol class="arabic">
-<li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code> to update your <strong>local repository</strong> with the Github repository</p>
-</li>
-<li><p class="first">Merge any conflicting changes if required (or ask a more senior dev.)</p>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">log</span></code> to review changes to ensure you’re up to speed and understand the changes</p>
-</li>
-<li><p class="first">Make your local changes;</p>
-<blockquote>
-<div><ol class="loweralpha simple">
-<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></code> to stage changes</li>
-<li><code class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></code> to save changes into your <strong>local repository</strong></li>
-</ol>
-</div></blockquote>
-</li>
-<li><p class="first"><code class="docutils literal"><span class="pre">git</span> <span class="pre">push</span></code> to ensure your local repository is the same with the server repository (update refs)</p>
-</li>
-<li><p class="first">Repeat</p>
-</li>
-</ol>
-</div>
-<div class="section" id="git-theory">
-<h2>Git Theory<a class="headerlink" href="#git-theory" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">git</span></code> rookies often wonder why there are three different commands (<code class="docutils literal"><span class="pre">add</span></code>, <code class="docutils literal"><span class="pre">commit</span></code>, <code class="docutils literal"><span class="pre">push</span></code>) which all
-sound like they do the same thing.</p>
-<p><strong>They don’t</strong> (obviously).</p>
-<p>Recommended reading to clear-up these:</p>
-<ul class="simple">
-<li>Git: <a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-Git-Basics">Git Basics</a>.</li>
-<li>Stackoverflow: <a class="reference external" href="https://stackoverflow.com/questions/2745076/what-are-the-differences-between-git-commit-and-git-push">What are the differences between git-commit and git-push</a>.</li>
-<li>Stackexchange (software engineering): <a class="reference external" href="https://softwareengineering.stackexchange.com/questions/119782/what-does-stage-mean-in-git">what does stage mean in git</a>.</li>
-</ul>
 </div>
 </div>
 
@@ -240,10 +228,10 @@ sound like they do the same thing.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="git_checkout.html" class="btn btn-neutral float-right" title="Checkout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../projDocs.html" class="btn btn-neutral float-right" title="Project Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../dependencies/otherPkgs_dustyQSL.html" class="btn btn-neutral" title="Dusty Quick Start Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="as7_building.html" class="btn btn-neutral" title="Building with Atmel Studio 7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

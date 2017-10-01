@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Project Software &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>TU_SH_Dusty_AfterFlash_Op &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -36,9 +36,8 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
-        <link rel="up" title="Project How-To’s" href="../main.html"/>
-        <link rel="next" title="DuinoPro and ArduinoIDE integration" href="duinoPro.html"/>
-        <link rel="prev" title="Project How-To’s" href="../main.html"/> 
+        <link rel="up" title="Testing and Deployment" href="../main.html"/>
+        <link rel="prev" title="Test #0003" href="../test0003/test0003.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -91,22 +90,22 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../toc.html">Table of Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../intro/home.html">Background</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Project How-To’s</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Project Software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="duinoPro.html">DuinoPro and ArduinoIDE integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otherPkgs_dustyQSL.html">Dusty Quick Start Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../git/git_basics.html">Git Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../git/git_checkout.html">Checkout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../git/git_branches.html">Branches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developing/as7_building.html">Building with Atmel Studio 7</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../developing/sh_flashingTheDust.html">Flashing The Dusty Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../projDocs.html">Project Documentation</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage/main.html">Project How-To’s</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../quickRef/quickRef.html">Quick Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tech_mote/main.html">Sensor Host</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">Testing and Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_overview.html">Firmware Testing Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing/firmwareTesting_makingTests.html">Making Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../test0003/test0003.html">Test #0003</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TU_SH_Dusty_AfterFlash_Op</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#goals">Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#procedure">Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#expected">Expected</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -151,15 +150,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../main.html">Project How-To’s</a> &raquo;</li>
+          <li><a href="../main.html">Testing and Deployment</a> &raquo;</li>
         
-      <li>Project Software</li>
+      <li>TU_SH_Dusty_AfterFlash_Op</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/usage/dependencies/software.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/tech_testingDeploy/Unit/TU_SH_Dusty_AfterFlash_Op.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,36 +171,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="project-software">
-<h1>Project Software<a class="headerlink" href="#project-software" title="Permalink to this headline">¶</a></h1>
-<p>A summary of dependencies for this project</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="30%" />
-<col width="53%" />
-<col width="18%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Item</th>
-<th class="head">Reason</th>
-<th class="head">Need</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td><a class="reference external" href="https://git-scm.com/downloads">Git</a></td>
-<td>Version control of code-base</td>
-<td>Required</td>
-</tr>
-<tr class="row-odd"><td><a class="reference external" href="https://www.python.org/downloads/">Python</a> (3.x)</td>
-<td>Various tools</td>
-<td>Required</td>
-</tr>
-<tr class="row-even"><td><a class="reference external" href="http://www.atmel.com/microsite/atmel-studio/">Atmel Studio</a></td>
-<td>Embedded development</td>
-<td>Required</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="tu-sh-dusty-afterflash-op">
+<h1>TU_SH_Dusty_AfterFlash_Op<a class="headerlink" href="#tu-sh-dusty-afterflash-op" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="goals">
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
+<p>To verify the Dusty module is operational after flashing.</p>
+</div>
+<div class="section" id="procedure">
+<h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Connect the Dusty module the <code class="docutils literal"><span class="pre">DC9004A</span></code> header using the appropriate ribbon cable.</p>
+</li>
+<li><p class="first">Connect the <code class="docutils literal"><span class="pre">DC9004A</span></code> header to the <code class="docutils literal"><span class="pre">DC9006A</span></code> module</p>
+</li>
+<li><p class="first">Connect the <code class="docutils literal"><span class="pre">DC9006A</span></code> module to a computer (Windows used in example). Ensure only one USB device is connected to the computer.</p>
+</li>
+<li><p class="first">Determine the COM port used:</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Open Device Manager (<code class="docutils literal"><span class="pre">Ctrl+x,</span> <span class="pre">m</span></code>)</li>
+<li>Expand the “Ports (COM&amp;LPT)” section.</li>
+<li>There should be 4 listed items with a unique COM port</li>
+<li>Note the third listed COM port number (referenced as [x])</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+<ol class="loweralpha" start="6">
+<li><p class="first">Connect to the Dusty module using it’s CLI interface</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li>Use a Serial Terminal Program (such as Putty) to connect to the device</li>
+<li>Use the following settings:<ul>
+<li>Serial line: COM[x]</li>
+<li>Bits per second: 9600</li>
+<li>Data bits: 8</li>
+<li>Parity: None</li>
+<li>Stop bits: 1</li>
+<li>Flow Control: None</li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">In the terminal, enter the command <code class="docutils literal"><span class="pre">info</span></code></p>
+</li>
+</ol>
+</div>
+<div class="section" id="expected">
+<h2>Expected<a class="headerlink" href="#expected" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>info
+
+IP Mote: <span class="m">1</span>.4.1.8
+Join state: n/a
+Bandwidth Allocated: <span class="m">0</span>
+Serial mode: M4
+Serial Baud Rate: <span class="m">115200</span>
+Radio Test: off
+
+&gt;
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -214,10 +245,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="duinoPro.html" class="btn btn-neutral float-right" title="DuinoPro and ArduinoIDE integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../main.html" class="btn btn-neutral" title="Project How-To’s" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../test0003/test0003.html" class="btn btn-neutral" title="Test #0003" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

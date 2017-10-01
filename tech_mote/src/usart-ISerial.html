@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sleep Management &mdash; C7C.Atamo.Dusty  documentation</title>
+  <title>usart/ISerial.h &mdash; C7C.Atamo.Dusty  documentation</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../../index.html"/>
         <link rel="up" title="Sensor Host" href="../main.html"/>
-        <link rel="next" title="Sensor Host Configurations" href="../sh_configurations.html"/>
-        <link rel="prev" title="Sensor Host Design" href="../sh_mainRoutine.html"/> 
+        <link rel="next" title="Testing and Deployment" href="../../tech_testingDeploy/main.html"/>
+        <link rel="prev" title="dp_sm.h" href="dp_sm.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -96,10 +96,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tech_arch/main.html">System Design</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../main.html">Sensor Host</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../sh_mainRoutine.html">Sensor Host Design</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Sleep Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sleep/sleep.html">Sleep Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sh_configurations.html">Sensor Host Configurations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../hardware/hardware_dustyDuinoProMap.html">Dusty-to-M7 Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../uart/dustyAvrIF.html">Dusty API UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dp_conf.html">dp_conf.h</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dp_sm.html">dp_sm.h</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">usart/ISerial.h</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../tech_testingDeploy/main.html">Testing and Deployment</a></li>
@@ -149,13 +152,13 @@
         
           <li><a href="../main.html">Sensor Host</a> &raquo;</li>
         
-      <li>Sleep Management</li>
+      <li>usart/ISerial.h</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/tech_implement/sleep/sleep.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/tech_mote/src/usart-ISerial.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -168,19 +171,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sleep-management">
-<h1>Sleep Management<a class="headerlink" href="#sleep-management" title="Permalink to this headline">¶</a></h1>
-<p>The sensor host follows a periodic sleep routine as described below.</p>
-<div class="figure">
-<a class="reference internal image-reference" href="../../_images/sh_sleep_timeline.png"><img alt="../../_images/sh_sleep_timeline.png" src="../../_images/sh_sleep_timeline.png" style="width: 916.0px; height: 405.5px;" /></a>
+  <div class="section" id="usart-iserial-h">
+<h1>usart/ISerial.h<a class="headerlink" href="#usart-iserial-h" title="Permalink to this headline">¶</a></h1>
+<p>Serial interface between DuinoPro (DP) and Dusty (DN) </p>
+<p>This module provide interface functions to the DN that exposes the DP’s UART interface.</p>
+<p><dl class="docutils">
+<dt><strong>Date</strong></dt>
+<dd>2017/10/01 </dd>
+<dt><strong>Author</strong></dt>
+<dd>Jamie K. Phan </dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv213dp_usart_initi">
+<span id="dp_usart_init__i"></span><span class="target" id="_i_serial_8h_1abe129b56edbf79aceea9d46ce6cac3a1"></span>void <code class="descname">dp_usart_init</code><span class="sig-paren">(</span>int<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv213dp_usart_initi" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialise the USART. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv212dp_usart_endv">
+<span id="dp_usart_end__void"></span><span class="target" id="_i_serial_8h_1a658fb27995ec4858aba7898ca6eb52a7"></span>void <code class="descname">dp_usart_end</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv212dp_usart_endv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Terminates the USART operation. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214dp_usart_flushv">
+<span id="dp_usart_flush__void"></span><span class="target" id="_i_serial_8h_1a6b2c052a2d6bbdcc14ec97cb0c32e5ee"></span>void <code class="descname">dp_usart_flush</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv214dp_usart_flushv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Flush the USARt. </p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214dp_usart_write7uint8_t">
+<span id="dp_usart_write__uint8_t"></span><span class="target" id="_i_serial_8h_1ae79e23816de9a98a5064e20fe081b866"></span>size_t <code class="descname">dp_usart_write</code><span class="sig-paren">(</span>uint8_t<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv214dp_usart_write7uint8_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Write the USART bus. </p>
+<p><dl class="docutils">
+<dt><strong>Return</strong></dt>
+<dd>size of byte </dd>
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">c</span></code>: byte to write to USART</li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv213dp_usart_readv">
+<span id="dp_usart_read__void"></span><span class="target" id="_i_serial_8h_1a9ea2aeef9d9225841c8e548f4cef0f68"></span>int <code class="descname">dp_usart_read</code><span class="sig-paren">(</span>void<span class="sig-paren">)</span><a class="headerlink" href="#_CPPv213dp_usart_readv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reads from USART module. </p>
+</dd></dl>
+
 </div>
-<p>The following actions are described below:</p>
-<ol class="arabic simple">
-<li><strong>Start</strong>: At the start of this periodic routine, the sensor host must determine how long it needs to sleep for, this period denoted <em>Processing</em> is reserved for this calculation. The routine responsible for this calculation is <code class="docutils literal"><span class="pre">calc_time_sleep</span></code>, returning the value <span class="math">\(T_{AVR,sleep}\)</span></li>
-<li><strong>Periodic Sleep</strong>: The device then sleeps for the prescribed time.</li>
-<li><strong>Timer Wake</strong>: An interrupt generated by <code class="docutils literal"><span class="pre">Timer2</span></code> wakes the device. As this wake state requires a period of time to re-initialise the system, the time returned from <code class="docutils literal"><span class="pre">calc_time_sleep</span></code> is reduced by an overhead time</li>
-<li><strong>Pre-Sample Wait</strong>: With the device ready to sample, the device makes a final calculation to ensure the sample is received at the correct time</li>
-</ol>
 </div>
 
 
@@ -193,10 +237,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../sh_configurations.html" class="btn btn-neutral float-right" title="Sensor Host Configurations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../tech_testingDeploy/main.html" class="btn btn-neutral float-right" title="Testing and Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../sh_mainRoutine.html" class="btn btn-neutral" title="Sensor Host Design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dp_sm.html" class="btn btn-neutral" title="dp_sm.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

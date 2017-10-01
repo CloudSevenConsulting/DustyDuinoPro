@@ -38,7 +38,7 @@
     <link rel="top" title="C7C.Atamo.Dusty  documentation" href="../index.html"/>
         <link rel="up" title="Project How-To’s" href="main.html"/>
         <link rel="next" title="Quick Reference" href="../quickRef/quickRef.html"/>
-        <link rel="prev" title="Building with Atmel Studio 7" href="developing/as7_building.html"/> 
+        <link rel="prev" title="Flashing The Dusty Module" href="developing/sh_flashingTheDust.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,6 +99,7 @@
 <li class="toctree-l2"><a class="reference internal" href="git/git_checkout.html">Checkout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git/git_branches.html">Branches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="developing/as7_building.html">Building with Atmel Studio 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="developing/sh_flashingTheDust.html">Flashing The Dusty Module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Project Documentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installing-python-sphinx">Installing Python Sphinx</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setup-your-sphinx-project">Setup your Sphinx Project</a></li>
@@ -109,7 +110,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../quickRef/quickRef.html">Quick Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_arch/main.html">System Design</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tech_implement/main.html">Sensor Host</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tech_mote/main.html">Sensor Host</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tech_testingDeploy/main.html">Testing and Deployment</a></li>
 </ul>
 
@@ -233,6 +234,7 @@ $ sphinx-quickstart.exe
 <div><ol class="loweralpha simple">
 <li><strong>Do not</strong> use <code class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></code>, as this will remove the <code class="docutils literal"><span class="pre">.git</span></code> files</li>
 <li>Manually remove all build files (everything in <code class="docutils literal"><span class="pre">build/html</span></code> excluding the hidden <code class="docutils literal"><span class="pre">.git</span></code> directory)</li>
+<li>Build the <code class="docutils literal"><span class="pre">DOxygen</span></code> <code class="docutils literal"><span class="pre">xml</span></code></li>
 </ol>
 </div></blockquote>
 </li>
@@ -261,7 +263,7 @@ $ sphinx-quickstart.exe
         <a href="../quickRef/quickRef.html" class="btn btn-neutral float-right" title="Quick Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="developing/as7_building.html" class="btn btn-neutral" title="Building with Atmel Studio 7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="developing/sh_flashingTheDust.html" class="btn btn-neutral" title="Flashing The Dusty Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

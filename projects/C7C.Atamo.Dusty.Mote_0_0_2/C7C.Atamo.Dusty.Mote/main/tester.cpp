@@ -14,6 +14,10 @@
     #include "Testing/TestDnJoin.h"
 #endif
 
+#if DP_BUILD__TCTRL_DPUART
+    #include "Testing/TestDpUart.h"
+#endif
+
 /*******************************************************************************
  * TEST ROUTINE 
  ******************************************************************************/
@@ -27,5 +31,8 @@ void do_system_test(void)
 #endif
 
 /*-----------------------------------*/
-
+#if DP_BUILD__TCTRL_DPUART
+    TestDpUart test_dp_uart;
+    test_dp_uart.run();
+#endif
 }

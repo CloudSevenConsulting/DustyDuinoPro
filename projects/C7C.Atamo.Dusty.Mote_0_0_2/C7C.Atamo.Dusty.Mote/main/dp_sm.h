@@ -61,7 +61,7 @@ typedef struct {
 void dp_state_init(void);
 
 //=====================================
-/*! @brief Brief
+/*! @brief Checks if system is ready for use
 *
 * Interface for external modules to check if system is ready. This is relevant
 * after the system has woke up from a sleep.

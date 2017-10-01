@@ -28,6 +28,8 @@ extern "C" size_t dp_usart_write(uint8_t c)
 
     //TODO: handle method overloading of different sizes
     Serial.write(c);
+
+    return sizeof(c);//TODO: check this
 }
 
 extern "C" int dp_usart_read(void)

@@ -20,7 +20,7 @@ uint8_t sensor_read(uint8_t *buf)
     }
 
     /*Check the sensor is set*/
-    if (SystemState._sensor_conf_set == 0 )
+    if (SystemState._sensor_status == DP_SENS__STATUS_NOT_SET)
     {
         /*TODO: Configure the sensor*/
         /*TODO: Check return*/

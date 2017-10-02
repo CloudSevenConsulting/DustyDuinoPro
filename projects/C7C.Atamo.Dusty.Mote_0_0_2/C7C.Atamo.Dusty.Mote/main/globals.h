@@ -1,10 +1,14 @@
-/*
- * globals.h
+/*============================================================================*/
+/*!
+ * @file globals.h
  *
- * Created: 2017-09-20 18:47:14
- *  Author: kjph
- */ 
-
+ * @brief DuinoPro (DP) global variables required across modules
+ *
+ * @date 2017/10/01
+ * @author Jamie K. Phan
+ *
+ */
+/*============================================================================*/
 
 #ifndef GLOBALS_H_
 #define GLOBALS_H_

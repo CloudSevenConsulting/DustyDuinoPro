@@ -30,6 +30,7 @@ class TestDnJoin: public TestCase {
     public:
         TestDnJoin(void);
         void run(void);
+        void test_join_bau(void);
 };
 
 #endif /* TEST_DNJOIN_H_ */

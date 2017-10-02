@@ -35,3 +35,22 @@ void TestDnJoin::run()
         }
     }
 }
+
+void TestDnJoin::test_join_bau()
+{
+    //Re-init everything
+    dn_qsl_init();
+
+    if (dn_qsl_connect(NETID, JOINKEY, SRC_PORT, BANDWIDTH_MS))
+    {
+        if (dn_qsl_isConnected())
+        {
+            t_pass();
+        }
+        t_fail();
+    }
+    else{
+        t_fail();
+    }
+
+}

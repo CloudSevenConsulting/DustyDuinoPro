@@ -1,10 +1,16 @@
-/*
- * dp_conf.h
+/*============================================================================*/
+/*!
+ * @file dp_conf.h
  *
- * Created: 2017-09-27 19:13:51
- *  Author: kjph
- */ 
-
+ * @brief Configuartion Module for DuinoPro (DP)
+ *
+ * Handles dynamic configuration of DP
+ *
+ * @date 2017/10/01
+ * @author Jamie K. Phan
+ *
+ */
+/*============================================================================*/
 
 #ifndef DP_CONF_H_
 #define DP_CONF_H_
@@ -14,7 +20,7 @@
 /*******************************************************************************
  * DP Look-Up Table
  ******************************************************************************/
-#define DP_LUT__N_PARAM 10
+#define DP_LUT__N_PARAM 11
  
 #define DP_LUT__COL_FIELD_LEN 0
 #define DP_LUT__COL_MAX_VAL 1
@@ -30,8 +36,9 @@
 #define LUT_IDX__WSN_JOIN_DC_DECR        0x07
 #define LUT_IDX__WSN_JOIN_WAIT_INIT      0x08
 #define LUT_IDX__WSN_JOIN_WAIT_INCR      0x09
+#define LUT_IDX__SLEEP_GUARD_TIMEOUT     0x10
 
-//========== config_set
+//=====================================
 /** @brief Ensures configuration parameters are set. If not set, default
  *         parameters are loaded from non-volatile memory. Once set, if a packet
  *         payload is passed as an argument, then the payload is parsed and the
@@ -44,7 +51,7 @@
  */
 uint8_t dp_conf_set(char *);
  
- //========== config_default
+ //=====================================
  /** @brief Loads configuration from non-volatile memory and sets their values in
   *         volatile memory
   *
@@ -56,7 +63,7 @@ uint8_t dp_conf_set(char *);
   */
 uint8_t dp_conf_default(void);
 
- //========== config_param_set
+ //=====================================
  /** @brief Set the parameter's value in volatile memory
   *
   * @param param the parameter type byte received in the configuration packet
@@ -66,7 +73,7 @@ uint8_t dp_conf_default(void);
   */
 uint8_t dp_conf_param_set(uint8_t, uint8_t);
  
- //========== config_param_get_cur
+ //=====================================
  /** @brief Get the current value of the param set in volatile memory
   *
   * @param param the parameter index
@@ -75,7 +82,7 @@ uint8_t dp_conf_param_set(uint8_t, uint8_t);
   */
 uint8_t dp_conf_param_get_cur(uint8_t);
  
- //========== config_param_lookup_max
+ //=====================================
  /** @brief Get a parameter's maximum allowable value
   *
   * This should be privately called
@@ -86,20 +93,7 @@ uint8_t dp_conf_param_get_cur(uint8_t);
   */
 uint8_t dp_conf_param_lookup_max(uint8_t);
  
- //========== config_param_lookup_length
- /** @brief Get the number of bytes for a parameter's value when received in a 
-  *         configuration packet
-  *
-  * This should be privately called
-  *
-  * @param param the parameter index
-  *
-  * @return the number of bytes to expect for the parameter value in the
-  *         configuration packet
-  */
-uint8_t dp_conf_param_lookup_max(uint8_t);
- 
- //========== config_param_lookup_min
+ //=====================================
  /** @brief Get a parameter's minimum allowable value
   *
   * This should be privately called
@@ -109,7 +103,6 @@ uint8_t dp_conf_param_lookup_max(uint8_t);
   * @return the minimum value of the parameter
   */
 uint8_t dp_conf_param_lookup_min(uint8_t);
-
 
 
 #endif /* DP_CONF_H_ */

@@ -25,13 +25,19 @@ void TestDpUart::run(void)
 
 void TestDpUart::TU_SH_DpUart_external_op(void)
 {
-    while(1){
+    while(1)
+    {
 
         //Blink just before sending data
         Board.setLed(true);
         delay(500);
-        dn_uart_txByte(1);
+
+        //Send the byte
+        //Change this as rqeuired by analysis
+        dn_uart_txByte(2);
+
         Board.setLed(false);
         delay(500);
+
     }
 }

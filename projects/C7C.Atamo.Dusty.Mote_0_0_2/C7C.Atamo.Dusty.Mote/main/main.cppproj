@@ -332,6 +332,12 @@
     <Compile Include="Testing\TestDnJoin.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Testing\TestDpSys.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSys.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="time\ITime.cpp">
       <SubType>compile</SubType>
     </Compile>

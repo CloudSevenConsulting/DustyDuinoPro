@@ -10,6 +10,10 @@
 /*******************************************************************************
  * TEST CONTROL 
  ******************************************************************************/
+#if DP_BUILD__TCTRL_DPSYS
+    #include "Testing/TestDpSys.h"
+#endif
+ 
 #if DP_BUILD__TCTRL_DNJOIN
     #include "Testing/TestDnJoin.h"
 #endif
@@ -19,6 +23,12 @@
  ******************************************************************************/
 void do_system_test(void)
 {
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPSYS
+    TestDpSys test_dp_sys;
+    test_dp_sys.run();
+#endif
 
 /*-----------------------------------*/
 #if DP_BUILD__TCTRL_DNJOIN

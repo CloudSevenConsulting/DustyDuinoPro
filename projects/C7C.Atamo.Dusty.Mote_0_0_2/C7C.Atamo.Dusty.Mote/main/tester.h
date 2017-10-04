@@ -17,8 +17,8 @@
 #ifndef TESTER_H_
 #define TESTER_H_
 
-#define DP_BUILD__TCTRL_DPSYS 1
 #define DP_BUILD__TCTRL_DNJOIN 0
+#define DP_BUILD__TCTRL_DPUART 1
 
 //=====================================
 /*! @brief Runs all tests in Testing package

@@ -320,6 +320,9 @@
     <Compile Include="tester.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Testing\TestDpUart.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Testing\TestCase.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -332,10 +335,7 @@
     <Compile Include="Testing\TestDnJoin.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Testing\TestDpSys.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Testing\TestDpSys.h">
+    <Compile Include="Testing\TestDpUart.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="time\ITime.cpp">

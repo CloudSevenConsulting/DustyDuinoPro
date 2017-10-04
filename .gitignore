@@ -109,3 +109,8 @@ ipch/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# SmartMesh-IP Eterna Flash Binaries
+*loader_*.bin
+*mote_ip_*.bin
+*mote_part_*.bin

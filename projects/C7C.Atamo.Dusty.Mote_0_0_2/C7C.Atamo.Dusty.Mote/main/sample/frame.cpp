@@ -7,7 +7,7 @@
 
 #include "sample.h"
 
-dp_payload_t dp_payload;
+dp_payload_t dp_payload; //TODO: move to globals.h
 
 void dp_payload_flush(void)
 {

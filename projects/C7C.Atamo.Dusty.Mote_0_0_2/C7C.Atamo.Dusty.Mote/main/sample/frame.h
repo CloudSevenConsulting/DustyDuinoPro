@@ -7,15 +7,15 @@
 #ifndef SAMPLE_H_
 #define SAMPLE_H_
 
-#define DP_SAM__N_FIELD_MAX 4
-#define DP_SAM__LEN_FIELD_VAL_MAX 2
+#define DP_SAM__N_FIELD_MAX 3           // timestamp, sensor data, diagnostic data
+#define DP_SAM__LEN_FIELD_VAL_MAX 6     // sensor with 6 values
 #define DP_SAM__LEN_FIELD_HEAD 1
 #define DP_SAM__LEN_DATL_HEAD 1
 #define DP_SAM__LEN_PAYL_HEAD 1
 
-#define DP_SAM__LEN_PAYL_MAX 14
+#define DP_SAM__LEN_PAYL_MAX 23
 
-#define DP_SAM__PAYL_TYPE_SENS 0
+#define DP_SAM__PAYL_TYPE_SENS 0    //TODO: suggest change to DP_SAM__PAYL_TYPE_DATA
 #define DP_SAM__PAYL_TYPE_CONF 1
 
 typedef struct {

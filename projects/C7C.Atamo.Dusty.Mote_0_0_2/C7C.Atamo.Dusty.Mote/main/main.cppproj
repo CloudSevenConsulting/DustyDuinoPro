@@ -236,10 +236,16 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sample\sample.cpp">
+    <Compile Include="sample\AccelMagno.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sample\sample.h">
+    <Compile Include="sample\AccelMagno.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sample\sensor.cpp">

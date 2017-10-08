@@ -236,6 +236,18 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sample\sensor.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -362,6 +374,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sample" />
+    <Folder Include="sample\0x00_AccelMagno" />
     <Folder Include="time" />
     <Folder Include="usart" />
     <Folder Include="Testing" />

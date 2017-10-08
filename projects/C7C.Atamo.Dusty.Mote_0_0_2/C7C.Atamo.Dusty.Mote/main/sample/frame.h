@@ -23,7 +23,10 @@
 #define DP_SAM__PAYL_TYPE_DATA 0
 #define DP_SAM__PAYL_TYPE_CONF 1
 
-//TODO: move to globals
+#define DP_SAM__FIELD_TYPE_TIME 0
+#define DP_SAM__FIELD_TYPE_SENS 1
+#define DP_SAM__FIELD_TYPE_DIAG 2
+
 typedef struct {
     uint8_t _n_bytes;
     uint8_t _ready_send;
@@ -44,7 +47,7 @@ typedef struct {
  *
  * @return pointer to start of field value in payload, -1 on failure
  */
-uint8_t reserve_field(type, len);
+uint8_t reserve_field(unit8_t, unit8_t);
 
 //=====================================
 /*! @brief Build and write field header to payload
@@ -59,7 +62,7 @@ uint8_t reserve_field(type, len);
  *
  * @return length of field header, -1 on failure
  */
-uint8_t pack_field_header(type, n, ptr);
+uint8_t pack_field_header(unit8_t, unit8_t, unit8_t);
 
 //========== 
 /*! @brief Clears the payload buffers

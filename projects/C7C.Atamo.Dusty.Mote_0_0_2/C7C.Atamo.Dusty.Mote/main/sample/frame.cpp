@@ -6,24 +6,43 @@
  */ 
 
 #include "sample.h"
+#include "../globals.h"
 
-dp_payload_t dp_payload; //TODO: move to globals.h
+
+uint8_t reserve_field(unit8_t type, unit8_t val_len)
+{
+    /*Populate field header*/
+    uint8_t header_len = pack_field_header(type, val_len);
+
+    /*Increment internal payload pointer*/
+    dp_payload._payload_ptr += header_len + val_len;
+
+    return dp_payload._payload_ptr - val_len;
+}
+
+uint8_t pack_field_header(unit8_t type, unit8_t len, unit8_t ptr)
+{
+    if (len < 2 || len > DP_SAM__LEN_FIELD_VAL_MAX) {
+        return -1;
+    }
+    
+    /* Construct field header
+     * TODO: Need a LUT for all types (see frame.h ...FIELD_TYPE... for possible types received) Timestamp, sensor data, diagnostic?
+     * Then combine this information with the length of the field value into a single byte code
+     * (e.g. first 5 bits are type, next 3 are length)
+     * Field value length: 2, 4, 6, 8, 10, or 12 bytes => 6 options => at least 3 bits to specify field value length
+     * => only 5 bits available to specify type in field header (32 options)
+     */
+    //uint8_t field_header = sample_type_lookup(type)
+    uint8_t field_header = 0; //dummy, TODO: implement real version
+
+    /*Store field header in payload*/
+    dp_payload.payload[ptr] = field_header;
+
+    return DP_SAM__LEN_FIELD_HEAD;
+}
 
 void dp_payload_flush(void)
 {
     memset(&dp_payload, 0, sizeof(dp_payload));
-}
-
-uint8_t add_field(uint8_t field_type, uint8_t *field_value)
-{
-    //Input validation
-    if (sizeof(field_value) > DP_FRAME__N_FIELD_MAX)
-    {
-        return 1;
-    }
-}
-
-void dp_sam_datl_incr(void)
-{
-    dp_payload.payload[DP_FRAME__LEN_PAYL_HEAD]++;
 }

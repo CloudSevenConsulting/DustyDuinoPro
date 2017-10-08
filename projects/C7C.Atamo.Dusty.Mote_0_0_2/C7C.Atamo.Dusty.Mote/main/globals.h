@@ -21,6 +21,7 @@
  ******************************************************************************/
 #include "dp_sm.h"
 #include "dp_conf.h"
+#include "sample/frame.h"
 #include <duinoPRO.h>
 
 /*******************************************************************************
@@ -29,5 +30,6 @@
 extern duinoPRO Board;
 extern sys_state SystemState;
 extern char sys_conf[DP_LUT__N_PARAM];
+extern dp_payload_t dp_payload;
 
 #endif /* GLOBALS_H_ */

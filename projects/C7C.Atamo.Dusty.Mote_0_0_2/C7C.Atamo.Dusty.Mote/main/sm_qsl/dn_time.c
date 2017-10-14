@@ -11,7 +11,8 @@
 
 uint32_t dn_time_ms(void)
 {
-    return dp_time_now();
+    //TODO: code this properly to get network time from Dusty (see SMIP serial API guide 5.6.20 &/or 6.4)
+	return dp_time_now();
 }
 
 void dn_sleep_ms(uint32_t milliseconds)

@@ -28,11 +28,11 @@
 uint8_t sample(uint8_t);
 
 //=====================================
-/*! @brief Obtain current system timestamp
+/*! @brief Sample current timestamp
  *
- * @return current system time, -1 on failure
+ * @return 0 on success, 1 on failure
  */
-uint16_t get_timestamp(void);
+uint16_t sample_time(void);
 
 //=====================================
 /*! @brief Sample sensor data

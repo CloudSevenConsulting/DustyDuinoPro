@@ -49,7 +49,8 @@ typedef struct {
     uint8_t _sys_ready_flag;
     uint8_t _sensor_status;
 	uint8_t _sensor_type;
-	uint8_t _sensor_addr;
+    uint8_t _sensor_addr;
+    uint8_t _sensor_n_outputs;
 } sys_state;
 
 //=====================================

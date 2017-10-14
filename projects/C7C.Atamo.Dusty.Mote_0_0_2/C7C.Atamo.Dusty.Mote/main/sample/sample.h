@@ -32,7 +32,7 @@ uint8_t sample(uint8_t);
  *
  * @return 0 on success, 1 on failure
  */
-uint16_t sample_time(void);
+void sample_time(void);
 
 //=====================================
 /*! @brief Sample sensor data

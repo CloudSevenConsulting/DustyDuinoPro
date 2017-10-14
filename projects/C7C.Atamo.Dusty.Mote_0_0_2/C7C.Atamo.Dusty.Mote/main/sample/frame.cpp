@@ -46,7 +46,7 @@ uint8_t pack_field_header(uint8_t type, uint8_t len, uint8_t *header_ptr)
         field_header |= 0b00011111;
     }
     else if (type == DP_SAM__FIELD_TYPE_SENS) {
-        //TODO: get sensor code from system config
+        field_header |= SystemState._sensor_type; /*_sensor_type has the sensor code as its 5 LSBs*/
     }
     else if (type == DP_SAM__FIELD_TYPE_DIAG) {
         field_header |= 0b00011110;

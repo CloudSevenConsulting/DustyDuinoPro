@@ -16,7 +16,8 @@
  *
 */
 
-#include <AccelMagno.h>
+#include <SPI.h>
+#include "AccelMagno.h"
 
 // Module Pins
 #define INT1_PIN 			1
@@ -116,9 +117,9 @@ void AccelMagno::begin()
 	pin(INT1_PIN).mode(INPUT);
 	pin(INT2_PIN).mode(INPUT);
 	pin(POWERDOWN_PIN).mode(OUTPUT);
-  pin(POWERDOWN_PIN).write(LOW);
+  	pin(POWERDOWN_PIN).write(LOW);
 	spiSelect().mode(OUTPUT);
-  spiSelect().write(HIGH);
+  	spiSelect().write(HIGH);
 	delay(10);
 }
 

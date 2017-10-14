@@ -70,6 +70,7 @@ class AccelMagno : public Module {
 		/** \brief Begin using the AccelMagno module.
 		*/
 		void begin(void);
+
 		/** \brief Enable or disable low-power mode.
 		 *  \param lowpower - true to enable low-power mode, false to disable.
 		 */
@@ -80,29 +81,36 @@ class AccelMagno : public Module {
 		 *  \return The register value.
 		 */
 		uint8_t readRegister(uint8_t addr);
+
 		/** \brief Write a value to a register in the LDM303D chip.
 		 *  \param addr - Address of the register to be written.
 		 *  \param data - The value to be written to the register.
 		 */
 		void writeRegister(uint8_t addr, uint8_t data);
+
 		/** \brief Enable accelerometer.
 		 */
 		void enableAccel();
+
     	/** \brief Disable accelerometer.
     	 */
-    	void disableAccel();
+		void disableAccel();
+		
 		/** \brief Set the full-scale range of the accelerometer.
 		 *  The allowable ranges are from +/-2g to +/-16g.  Possible values are
 		 *  listed in #AccelFullScaleEnum.
 		 *  \param mode - Value for full-scale range, from AccelFullScaleEnum.
 		 */
 		void setAccelFullScale(uint8_t mode);
+
 		/** \brief Enable magnetometer.
 		 */
 		void enableMagno();
+
     	/** \brief Disable magnetometer.
     	 */
-    	void disableMagno();
+		void disableMagno();
+		
 		/** \brief Set the full-scale range of the magnetometer.
 		 *  The allowable ranges are from +/-2 Gauss to +/-12 Gauss.  Possible values are
 		 *  listed in #MagnoFullScaleEnum.

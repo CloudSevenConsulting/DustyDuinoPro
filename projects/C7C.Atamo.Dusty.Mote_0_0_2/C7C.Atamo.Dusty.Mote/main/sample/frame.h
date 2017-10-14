@@ -11,8 +11,8 @@
 #define DP_SAM__N_FIELD_MAX 3           // timestamp, sensor data, diagnostic data
 #define DP_SAM__LEN_FIELD_VAL_MAX 12    // sensor with six 16-bit values
 #define DP_SAM__LEN_FIELD_VAL_MIN 2     // sensor with single 16-bit value
-#define DP_SAM__LEN_FIELD_TIME 4
-#define DP_SAM__LEN_FIELD_DIAG 4
+#define DP_SAM__LEN_FIELD_VAL_TIME 4
+#define DP_SAM__LEN_FIELD_VAL_DIAG 4
 #define DP_SAM__LEN_FIELD_HEAD 1
 #define DP_SAM__LEN_DATL_HEAD 1
 #define DP_SAM__LEN_PAYL_HEAD 1
@@ -34,7 +34,7 @@
 #define DP_SAM__FIELD_TYPE_SENS 1
 #define DP_SAM__FIELD_TYPE_DIAG 2
 
-//TODO: change DP_SAM__ to DP_FRAME__
+//TODO: change DP_SAM__ to DP_FRAME__ ?
 
 typedef struct {
     uint8_t _ready_send;
@@ -55,7 +55,7 @@ typedef struct {
  *
  * @return pointer to start of field value in payload, -1 on failure
  */
-uint8_t reserve_field(uint8_t, uint8_t, uint8_t);
+uint8_t reserve_field(uint8_t, uint8_t, uint8_t*);
 
 //=====================================
 /*! @brief Build and write field header to payload
@@ -63,6 +63,22 @@ uint8_t reserve_field(uint8_t, uint8_t, uint8_t);
  * Given the desired field type and length of the field value in bytes,
  * this function constructs the appropriate field header and writes it
  * to the payload at the position indicated by the pointer provided.
+ * 
+ * Field value length is encoded as the first (most significant) three
+ * bits of the field header such that:
+ *   0b001XXXXX --> 2
+ *   0b010XXXXX --> 4
+ *   0b011XXXXX --> 6
+ *   0b100XXXXX --> 8
+ *   0b101XXXXX --> 10
+ *   0b110XXXXX --> 12
+ * 
+ * Field type is encoded in the last (least significant) five bits of 
+ * the field header. For instance:
+ *   0bXXX11111 --> timestamp
+ *   0bXXX11110 --> disgnostic
+ * In the case of sensor data, the five LSBs are encoded with the sensor
+ * type code (from system state variables).
  *
  * @param type  code representing the type of field to be reserved
  * @param len   length of field value in bytes
@@ -70,7 +86,7 @@ uint8_t reserve_field(uint8_t, uint8_t, uint8_t);
  *
  * @return length of field header, -1 on failure
  */
-uint8_t pack_field_header(uint8_t, uint8_t, uint8_t);
+uint8_t pack_field_header(uint8_t, uint8_t, uint8_t*);
 
 //========== 
 /*! @brief Clears the payload buffers

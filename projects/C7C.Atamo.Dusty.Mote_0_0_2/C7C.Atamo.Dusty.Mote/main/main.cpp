@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
  * Build settings
  ******************************************************************************/
-#define DP_BUILD__TEST_MODE 1
+#define DP_BUILD__TEST_MODE 0
 #define DP_BUILD__UART_USB_MODE 0
 
 /*******************************************************************************
@@ -21,6 +21,7 @@ duinoPRO Board;/*This is public globally in globals.h*/
 /*******************************************************************************
  * Core
  ******************************************************************************/
+#include "interrupts/pcint.h"
 #include "dp_sm.h"
 #include "dp_conf.h"
 #include "sample/sensor.h"
@@ -68,6 +69,7 @@ void setup()
  */
  #if !DP_BUILD__TEST_MODE
 	 dn_qsl_init();
+	 pciSetup(7);//Attach PCINT23 (M7 Interrupt)
  #endif
 
 }

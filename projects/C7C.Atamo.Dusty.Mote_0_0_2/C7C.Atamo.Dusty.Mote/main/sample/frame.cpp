@@ -5,7 +5,7 @@
  *  Author: kjph
  */ 
 
-#include <cstring> /*memset*/
+#include <string.h> /*memset*/
 
 #include "../globals.h"
 #include "frame.h"

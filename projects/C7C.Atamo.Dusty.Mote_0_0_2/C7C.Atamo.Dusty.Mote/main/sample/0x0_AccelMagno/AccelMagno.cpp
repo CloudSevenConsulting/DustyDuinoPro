@@ -113,7 +113,7 @@ AccelMagno::AccelMagno(int id) : Module(id)
 
 void AccelMagno::begin()
 {
-	spi().begin();
+	SPI.begin();
 	pin(INT1_PIN).mode(INPUT);
 	pin(INT2_PIN).mode(INPUT);
 	pin(POWERDOWN_PIN).mode(OUTPUT);
@@ -131,23 +131,25 @@ void AccelMagno::lowPowerMode(bool lowpower)
 uint8_t AccelMagno::readRegister(uint8_t addr)
 {
 	uint8_t val;
-	spi().beginTransaction(MY_SPEED_MAX, MY_DATA_ORDER, MY_DATA_MODE);
+	SPISettings spi_settings(MY_SPEED_MAX, MY_DATA_ORDER, MY_DATA_MODE);
+	SPI.beginTransaction(spi_settings);
 	spiSelect().write(LOW);
-	val = spi().transfer((addr & 0x3F) | 0x80);
-	val = spi().transfer(0x00);
+	val = SPI.transfer((addr & 0x3F) | 0x80);
+	val = SPI.transfer(0x00);
 	spiSelect().write(HIGH);
-	spi().endTransaction();
+	SPI.endTransaction();
 	return val;
 }
 
 void AccelMagno::writeRegister(uint8_t addr, uint8_t data)
 {
-	spi().beginTransaction(MY_SPEED_MAX, MY_DATA_ORDER, MY_DATA_MODE);
+	SPISettings spi_settings(MY_SPEED_MAX, MY_DATA_ORDER, MY_DATA_MODE);
+	SPI.beginTransaction(spi_settings);
 	spiSelect().write(LOW);
-	spi().transfer(addr & 0x3F);
-	spi().transfer(data);
+	SPI.transfer(addr & 0x3F);
+	SPI.transfer(data);
 	spiSelect().write(HIGH);
-	spi().endTransaction();
+	SPI.endTransaction();
 }
 
 int16_t AccelMagno::read16Bit(uint8_t highAddr, uint8_t lowAddr)

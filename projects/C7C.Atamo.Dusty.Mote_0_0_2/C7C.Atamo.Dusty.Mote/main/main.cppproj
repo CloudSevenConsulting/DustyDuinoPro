@@ -218,6 +218,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="dp_api.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="dp_api.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="dp_conf.cpp">
       <SubType>compile</SubType>
     </Compile>

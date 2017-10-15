@@ -2,10 +2,7 @@
 #include "dn_uart.h"
 
 #include "../usart/ISerial.h"
-
-#define DP_PIN__TX 1
-#define DP_PIN__RX 2
-#define BAUD_RATE 9600
+#include "../usart/usart_vars.h"
 
 //========== 
 /*! Initialise the UART peripheral on the Microcontroller 
@@ -14,6 +11,10 @@
  */
 void dn_uart_init(dn_uart_rxByte_cbt rxByte_cb)
 {
+
+    // Store RX callback function
+    dn_uart_vars.ipmt_uart_rxByte_cb = rxByte_cb;
+    
     /*This is done in setup*/
     /*TODO: this*/
     dp_usart_init(BAUD_RATE);

@@ -362,6 +362,15 @@
     <Compile Include="usart\ISerial.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="usart\usart_flow.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usart\usart_flow.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usart\usart_vars.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Content Include="readme.html">
     </Content>
   </ItemGroup>

@@ -36,14 +36,3 @@ extern "C" size_t dp_usart_write(uint8_t c)
 
     return sizeof(c);//TODO: check this
 }
-
-extern "C" int dp_usart_read(void)
-{
-    return Serial.read();
-}
-
-extern "C" void dp_usart_mode4_flow(int direction, int flow)
-{
-    usart_mode4_flow(direction, flow);
-}
-

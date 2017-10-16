@@ -10,23 +10,22 @@
  */
 /*============================================================================*/
 
-#ifndef USART_MODE4_FLOW_H`_
-#define USART_MODE4_FLOW_H`_
+#ifndef USART_MODE4_FLOW_H_
+#define USART_MODE4_FLOW_H_
 
-#define USART__FLOWCTRL_DP_TO_DN 1
-#define USART__FLOWCTRL_DN_TO_DP 0
-#define USART__FLOWCTRL_RTS 1
-#define USART__FLOWCTRL_CTS 0
-
+#define USART__DIRECTION_PN 1
+#define USART__DIRECTION_NP 0
+#define USART__FLOWCTRL_ASSERT 1
+#define USART__FLOWCTRL_DEASSERT 0
 //=====================================
 /** @brief Implements the necessary flow control for the USART
  *
  * @param direction The direction of the flow (DP to DN) or (DN to DP). Ensure
  *        Pre-processor macros are used to ensure portability
- * @param flow The flow to be handled; either (RTS) or (CTS)
+ * @param value The flow to be handled; either (assert) or (deassert)
  *
  * @return 0 on success, 1 on failure
  */
- void usart_mode4_flow(int direction, int flow);
+ void usart_mode4_flow(int, int);
 
 #endif

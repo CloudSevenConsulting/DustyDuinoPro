@@ -2,7 +2,10 @@
 #ifndef USART_VARS_H
 #define USART_VARS_H
 
-#define BAUD_RATE 9600
+// Timing
+
+#define USART_AC__BAUD_RATE 9600
+#define USART_AC__NP_N_BIT_END_TX_RTS_CTS 2
 
 typedef void (*dn_uart_rxByte_cbt)(uint8_t byte);
 

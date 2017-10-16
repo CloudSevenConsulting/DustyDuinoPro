@@ -17,7 +17,7 @@ void dn_uart_init(dn_uart_rxByte_cbt rxByte_cb)
     
     /*This is done in setup*/
     /*TODO: this*/
-    dp_usart_init(BAUD_RATE);
+    dp_usart_init(USART_AC__BAUD_RATE);
 }
 
 //========== 

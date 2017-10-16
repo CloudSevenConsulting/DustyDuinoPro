@@ -46,17 +46,5 @@ void dp_usart_flush(void);
 */
 size_t dp_usart_write(uint8_t);
 
-//=====================================
-/*! @brief Reads from USART module
-*
-*/
-int dp_usart_read(void);
-
-//=====================================
-/*! @brief Handles Mode 4 flow control
-*
-*/
-void dp_usart_mode4_flow(int direction, int flow);
-
 
 #endif /* ISERIAL_H_ */

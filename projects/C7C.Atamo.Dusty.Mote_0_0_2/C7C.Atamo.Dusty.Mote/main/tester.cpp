@@ -22,6 +22,10 @@
     #include "Testing/TestDpUart.h"
 #endif
 
+#if DP_BUILD__TCTRL_PORT
+    #include "Testing/TestPort.h"
+#endif
+
 /*******************************************************************************
  * TEST ROUTINE 
  ******************************************************************************/
@@ -44,5 +48,11 @@ void do_system_test(void)
 #if DP_BUILD__TCTRL_DPUART
     TestDpUart test_dp_uart;
     test_dp_uart.run();
+#endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_PORT
+    TestPort test_port;
+    test_port.run();
 #endif
 }

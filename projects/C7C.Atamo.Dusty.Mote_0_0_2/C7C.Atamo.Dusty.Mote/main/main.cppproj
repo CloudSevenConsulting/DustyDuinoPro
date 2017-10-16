@@ -362,6 +362,12 @@
     <Compile Include="Testing\TestDpUart.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Testing\TestPort.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestPort.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="time\ITime.cpp">
       <SubType>compile</SubType>
     </Compile>

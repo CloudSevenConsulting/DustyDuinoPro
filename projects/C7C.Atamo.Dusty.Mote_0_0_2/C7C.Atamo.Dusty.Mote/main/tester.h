@@ -20,6 +20,7 @@
 #define DP_BUILD__TCTRL_DNJOIN 0
 #define DP_BUILD__TCTRL_DPUART 0
 #define DP_BUILD__TCTRL_DPSYS 0
+#define DP_BUILD__TCTRL_PORT 1
 
 //=====================================
 /*! @brief Runs all tests in Testing package

@@ -12,30 +12,20 @@
 /*============================================================================*/
 
 #include "port.h"
-#include <duinoPro.h>
-#include <Module.h>
-#include <Pin.h>
-
-//Global externally
-Module Board_Mod_Usart(DP_PORT__MODULE_USART);
-
-//Global locally
-Pin rts(DP_PORT__MODULE_USART, DP_PORT__USART_RTS_BMASK);
+#include <Arduino.h>
 
 void port_init(void)
 {
-    rts.mode(OUTPUT);
+    pinMode(DP_PORT__UART_NP_RTS, INPUT);
+    pinMode(DP_PORT__UART_NP_CTS, OUTPUT);
 }
 
-void port_rts_set(int value)
+void pin_set_mode(int pin, int mode)
 {
+    pinMode(pin, mode);
+}
 
-    if (value)
-    {
-        rts.write(HIGH);
-    }
-    else
-    {
-        rts.write(LOW);
-    }
+void pin_set_digital(int pin, int value)
+{
+    digitalWrite(pin, value);
 }

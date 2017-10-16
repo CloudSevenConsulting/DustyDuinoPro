@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
  * Build settings
  ******************************************************************************/
-#define DP_BUILD__TEST_MODE 0
+#define DP_BUILD__TEST_MODE 1
 #define DP_BUILD__UART_USB_MODE 0
 
 /*******************************************************************************
@@ -47,8 +47,6 @@ extern "C" {
 void setup() 
 {
 
-	port_init();
-
 	dp_state_init();
 	dp_conf_default();
 
@@ -71,8 +69,10 @@ void setup()
  * Tests should setup their own environments to ensure controlled testing
  */
  #if !DP_BUILD__TEST_MODE
-	 dn_qsl_init();
-	 pciSetup(7);//Attach PCINT23 (M7 Interrupt)
+	port_init();
+	pciSetup(7);//Attach PCINT23 (M7 Interrupt)
+
+	dn_qsl_init();
  #endif
 
 }
@@ -90,13 +90,6 @@ void loop()
 #else
 	while(1)
 	{
-		delay(500);
-		Board.setLed(true);
-		port_rts_set(true);
-		
-		delay(500);
-		port_rts_set(false);
-		Board.setLed(false);
 	}
 #endif
 }

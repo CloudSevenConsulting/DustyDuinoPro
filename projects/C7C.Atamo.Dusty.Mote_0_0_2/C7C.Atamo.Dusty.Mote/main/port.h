@@ -25,6 +25,15 @@
 #define DP_PORT__UART_NP_CTS DP_PORT__M6P1
 
 //=====================================
+/*! @brief Sets up PCINT (Pin Change 
+*          Interrupts)
+*
+* @param pin the Arduino pin reference
+*
+*/
+void interrupt_pci_init(int pin);
+
+//=====================================
 /*! @brief Initialises all pins
 *
 */
@@ -45,6 +54,15 @@ void pin_set_mode(int, int);
 * @param value High or Low
 */
 void pin_set_digital(int, int);
+
+//=====================================
+/*! @brief Wrapper for arduino DigitalRead
+*
+* @param pin the Arduion pin reference
+*
+* @return digital value of pin
+*/
+int pin_read(int pin);
 
 
 #endif /* PORT_H_ */

@@ -239,12 +239,6 @@
     <Compile Include="globals.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="interrupts\pcint.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="interrupts\pcint.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -400,7 +394,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="interrupts" />
     <Folder Include="sample" />
     <Folder Include="time" />
     <Folder Include="usart" />

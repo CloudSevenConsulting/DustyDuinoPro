@@ -10,8 +10,8 @@
 
 // Project includes
 #include "sensor.h"
-#include "../dp_conf.h"
-#include "../globals.h"
+#include "../globals.h" /*SystemState*/
+
 
 uint8_t sensor_read(uint16_t *buf)
 {

@@ -18,6 +18,10 @@
     #include "Testing/TestDpUart.h"
 #endif
 
+#if DP_BUILD__TCTRL_DPFRAMING
+	#include "Testing/TestDpFraming.h"
+#endif
+
 /*******************************************************************************
  * TEST ROUTINE 
  ******************************************************************************/
@@ -35,4 +39,11 @@ void do_system_test(void)
     TestDpUart test_dp_uart;
     test_dp_uart.run();
 #endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPFRAMING
+    TestDpFraming test_dp_framing;
+    test_dp_framing.run();
+#endif
+
 }

@@ -8,6 +8,8 @@
 #ifndef FRAME_H_
 #define FRAME_H_
 
+#include <stdint.h>
+
 #define DP_SAM__N_FIELD_MAX 3           // timestamp, sensor data, diagnostic data
 #define DP_SAM__LEN_FIELD_VAL_MAX 12    // sensor with six 16-bit values
 #define DP_SAM__LEN_FIELD_VAL_MIN 2     // sensor with single 16-bit value
@@ -49,13 +51,14 @@ typedef struct {
  * (i.e. reserves field). Calls pack_payload_header to build and write field
  * header to payload. Returns pointer to beginning of field value.
  *
- * @param type  code representing the type of data/field to be reserved
- * @param len   length of field value in bytes
- * @param ptr   pointer to dp_payload._payload_ptr
+ * @param type code representing the type of data/field to be reserved
+ * @param len length of field value in bytes
+ * @param payload_ptr pointer to internal payload pointer dp_payload._payload_ptr
+ * @param header_ptr pointer to current position in payload
  *
  * @return pointer to start of field value in payload, -1 on failure
  */
-uint8_t reserve_field(uint8_t, uint8_t, uint8_t*);
+uint8_t reserve_field(uint8_t, uint8_t, uint8_t*, uint8_t*);
 
 //=====================================
 /*! @brief Build and write field header to payload
@@ -80,9 +83,9 @@ uint8_t reserve_field(uint8_t, uint8_t, uint8_t*);
  * In the case of sensor data, the five LSBs are encoded with the sensor
  * type code (from system state variables).
  *
- * @param type  code representing the type of field to be reserved
- * @param len   length of field value in bytes
- * @param ptr   pointer to position in payload to write field header
+ * @param type code representing the type of field to be reserved
+ * @param len length of field value in bytes
+ * @param header_ptr pointer to current position in payload
  *
  * @return length of field header, -1 on failure
  */

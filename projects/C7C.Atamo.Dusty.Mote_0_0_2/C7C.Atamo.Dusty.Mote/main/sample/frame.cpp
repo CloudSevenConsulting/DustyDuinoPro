@@ -7,14 +7,14 @@
 
 #include <string.h> /*memset*/
 
-#include "../globals.h"
+#include "../globals.h" /*dp_payload in dp_payload_flush*/
 #include "frame.h"
 
 
-uint8_t reserve_field(uint8_t type, uint8_t val_len, uint8_t *payload_ptr)
+uint8_t reserve_field(uint8_t type, uint8_t val_len, uint8_t *payload_ptr, uint8_t *header_ptr)
 {
     /*Populate field header*/
-    uint8_t header_len = pack_field_header(type, val_len, payload_ptr);
+    uint8_t header_len = pack_field_header(type, val_len, header_ptr);
     if (header_len < 0) {
         return -1;
     }
@@ -46,7 +46,7 @@ uint8_t pack_field_header(uint8_t type, uint8_t len, uint8_t *header_ptr)
         field_header |= 0b00011111;
     }
     else if (type == DP_SAM__FIELD_TYPE_SENS) {
-        field_header |= SystemState._sensor_type; /*_sensor_type has the sensor code as its 5 LSBs*/
+        field_header |= SystemState._sensor_type; /*the sensor code is the 5 LSBs of _sensor_type (3 MSBs are zero)*/
     }
     else if (type == DP_SAM__FIELD_TYPE_DIAG) {
         field_header |= 0b00011110;

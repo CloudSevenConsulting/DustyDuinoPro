@@ -10,7 +10,6 @@
 #define SENSOR_H_
 
 #include <stdint.h>
-#include "../globals.h" // SystemState
 
 
 #define DP_SENS__OUTPUTS_MAX 6     /*max number of sensor outputs (16 bit each)*/

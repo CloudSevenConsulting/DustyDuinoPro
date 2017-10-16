@@ -63,7 +63,10 @@ void sample_time(void)
     uint32_t time_val;
     
     /*Reserve field in payload from current payload pointer*/
-    tmp_ptr = reserve_field(DP_SAM__FIELD_TYPE_TIME, DP_SAM__LEN_FIELD_VAL_TIME, &dp_payload._payload_ptr);
+    tmp_ptr = reserve_field(DP_SAM__FIELD_TYPE_TIME,
+        DP_SAM__LEN_FIELD_VAL_TIME,
+        &dp_payload._payload_ptr,
+        &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get timestamp*/
     time_val = dn_time_ms();
@@ -86,7 +89,8 @@ uint8_t sample_sensor()
     /*Reserve field in payload from current payload pointer*/
     tmp_ptr = reserve_field(DP_SAM__FIELD_TYPE_SENS,
         SystemState._sensor_n_outputs*DP_SENS__RESOLUTION_MAX,
-        &dp_payload._payload_ptr);
+        &dp_payload._payload_ptr,
+        &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get sensor data*/
     ret = sensor_read(sens_data_buf);
@@ -110,7 +114,10 @@ uint8_t sample_diagnostic()
     float Vbat;
 
     /*Reserve field in payload from current payload pointer*/
-    tmp_ptr = reserve_field(DP_SAM__FIELD_TYPE_DIAG, DP_SAM__LEN_FIELD_VAL_DIAG, &dp_payload._payload_ptr);
+    tmp_ptr = reserve_field(DP_SAM__FIELD_TYPE_DIAG,
+        DP_SAM__LEN_FIELD_VAL_DIAG,
+        &dp_payload._payload_ptr,
+        &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get Vbat*/
     Board.enableVbatSense(true);

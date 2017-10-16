@@ -19,6 +19,7 @@
 
 #define DP_BUILD__TCTRL_DNJOIN 0
 #define DP_BUILD__TCTRL_DPUART 1
+#define DP_BUILD__TCTRL_DPFRAMING 1
 
 //=====================================
 /*! @brief Runs all tests in Testing package

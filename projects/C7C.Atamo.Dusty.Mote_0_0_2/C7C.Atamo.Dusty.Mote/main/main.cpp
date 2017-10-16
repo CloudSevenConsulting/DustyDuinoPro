@@ -22,6 +22,7 @@ duinoPRO Board;/*This is public globally in globals.h*/
  * Core
  ******************************************************************************/
 #include "interrupts/pcint.h"
+#include "port.h"
 #include "dp_sm.h"
 #include "dp_conf.h"
 #include "sample/sensor.h"
@@ -45,6 +46,8 @@ extern "C" {
  ******************************************************************************/
 void setup() 
 {
+
+	port_init();
 
 	dp_state_init();
 	dp_conf_default();
@@ -87,6 +90,13 @@ void loop()
 #else
 	while(1)
 	{
+		delay(500);
+		Board.setLed(true);
+		port_rts_set(true);
+		
+		delay(500);
+		port_rts_set(false);
+		Board.setLed(false);
 	}
 #endif
 }

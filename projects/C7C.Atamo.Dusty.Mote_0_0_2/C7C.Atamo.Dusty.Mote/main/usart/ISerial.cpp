@@ -26,13 +26,12 @@ extern "C" void dp_usart_end(void)
 
 extern "C" void dp_usart_flush(void)
 {
-    usart_mode4_flow(USART__DIRECTION_PN, USART__FLOWCTRL_DEASSERT);
     Serial.flush();
+    usart_mode4_flow(USART__DIRECTION_PN, USART__FLOWCTRL_DEASSERT);
 }
 
 extern "C" size_t dp_usart_write(uint8_t c)
 {
-    delay(1);
     usart_mode4_flow(USART__DIRECTION_PN, USART__FLOWCTRL_ASSERT);
 
     //If the line is not clear, wait until it is

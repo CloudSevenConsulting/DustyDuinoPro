@@ -18,6 +18,8 @@ typedef void (*dn_uart_rxByte_cbt)(uint8_t byte);
  */
 typedef struct {
 	dn_uart_rxByte_cbt	ipmt_uart_rxByte_cb;
+	int np_rts;
+	int np_cts;
 } dn_uart_vars_t;
 
 extern dn_uart_vars_t dn_uart_vars;

@@ -14,6 +14,11 @@ dn_uart_vars_t dn_uart_vars;
 extern "C" void dp_usart_init(int baud_rate)
 {
     Serial.begin(baud_rate);
+
+    dn_uart_vars.np_cts = 1;
+    dn_uart_vars.np_rts = 1;
+
+    update_port_usart();
 }
 
 extern "C" void dp_usart_end(void)
@@ -28,9 +33,6 @@ extern "C" void dp_usart_flush(void)
 
 extern "C" size_t dp_usart_write(uint8_t c)
 {
-
-    // Flow control not required for DN's RX line in Mode 4
-
     //TODO: handle method overloading of different sizes
     Serial.write(c);
 

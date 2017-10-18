@@ -28,4 +28,11 @@
  */
  void usart_mode4_flow(int, int);
 
+ //=====================================
+/** @brief Updates the port values based on the uart_vars. This is to ensure 
+ *         resources are shared correctly.
+ *
+ */
+ void update_port_usart(void);
+
 #endif

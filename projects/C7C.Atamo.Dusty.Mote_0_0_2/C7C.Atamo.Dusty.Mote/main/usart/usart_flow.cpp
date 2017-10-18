@@ -25,23 +25,37 @@ void usart_mode4_flow(int direction, int value)
         case USART__DIRECTION_NP:
             if (value == USART__FLOWCTRL_ASSERT)
             {
-                pin_set_digital(DP_PORT__UART_NP_CTS, 0);
+                dn_uart_vars.np_cts = 0;
             }
             else
             {
                 delay(2);
-                pin_set_digital(DP_PORT__UART_NP_CTS, 1);
+                dn_uart_vars.np_cts = 1;
             }
         case USART__DIRECTION_PN:
             //TODO: This
             break;
     }
+
+    update_port_usart();
 }
 
-ISR (PCINT2_vect) // handle pin change interrupt for D0 to D7 here
+void update_port_usart(void)
 {
-    if(pin_read(DP_PORT__UART_NP_RTS))
+    pin_set_digital(DP_PORT__UART_NP_CTS, dn_uart_vars.np_cts);
+}
+
+ISR (PCINT2_vect)
+{
+
+    //TODO: Check if bus is already used with usart.vars
+
+    dn_uart_vars.np_rts = pin_read(DP_PORT__UART_NP_RTS);
+    if (dn_uart_vars.np_rts)
     {
+
+        // If the pin change on RTS was a deassertion, then follow with a 
+        // deassert
         usart_mode4_flow(USART__DIRECTION_NP, USART__FLOWCTRL_DEASSERT);
     }
     else
@@ -50,4 +64,6 @@ ISR (PCINT2_vect) // handle pin change interrupt for D0 to D7 here
 
         dn_uart_vars.ipmt_uart_rxByte_cb(Serial.read());
     }
+
+    update_port_usart();
 }

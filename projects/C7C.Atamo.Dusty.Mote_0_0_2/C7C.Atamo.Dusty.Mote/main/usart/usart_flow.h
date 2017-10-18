@@ -17,6 +17,14 @@
 #define USART__DIRECTION_NP 0
 #define USART__FLOWCTRL_ASSERT 1
 #define USART__FLOWCTRL_DEASSERT 0
+
+ //=====================================
+/** @brief Interface into vars (try to keep that private!)
+ *
+ * @return 1 if clear to send
+ */
+int usart_cts_status(void);
+
 //=====================================
 /** @brief Implements the necessary flow control for the USART
  *

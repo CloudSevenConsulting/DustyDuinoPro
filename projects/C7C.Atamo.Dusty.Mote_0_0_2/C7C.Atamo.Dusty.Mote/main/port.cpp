@@ -23,8 +23,13 @@ void interrupt_pci_init(int pin)
 
 void port_init(void)
 {
+    // UART-NP
     pinMode(DP_PORT__UART_NP_RTS, INPUT);
     pinMode(DP_PORT__UART_NP_CTS, OUTPUT);
+
+    // UART-PN
+    pinMode(DP_PORT__UART_PN_RTS, OUTPUT);
+    pinMode(DP_PORT__UART_PN_CTS, INPUT);
 
     interrupt_pci_init(DP_PORT__UART_NP_RTS);//Attach PCINT23 (M7 Interrupt)
 }

@@ -22,12 +22,16 @@
 #include "dp_sm.h"
 #include "dp_conf.h"
 #include "sample/frame.h"
+/* COMMENTED OUT FOR TESTING
 #include <duinoPRO.h>
+*/
 
 /*******************************************************************************
  * Singletons/Globals
  ******************************************************************************/
+/* COMMENTED OUT FOR TESTING
 extern duinoPRO Board;
+*/
 extern sys_state SystemState;
 extern char sys_conf[DP_LUT__N_PARAM];
 extern dp_payload_t dp_payload;

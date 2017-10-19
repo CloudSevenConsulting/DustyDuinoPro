@@ -1,6 +1,6 @@
 /*============================================================================*/
 /*!
- * @file TestDpFraming.h
+ * @file TestDpSampleSensor.h
  *
  * @brief Test cases for framing routines
  *
@@ -10,21 +10,20 @@
  */
 /*============================================================================*/
 
-#ifndef TESTDPFRAMING_H_
-#define TESTDPFRAMING_H_
+#ifndef TESTDPSAMPLESENSOR_H_
+#define TESTDPSAMPLESENSOR_H_
 
 #include "TestCase.h"
 
-class TestDpFraming: public TestCase {
-    private:
+class TestDpSampleSensor: public TestCase {
+	private:
 
-    protected:
+	protected:
 
-    public:
-        TestDpFraming(void);
-        void run(void);
-        void TU_SH_DpFraming_op(void);
+	public:
+		TestDpSampleSensor(void);
+		void run(void);
+		void TU_SH_DpSampleSensor_op(void);
 };
 
-
-#endif /* TESTDPFRAMING_H_ */
+#endif /* TESTDPSAMPLESENSOR_H_ */

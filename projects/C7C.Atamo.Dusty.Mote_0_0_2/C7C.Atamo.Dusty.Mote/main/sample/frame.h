@@ -19,14 +19,15 @@
 #define DP_SAM__LEN_DATL_HEAD 1
 #define DP_SAM__LEN_PAYL_HEAD 1
 
-#define DP_SAM__LEN_PAYL_MAX 26
+#define DP_SAM__LEN_PAYL_MAX 25
     /* 1 byte payload header
      * 1 byte dataload header
-     * 2 bytes timestamp field
+     * 1 byte timestamp field header
+     * 4 bytes timestamp field value
      * 1 byte sensor header
      * 12 bytes sensor data
      * 1 byte diagnostic header
-     * 8 bytes diagnostic data
+     * 4 bytes diagnostic data
      */
 
 #define DP_SAM__PAYL_TYPE_DATA 0

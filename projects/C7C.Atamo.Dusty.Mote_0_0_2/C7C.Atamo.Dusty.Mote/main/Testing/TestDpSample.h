@@ -1,6 +1,6 @@
 /*============================================================================*/
 /*!
- * @file TestDpFraming.h
+ * @file TestDpSample.h
  *
  * @brief Test cases for framing routines
  *
@@ -10,21 +10,20 @@
  */
 /*============================================================================*/
 
-#ifndef TESTDPFRAMING_H_
-#define TESTDPFRAMING_H_
+#ifndef TESTDPSAMPLE_H_
+#define TESTDPSAMPLE_H_
 
 #include "TestCase.h"
 
-class TestDpFraming: public TestCase {
-    private:
+class TestDpSample: public TestCase {
+	private:
 
-    protected:
+	protected:
 
-    public:
-        TestDpFraming(void);
-        void run(void);
-        void TU_SH_DpFraming_op(void);
+	public:
+		TestDpSample(void);
+		void run(void);
+		void TU_SH_DpSample_op(void);
 };
 
-
-#endif /* TESTDPFRAMING_H_ */
+#endif /* TESTDPSAMPLE_H_ */

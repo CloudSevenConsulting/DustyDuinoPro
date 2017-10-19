@@ -18,7 +18,7 @@
 /*******************************************************************************
  * Sensor lookup
  ******************************************************************************/
-#define DP_SENS__ACCEL_MAGNO 0x0
+#define DP_SENS__ACCEL_MAGNO 0x00
 
 //TODO: sensor info LUT: number of outputs + polling command and expected response (only needed for sensor config)
 
@@ -27,13 +27,13 @@
  ******************************************************************************/
 #define DP_SENS__STATUS_NOT_SET 0
 
-
-uint8_t sensor_read(uint16_t *buf);
+//TODO: documentation: note that the second argument is the number of bytes in buf (not the number of elements)
+uint8_t sensor_read(uint16_t*, uint8_t);
 
 
 /*******************************************************************************
  * Sensor Drivers
  ******************************************************************************/
-uint8_t sensor_drive_accel_magno(uint8_t sensor_addr, uint16_t *buf);
+uint8_t sensor_drive_accel_magno(uint8_t, uint16_t*);
 
 #endif /* SENSOR_H_ */

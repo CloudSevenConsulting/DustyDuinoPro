@@ -5,21 +5,22 @@
  *  Author: kjph
  */
 
-// External libraries
-#include "0x0_AccelMagno/AccelMagno.h"
+/*External libraries*/
+/* COMMENTED OUT FOR TESTING
+#include "0x00_AccelMagno/AccelMagno.h"
+*/
 
-// Project includes
+/*Project includes*/
 #include "sensor.h"
 #include "../globals.h" /*SystemState*/
 
 
-uint8_t sensor_read(uint16_t *buf)
+uint8_t sensor_read(uint16_t *buf, uint8_t buf_size)
 {
     int ret;
-    uint8_t swp[DP_SAM__N_FIELD_MAX*DP_SAM__LEN_FIELD_VAL_MAX];
  
     /*Check if the buffer is large enough*/
-    if (sizeof(buf) < SystemState._sensor_n_outputs) {
+    if (buf_size < SystemState._sensor_n_outputs) {
         return FAILURE;
     }
 
@@ -31,9 +32,21 @@ uint8_t sensor_read(uint16_t *buf)
     /*Select and run sensor driver*/
     switch (SystemState._sensor_type) {
         case DP_SENS__ACCEL_MAGNO:
+            /* COMMENTED OUT FOR TESTING    
             ret = sensor_drive_accel_magno(SystemState._sensor_addr, buf);
+            */
             /*TODO: check return*/
             /*TODO: set buffer to all zeros if invalid*/
+
+            // TESTING: semi-random values
+            buf[0] = 0x0102;
+            buf[1] = 0x5010;
+            buf[2] = 0xFF00;
+            buf[3] = 0x11DD;
+            buf[4] = 0x0011;
+            buf[5] = 0x0504;
+            // END OF TESTING CODE
+
             break;
         /*All the other types*/
         /*..etc*/
@@ -46,37 +59,37 @@ uint8_t sensor_read(uint16_t *buf)
     return SUCCESS;
 }
 
-
+// COMMENTED OUT FOR TESTING
 //TODO: move to separate file - one each for each sensor driver/type
-uint8_t sensor_drive_accel_magno(uint8_t sensor_addr, uint16_t *buf)
-{
-    /*Check if the buffer is large enough*/
-    if (sizeof(buf) < 6) {
-        return FAILURE;
-    }
+// uint8_t sensor_drive_accel_magno(uint8_t sensor_addr, uint16_t *buf)
+// {
+//     /*Check if the buffer is large enough*/
+//     if (sizeof(buf) < 6) {
+//         return FAILURE;
+//     }
     
-    /*Initiate connection to Accel/Magno sensor and exit low power mode*/
-    AccelMagno sensor_AccMag(sensor_addr);
-    sensor_AccMag.begin();
-    sensor_AccMag.lowPowerMode(false);
+//     /*Initiate connection to Accel/Magno sensor and exit low power mode*/
+//     AccelMagno sensor_AccMag(sensor_addr);
+//     sensor_AccMag.begin();
+//     sensor_AccMag.lowPowerMode(false);
 
-    /*Set and enable accelerometer and magnetometer at full scales*/
-    sensor_AccMag.setAccelFullScale(ACCEL_2G);
-    sensor_AccMag.setMagnoFullScale(MAGNO_2GAUSS);
-    sensor_AccMag.enableAccel();
-    sensor_AccMag.enableMagno();
-    //TODO: ask client if it is desirable to be able operate in different modes? e.g. accel but not not mag
+//     /*Set and enable accelerometer and magnetometer at full scales*/
+//     sensor_AccMag.setAccelFullScale(ACCEL_2G);
+//     sensor_AccMag.setMagnoFullScale(MAGNO_2GAUSS);
+//     sensor_AccMag.enableAccel();
+//     sensor_AccMag.enableMagno();
+//     //TODO: ask client if it is desirable to be able operate in different modes? e.g. accel but not not mag
 
-    /*Acquire sensor data*/
-    buf[0] = static_cast<uint16_t>(sensor_AccMag.accelX());
-    buf[1] = static_cast<uint16_t>(sensor_AccMag.accelY());
-    buf[2] = static_cast<uint16_t>(sensor_AccMag.accelZ());
-    buf[3] = static_cast<uint16_t>(sensor_AccMag.magnoX());
-    buf[4] = static_cast<uint16_t>(sensor_AccMag.magnoY());
-    buf[5] = static_cast<uint16_t>(sensor_AccMag.magnoZ());
+//     /*Acquire sensor data*/
+//     buf[0] = static_cast<uint16_t>(sensor_AccMag.accelX());
+//     buf[1] = static_cast<uint16_t>(sensor_AccMag.accelY());
+//     buf[2] = static_cast<uint16_t>(sensor_AccMag.accelZ());
+//     buf[3] = static_cast<uint16_t>(sensor_AccMag.magnoX());
+//     buf[4] = static_cast<uint16_t>(sensor_AccMag.magnoY());
+//     buf[5] = static_cast<uint16_t>(sensor_AccMag.magnoZ());
 
-    /*Put sensor into low power mode*/
-    sensor_AccMag.lowPowerMode(true);
+//     /*Put sensor into low power mode*/
+//     sensor_AccMag.lowPowerMode(true);
 
-    return SUCCESS;
-}
+//     return SUCCESS;
+// }

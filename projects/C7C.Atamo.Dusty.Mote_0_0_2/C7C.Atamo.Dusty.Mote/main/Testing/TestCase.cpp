@@ -6,7 +6,9 @@
  */ 
 
 #include "TestCase.h"
+/*COMMENTED OUT FOR TESTING
 #include "Arduino.h"
+*/
 #include "../globals.h"
 
 TestCase::TestCase(void)
@@ -16,10 +18,12 @@ TestCase::TestCase(void)
 
 void TestCase::blink()
 {
+	/*COMMENTED OUT FOR TESTING
 	delay(500);
 	Board.setLed(false);
 	delay(500);
 	Board.setLed(true);
+	*/
 }
 
 void TestCase::run()

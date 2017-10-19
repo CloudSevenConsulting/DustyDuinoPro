@@ -35,41 +35,41 @@ void TestDpFraming::TU_SH_DpFraming_op(void)
      ******************************************************************************/
     /*type*/
     ret = pack_field_header(-1, 6, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = pack_field_header(3, 6, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
     /*len*/
     ret = pack_field_header(1, -1, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = pack_field_header(1, 0, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = pack_field_header(1, 13, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
     /*pointer*/
     ret = pack_field_header(1, 6, NULL);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
     /*Invalid types*/
     ret = pack_field_header('a', 6, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = pack_field_header(1,'a', &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
@@ -100,41 +100,41 @@ void TestDpFraming::TU_SH_DpFraming_op(void)
      ******************************************************************************/
     /*type*/
     ret = reserve_field(-1, 6, &ptr, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = reserve_field(3, 6, &ptr, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
     /*len*/
     ret = reserve_field(3, -1, &ptr, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = reserve_field(3, 0, &ptr, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
     ret = reserve_field(3, 13, &ptr, &buf);
-    if (ret != 255) {
+    if (ret != FRAMING_FAIL) {
         t_fail();
     }
 
      /*pointer*/
      ret = reserve_field(3, 13, &ptr, NULL);
-     if (ret != 255) {
+     if (ret != FRAMING_FAIL) {
          t_fail();
      }
  
      /*Invalid types*/
      ret = reserve_field('a', 6, &ptr, &buf);
-     if (ret != 255) {
+     if (ret != FRAMING_FAIL) {
          t_fail();
      }
      ret = reserve_field(1,'a', &ptr, &buf);
-     if (ret != 255) {
+     if (ret != FRAMING_FAIL) {
          t_fail();
      }
  

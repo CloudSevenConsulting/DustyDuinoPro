@@ -1,5 +1,6 @@
 /* sample.cpp */
 
+/* COMMENTED OUT FOR TESTING
 #include <duinoPRO.h>   /* required for Vbat querying*/
 
 #include "../sm_qsl/dn_time.h"
@@ -17,36 +18,45 @@ uint8_t sample(uint8_t sample_type)
 {
     uint8_t ret;
     
+    /*Flush payload*/
+    dp_payload_flush();
+    
     /*Input validation*/
-    if (sample_type != DP_SAM__TYPE_SENS && sample_type != DP_SAM__TYPE_SENS && sample_type != DP_SAM__TYPE_SENS) {
+    if (sample_type != DP_SAM__TYPE_SENS && sample_type != DP_SAM__TYPE_DIAG && sample_type != DP_SAM__TYPE_BOTH) {
         return FAILURE;
     }
 
-    /*Flush payload*/
-    dp_payload_flush();
+    /*Payload type and initialise pointer*/
+    dp_payload.payload[0] = DP_SAM__PAYL_TYPE_DATA;
+    dp_payload._payload_ptr = 2;
 
-    //TODO: payload header and dataload header
-    
     /*Prepare timestamp*/
     sample_time();
     
-    /*Sample required data*/
+    /*Sensor only*/
     if (sample_type == DP_SAM__TYPE_SENS) {
-        /*Sensor only*/
+        dp_payload.payload[1] = 2;
         ret = sample_sensor();
     }
+    /*Diagnostic only*/
     else if (sample_type == DP_SAM__TYPE_DIAG) {
-        /*Diagnostic only*/
+        dp_payload.payload[1] = 2;
         ret = sample_diagnostic();
     }
+    /*Sensor & diagnostic*/
     else if (sample_type == DP_SAM__TYPE_BOTH) {
-        /*Sensor & diagnostic*/
+        dp_payload.payload[1] = 3;
         ret = sample_sensor();
         ret += sample_diagnostic();
     }
 
     /*Check sample function return values*/
     if (ret > 0) {
+        return FAILURE;
+    }
+
+    /*Check payload length not exceeded*/
+    if (dp_payload._payload_ptr > DP_SAM__LEN_PAYL_MAX) {
         return FAILURE;
     }
 
@@ -71,13 +81,13 @@ void sample_time(void)
     /*Get timestamp*/
     time_val = dn_time_ms();
     
-    //TODO: check for successful function returns before storing timestamp
+    //TODO: check dn_time_ms returns successfully before storing timestamp
     
     /*Write timestamp to payload, MSB first*/
-    dp_payload.payload[tmp_ptr]   = (uint8_t)(time_val);
-    dp_payload.payload[tmp_ptr+1] = (uint8_t)(time_val<<8);
-    dp_payload.payload[tmp_ptr+2] = (uint8_t)(time_val<<8);
-    dp_payload.payload[tmp_ptr+3] = (uint8_t)(time_val<<8);
+    dp_payload.payload[tmp_ptr]   = (uint8_t)(time_val>>24);
+    dp_payload.payload[tmp_ptr+1] = (uint8_t)(time_val>>16);
+    dp_payload.payload[tmp_ptr+2] = (uint8_t)(time_val>>8);
+    dp_payload.payload[tmp_ptr+3] = (uint8_t)(time_val);
 }
 
 
@@ -93,15 +103,15 @@ uint8_t sample_sensor()
         &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get sensor data*/
-    ret = sensor_read(sens_data_buf);
+    ret = sensor_read(sens_data_buf, 2*DP_SENS__OUTPUTS_MAX);
     if (ret == FAILURE) {
         return FAILURE;
     }
 
     /*Write sensor data to payload, MSB first*/
     for (int i = 0; i < SystemState._sensor_n_outputs; i++) {
-        dp_payload.payload[tmp_ptr+i]   = (uint8_t)(sens_data_buf[i]);
-        dp_payload.payload[tmp_ptr+i+1] = (uint8_t)(sens_data_buf[i]<<8);
+        dp_payload.payload[tmp_ptr+2*i]   = (uint8_t)(sens_data_buf[i]>>8);
+        dp_payload.payload[tmp_ptr+2*i+1] = (uint8_t)(sens_data_buf[i]);
     }
     
     return SUCCESS;
@@ -111,6 +121,7 @@ uint8_t sample_sensor()
 uint8_t sample_diagnostic()
 {
     uint8_t tmp_ptr;
+    uint32_t Vbat_bits;
     float Vbat;
 
     /*Reserve field in payload from current payload pointer*/
@@ -120,14 +131,21 @@ uint8_t sample_diagnostic()
         &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get Vbat*/
+    /* COMMENTED OUT FOR TESTING
     Board.enableVbatSense(true);
     Vbat = Board.getVbat();
     Board.enableVbatSense(false);
-
-    /*Write Vbat to payload, MSB first*/
-    memcpy(&dp_payload.payload[tmp_ptr], &Vbat, DP_SAM__LEN_FIELD_VAL_DIAG);
-    //TODO: check we can assume float is 32 bits
-    //TODO: check MSB is stored first (testing)
+    */
+    Vbat = 378.5204;  // semi-random value for TESTING
+    
+    /*Copy bits of Vbat to a 32 bit variable*/
+    memcpy(&Vbat_bits, &Vbat, DP_SAM__LEN_FIELD_VAL_DIAG);
+    
+    /*Write bits of Vbat to payload, MSB first*/
+    dp_payload.payload[tmp_ptr]   = (uint8_t)(Vbat_bits>>24);
+    dp_payload.payload[tmp_ptr+1] = (uint8_t)(Vbat_bits>>16);
+    dp_payload.payload[tmp_ptr+2] = (uint8_t)(Vbat_bits>>8);
+    dp_payload.payload[tmp_ptr+3] = (uint8_t)(Vbat_bits);
 
     return SUCCESS;
 }

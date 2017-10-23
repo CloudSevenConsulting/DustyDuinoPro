@@ -242,6 +242,24 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\frame.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\sample.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sample\sample.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="sample\sensor.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -330,6 +348,34 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\TestDpSys.h">
+    <Compile Include="Testing\TestDpFraming.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpFraming.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSample.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleDiagnostic.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleDiagnostic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleTime.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleTime.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\TestDpUart.cpp">
@@ -374,6 +420,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sample" />
+    <Folder Include="sample\0x00_AccelMagno" />
     <Folder Include="time" />
     <Folder Include="usart" />
     <Folder Include="Testing" />

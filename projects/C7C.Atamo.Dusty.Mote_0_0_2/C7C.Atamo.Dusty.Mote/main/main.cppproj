@@ -348,6 +348,8 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\TestDpSys.h">
+		<SubType>compile</SubType>
+	</Compile>
     <Compile Include="Testing\TestDpFraming.cpp">
       <SubType>compile</SubType>
     </Compile>

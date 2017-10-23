@@ -51,6 +51,7 @@ uint8_t sample(uint8_t sample_type)
 
     /*Check sample function return values*/
     if (ret > 0) {
+        dp_payload_flush(); /*ensure empty payload if returning failure*/
         return FAILURE;
     }
 

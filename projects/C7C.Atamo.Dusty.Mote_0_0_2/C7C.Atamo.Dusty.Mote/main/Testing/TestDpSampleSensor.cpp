@@ -8,12 +8,6 @@
 #include <stdint.h>
 #include <stddef.h>
 
-/*OFFLINE TESTING ONLY*/
-#include <stdio.h>
-#include <stdint.h>
-#include <iostream>
-/*END OFFLINE TESTING ONLY*/
-
 #include "TestDpSampleSensor.h"
 #include "../globals.h"
 #include "../sample/sample.h"
@@ -33,7 +27,6 @@ void TestDpSampleSensor::run(void)
 void TestDpSampleSensor::TU_SH_DpSampleSensor_op(void)
 {
     /*Variables*/
-    bool passed = true;
     dp_payload_flush();
     uint8_t ret = -1;
     uint8_t tmp_sensor_n_outputs, tmp_sensor_type, tmp_sensor_status;
@@ -56,35 +49,16 @@ void TestDpSampleSensor::TU_SH_DpSampleSensor_op(void)
     
     /*Examine outputs*/
     if (ret != RETURN_SUCCESS || dp_payload._ready_send != 0 || dp_payload._payload_ptr != 13) {
-        printf("sample_sensor:      TEST FAILED - BAU 1\n");
-        passed = false;
+        t_fail();
     }
     for (uint8_t i = 0; i < 13; i++) {
         if (dp_payload.payload[i] != expected[i]) {
-            printf("sample_sensor:      TEST FAILED - BAU %d\n", i);
-            printf("payload: %i, expected: %i\n", dp_payload.payload[i], expected[i]);
-            passed = false;
-            break;
+            t_fail();
         }
     }
     
     /*No failed tests - SUCCESS*/
-    if (passed == true) {
-        printf("sample_sensor:      TEST PASSED - BAU\n");
-    }
-
-    /*Code available for providing console output in offline testing*/
-    // for (int byte = 0; byte < 13; byte++) {
-    // 	for (int i = 7; i >= 0; i--) {
-    // 		std::cout << ((dp_payload.payload[byte] >> i) & 1);
-    // 	}
-    // 	printf(" ");
-    // }
-    // printf("\n");
-    // printf("return:       %i\n", ret);
-    // printf("_ready_send:  %i\n", dp_payload._ready_send);
-    // printf("_payload_ptr: %i\n", dp_payload._payload_ptr);
-
+    t_pass();
 
     /*Reinstate settings*/
     SystemState._sensor_n_outputs = tmp_sensor_n_outputs;

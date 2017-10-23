@@ -8,12 +8,6 @@
 #include <stdint.h>
 #include <stddef.h>
 
-/*OFFLINE TESTING ONLY*/
-#include <stdio.h>
-#include <stdint.h>
-#include <iostream>
-/*END OFFLINE TESTING ONLY*/
-
 #include "TestDpSample.h"
 #include "../globals.h"
 #include "../sample/sample.h"
@@ -34,7 +28,6 @@ void TestDpSample::run(void)
 void TestDpSample::TU_SH_DpSample_op(void)
 {
     /*Variables*/
-    bool passed = true;
     uint8_t ret = -1;
     uint8_t tmp_sensor_n_outputs, tmp_sensor_type, tmp_sensor_status;
 
@@ -58,123 +51,68 @@ void TestDpSample::TU_SH_DpSample_op(void)
     *******************************************************************************/
     ret = sample(1);
     if (ret != RETURN_SUCCESS || dp_payload._ready_send != 1 || dp_payload._payload_ptr != 20) {
-        printf("sample:             TEST FAILED - BAU\n");
-        passed = false;
+        t_fail();
     }
     for (uint8_t i = 0; i < 20; i++) {
         if (dp_payload.payload[i] != expected_sens[i]) {
-            printf("sample:             TEST FAILED - BAU %d\n", i);
-            printf("payload: %i, expected: %i\n", dp_payload.payload[i], expected_sens[i]);
-            passed = false;
+            t_fail();
             break;
         }
     }
 
-    /*Code available for providing console output in offline testing*/
-    // for (int byte = 0; byte < 20; byte++) {
-    // 	for (int i = 7; i >= 0; i--) {
-    // 		std::cout << ((dp_payload.payload[byte] >> i) & 1);
-    // 	}
-    // 	printf(" ");
-    // }
-    // printf("\n");
-    // printf("return:       %i\n", ret);
-    // printf("_ready_send:  %i\n", dp_payload._ready_send);
-    // printf("_payload_ptr: %i\n", dp_payload._payload_ptr);
-    
-    
     /*******************************************************************************
     * TEST CASE 2: diagnostic only
     *******************************************************************************/
     ret = -1;
     ret = sample(2);
     if (ret != RETURN_SUCCESS || dp_payload._ready_send != 1 || dp_payload._payload_ptr != 12) {
-        printf("sample:             TEST FAILED - BAU\n");
-        passed = false;
+        t_fail();
     }
     for (uint8_t i = 0; i < 12; i++) {
         if (dp_payload.payload[i] != expected_diag[i]) {
-            printf("sample:             TEST FAILED - BAU %d\n", i);
-            printf("payload: %i, expected: %i\n", dp_payload.payload[i], expected_diag[i]);
-            passed = false;
-            break;
+            t_fail();
         }
     }
 
-    /*Code available for providing console output in offline testing*/
-    // for (int byte = 0; byte < 12; byte++) {
-    // 	for (int i = 7; i >= 0; i--) {
-    // 		std::cout << ((dp_payload.payload[byte] >> i) & 1);
-    // 	}
-    // 	printf(" ");
-    // }
-    // printf("\n");
-    // printf("return:       %i\n", ret);
-    // printf("_ready_send:  %i\n", dp_payload._ready_send);
-    // printf("_payload_ptr: %i\n", dp_payload._payload_ptr);
-
-
-    /*******************************************************************************
+   /*******************************************************************************
     * TEST CASE 3: sensor & diagnostic
     *******************************************************************************/
     ret = -1;
     ret = sample(3);
-        if (ret != RETURN_SUCCESS || dp_payload._ready_send != 1 || dp_payload._payload_ptr != 25) {
-        printf("sample:             TEST FAILED - BAU\n");
-        passed = false;
+    if (ret != RETURN_SUCCESS || dp_payload._ready_send != 1 || dp_payload._payload_ptr != 25) {
+        t_fail();
     }
     for (uint8_t i = 0; i < 25; i++) {
         if (dp_payload.payload[i] != expected_both[i]) {
-            printf("sample:             TEST FAILED - BAU %d\n", i);
-            printf("payload: %i, expected: %i\n", dp_payload.payload[i], expected_both[i]);
-            passed = false;
-            break;
+            t_fail();
         }
     }
-
-    /*Code available for providing console output in offline testing*/
-    // for (int byte = 0; byte < 25; byte++) {
-    // 	for (int i = 7; i >= 0; i--) {
-    // 		std::cout << ((dp_payload.payload[byte] >> i) & 1);
-    // 	}
-    // 	printf(" ");
-    // }
-    // printf("\n");
-    // printf("return:       %i\n", ret);
-    // printf("_ready_send:  %i\n", dp_payload._ready_send);
-    // printf("_payload_ptr: %i\n", dp_payload._payload_ptr);
 
     /*******************************************************************************
     * PASSED BAU TESTS
     *******************************************************************************/
-    if (passed == true) {
-        printf("sample:             TEST PASSED - BAU\n");
-    }
+    t_pass();    
     
     /*******************************************************************************
     * TEST CASES 4 & 5: input validation
     *******************************************************************************/
     ret = -1;
     ret = sample(0);
-        if (ret != RETURN_FAILURE || dp_payload._ready_send != 0 || dp_payload._payload_ptr != 0) {
-        printf("sample:             TEST FAILED - INPUT VALIDATION\n");
-        passed = false;
+    if (ret != RETURN_FAILURE || dp_payload._ready_send != 0 || dp_payload._payload_ptr != 0) {
+        t_fail();
     }
 
     ret = -1;
     ret = sample(4);
-        if (ret != RETURN_FAILURE || dp_payload._ready_send != 0 || dp_payload._payload_ptr != 0) {
-        printf("sample:             TEST FAILED - INPUT VALIDATION\n");
-        passed = false;
+    if (ret != RETURN_FAILURE || dp_payload._ready_send != 0 || dp_payload._payload_ptr != 0) {
+        t_fail();
     }
     
     /*******************************************************************************
     * PASSED INPUT VALIDATION TESTS
     *******************************************************************************/
-    if (passed == true) {
-        printf("sample:             TEST PASSED - INPUT VALIDATION\n");
-    }
-
+    t_pass();    
+    
     /*Reinstate settings*/
     SystemState._sensor_n_outputs = tmp_sensor_n_outputs;
     SystemState._sensor_type = tmp_sensor_type;

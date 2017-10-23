@@ -22,6 +22,22 @@
 	#include "Testing/TestDpFraming.h"
 #endif
 
+#if DP_BUILD__TCTRL_DPSAMPLE
+    #include "Testing/TestDpSample.h"
+#endif
+
+#if DP_BUILD__TCTRL_DPSAMPLE_DIAG
+    #include "Testing/TestDpSampleDiagnostic.h"
+#endif
+
+#if DP_BUILD__TCTRL_DPSAMPLE_TIME
+    #include "Testing/TestDpSampleTime.h"
+#endif
+
+#if DP_BUILD__TCTRL_DPSAMPLE_SENS
+    #include "Testing/TestDpSampleSensor.h"
+#endif
+
 /*******************************************************************************
  * TEST ROUTINE 
  ******************************************************************************/
@@ -44,6 +60,30 @@ void do_system_test(void)
 #if DP_BUILD__TCTRL_DPFRAMING
     TestDpFraming test_dp_framing;
     test_dp_framing.run();
+#endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPSAMPLE
+    TestDpSample test_dp_sample;
+    test_dp_sample.run();
+#endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPSAMPLE_DIAG
+    TestDpSampleDiagnostic test_dp_sample_diag;
+    test_dp_sample_diag.run();
+#endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPSAMPLE_TIME
+    TestDpSampleTime test_dp_sample_time;
+    test_dp_sample_time.run();
+#endif
+
+/*-----------------------------------*/
+#if DP_BUILD__TCTRL_DPSAMPLE_SENS
+    TestDpSampleSensor test_dp_sample_sens;
+    test_dp_sample_sens.run();
 #endif
 
 }

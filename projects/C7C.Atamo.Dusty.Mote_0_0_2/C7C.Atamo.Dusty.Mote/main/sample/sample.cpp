@@ -1,6 +1,5 @@
 /* sample.cpp */
 
-/* COMMENTED OUT FOR TESTING
 #include <duinoPRO.h>   /* required for Vbat querying*/
 
 #include "../sm_qsl/dn_time.h"
@@ -131,12 +130,9 @@ uint8_t sample_diagnostic()
         &dp_payload.payload[dp_payload._payload_ptr]);
     
     /*Get Vbat*/
-    /* COMMENTED OUT FOR TESTING
     Board.enableVbatSense(true);
     Vbat = Board.getVbat();
     Board.enableVbatSense(false);
-    */
-    Vbat = 378.5204;  // semi-random value for TESTING
     
     /*Copy bits of Vbat to a 32 bit variable*/
     memcpy(&Vbat_bits, &Vbat, DP_SAM__LEN_FIELD_VAL_DIAG);

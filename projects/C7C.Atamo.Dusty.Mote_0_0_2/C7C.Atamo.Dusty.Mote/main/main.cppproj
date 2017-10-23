@@ -236,10 +236,10 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sample\0x0_AccelMagno\AccelMagno.cpp">
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="sample\0x0_AccelMagno\AccelMagno.h">
+    <Compile Include="sample\0x00_AccelMagno\AccelMagno.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sample\frame.cpp">
@@ -344,6 +344,30 @@
     <Compile Include="Testing\TestDpFraming.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Testing\TestDpSample.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSample.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleDiagnostic.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleDiagnostic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleSensor.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleSensor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleTime.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Testing\TestDpSampleTime.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Testing\TestDpUart.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -386,7 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="sample" />
-    <Folder Include="sample\0x0_AccelMagno\" />
+    <Folder Include="sample\0x00_AccelMagno" />
     <Folder Include="time" />
     <Folder Include="usart" />
     <Folder Include="Testing" />

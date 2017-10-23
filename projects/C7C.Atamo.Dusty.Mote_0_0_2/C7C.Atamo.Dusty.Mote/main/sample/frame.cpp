@@ -7,8 +7,10 @@
 
 #include <string.h> /*memset*/
 
-#include "../globals.h" /*dp_payload in dp_payload_flush*/
+#include "../globals.h"
 #include "frame.h"
+
+dp_payload_t dp_payload;
 
 
 uint8_t reserve_field(uint8_t type, uint8_t val_len, uint8_t *payload_ptr, uint8_t *header_ptr)

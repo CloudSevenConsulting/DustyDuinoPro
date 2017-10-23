@@ -37,13 +37,26 @@
 #define DP_SAM__FIELD_TYPE_SENS 1
 #define DP_SAM__FIELD_TYPE_DIAG 2
 
-//TODO: change DP_SAM__ to DP_FRAME__ ?
 
+/*!
+ * @struct dp_payload_t
+ * 
+ * @var dp_payload_t::_ready_send
+ *      Used to determine if payload is ready for pushing to the Dusty module
+ *      for transmission over the WSN
+ * @var dp_payload_t::_payload_ptr
+ *      Pointer to the current position in the payload, i.e. the index of the
+ *      payload array (next parameter) up to which the payload has been filled/
+ *      written and at which the next entry should be placed.
+ * @var dp_payload_t::payload
+ *      Array for storing the current payload
+ */
 typedef struct {
     uint8_t _ready_send;
     uint8_t _payload_ptr;
     uint8_t payload[DP_SAM__LEN_PAYL_MAX];
 } dp_payload_t;
+
 
 //=====================================
 /*! @brief Reserve space in payload for field of desired length
@@ -60,6 +73,7 @@ typedef struct {
  * @return pointer to start of field value in payload, -1 on failure
  */
 uint8_t reserve_field(uint8_t, uint8_t, uint8_t*, uint8_t*);
+
 
 //=====================================
 /*! @brief Build and write field header to payload
@@ -91,6 +105,7 @@ uint8_t reserve_field(uint8_t, uint8_t, uint8_t*, uint8_t*);
  * @return length of field header, -1 on failure
  */
 uint8_t pack_field_header(uint8_t, uint8_t, uint8_t*);
+
 
 //========== 
 /*! @brief Clears the payload buffers

@@ -3,6 +3,8 @@
  * @file TestDpFraming.h
  *
  * @brief Test cases for framing routines
+ * 
+ * Testing covers both input validation and business as usual (BAU).
  *
  * @date 2017/10/16
  * @author Aaron Hurst

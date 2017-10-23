@@ -2,8 +2,13 @@
 /*!
  * @file TestDpSampleDiagnostic.h
  *
- * @brief Test cases for framing routines
- *
+ * @brief Test cases for sample_diagnostic function
+ * 
+ * Tests business as usual (BAU) operation of this function.
+ * 
+ * Note that any further tests of this function would require integration testing
+ * since it is dependent on other functions.
+ * 
  * @date 2017/10/16
  * @author Aaron Hurst
  *

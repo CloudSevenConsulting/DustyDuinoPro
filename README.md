@@ -4,7 +4,7 @@ AVR based Dust Network implementation using [Linear Technology's SmartMesh-IP](h
 
 ## Documentation
 
-Project documentation can be found [here](https://kjph.github.io/c7c-atamo-dusty/toc.html)
+Project documentation can be found [here](https://cloudsevenconsulting.github.io/toc.html)
 
 ## Projects
 

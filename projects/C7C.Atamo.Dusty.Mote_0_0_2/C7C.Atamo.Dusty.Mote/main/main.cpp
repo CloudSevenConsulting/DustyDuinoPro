@@ -1,7 +1,7 @@
 ﻿/*******************************************************************************
  * Build settings
  ******************************************************************************/
-#define DP_BUILD__TEST_MODE 1
+#define DP_BUILD__TEST_MODE 0
 #define DP_BUILD__UART_USB_MODE 0
 
 /*******************************************************************************
@@ -21,6 +21,7 @@ duinoPRO Board;/*This is public globally in globals.h*/
 /*******************************************************************************
  * Core
  ******************************************************************************/
+#include "port.h"
 #include "dp_sm.h"
 #include "dp_conf.h"
 #include "sample/sensor.h"
@@ -67,7 +68,8 @@ void setup()
  * Tests should setup their own environments to ensure controlled testing
  */
  #if !DP_BUILD__TEST_MODE
-	 dn_qsl_init();
+	port_init();
+	dn_qsl_init();
  #endif
 
 }
@@ -80,11 +82,34 @@ void loop()
 
 	setup();
 
+	uint8_t buf[3] = {0x01, 0x02, 0x04};
+
 #if DP_BUILD__TEST_MODE
 	do_system_test();
 #else
 	while(1)
 	{
+		if(dn_qsl_isConnected())
+		{
+			while(1)
+			{
+				delay(500);
+				Board.setLed(true);
+				dn_qsl_send(buf, sizeof(buf), 0);
+				delay(500);
+				Board.setLed(false);
+			}
+		}
+		else
+		{
+			Board.setLed(true);
+			if (dn_qsl_connect(25, NULL, 0, 0))//Default values
+			{
+			} else
+			{
+				Board.setLed(false);
+			}
+		}
 	}
 #endif
 }

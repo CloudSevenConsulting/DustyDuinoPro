@@ -7,6 +7,9 @@
  * This module provide interface functions to the DN that exposes the DP's UART
  * interface.
  *
+ * This module only exists due to the lack of forward comptability between
+ * .c and .cpp. Otherwise, it is best to have this file in sm_clib/dn_uart
+ *
  * @date 2017/10/01
  * @author Jamie K. Phan
  *
@@ -43,10 +46,5 @@ void dp_usart_flush(void);
 */
 size_t dp_usart_write(uint8_t);
 
-//=====================================
-/*! @brief Reads from USART module
-*
-*/
-int dp_usart_read(void);
 
 #endif /* ISERIAL_H_ */

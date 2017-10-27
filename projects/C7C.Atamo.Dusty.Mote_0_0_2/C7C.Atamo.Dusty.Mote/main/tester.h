@@ -25,6 +25,7 @@
 #define DP_BUILD__TCTRL_DPSAMPLE_DIAG 1
 #define DP_BUILD__TCTRL_DPSAMPLE_TIME 1
 #define DP_BUILD__TCTRL_DPSAMPLE_SENS 1
+#define DP_BUILD__TCTRL_PORT 1
 
 //=====================================
 /*! @brief Runs all tests in Testing package

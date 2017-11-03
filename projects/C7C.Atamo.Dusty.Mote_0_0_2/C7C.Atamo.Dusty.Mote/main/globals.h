@@ -19,8 +19,8 @@
 /*******************************************************************************
  * Key System Libraries
  ******************************************************************************/
-#include "dp_sm.h"
-#include "dp_conf.h"
+#include "sys/dp_sm.h"
+#include "sys/dp_conf.h"
 #include "sample/frame.h"
 #include <duinoPRO.h>
 

@@ -6,7 +6,7 @@
  */ 
 
 #include "dp_conf.h"
-#include "globals.h"
+#include "../globals.h"
 
 const char SYS_LUT[DP_LUT__N_PARAM][3] = {
     {0, 0, 0},

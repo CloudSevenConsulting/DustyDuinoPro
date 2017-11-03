@@ -6,7 +6,7 @@
  */ 
 
 #include "TestPort.h"
-#include "../port.h"
+#include "../sys/port.h"
 
 TestPort::TestPort(void)
 {

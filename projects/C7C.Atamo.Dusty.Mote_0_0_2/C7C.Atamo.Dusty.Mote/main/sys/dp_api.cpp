@@ -12,7 +12,7 @@
 
 #include "dp_api.h"
 #include <duinoPRO.h>
-#include "globals.h"
+#include "../globals.h"
 
 extern "C" void dp_board_set_led(uint8_t status)
 {

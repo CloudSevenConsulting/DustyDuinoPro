@@ -21,9 +21,9 @@ duinoPRO Board;/*This is public globally in globals.h*/
 /*******************************************************************************
  * Core
  ******************************************************************************/
-#include "port.h"
-#include "dp_sm.h"
-#include "dp_conf.h"
+#include "sys/port.h"
+#include "sys/dp_sm.h"
+#include "sys/dp_conf.h"
 #include "sample/sensor.h"
 
 /* ****************************************************************************

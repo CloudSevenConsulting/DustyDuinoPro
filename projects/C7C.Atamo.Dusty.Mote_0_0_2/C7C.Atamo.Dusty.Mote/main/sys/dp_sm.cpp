@@ -10,7 +10,7 @@
 #include <Arduino.h>
 
 #include "dp_sm.h"
-#include "globals.h"
+#include "../globals.h"
 #include "dp_conf.h"
  
 sys_state SystemState;

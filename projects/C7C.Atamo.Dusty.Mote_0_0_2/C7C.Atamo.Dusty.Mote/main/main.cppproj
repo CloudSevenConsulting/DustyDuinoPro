@@ -218,24 +218,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="dp_api.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="dp_api.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="dp_conf.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="dp_conf.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="dp_sm.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="dp_sm.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="globals.h">
       <SubType>compile</SubType>
     </Compile>
@@ -258,12 +240,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sample\sample.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="port.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="port.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="sample\sensor.cpp">
@@ -344,6 +320,30 @@
     <Compile Include="sm_qsl\dn_watchdog.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="sys\dp_api.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\dp_api.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\dp_conf.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\dp_conf.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\dp_sm.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\dp_sm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\port.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sys\port.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="tester.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -354,8 +354,8 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Testing\TestDpSys.h">
-		<SubType>compile</SubType>
-	</Compile>
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Testing\TestDpFraming.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -442,6 +442,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="sys" />
     <Folder Include="sample" />
     <Folder Include="sample\0x00_AccelMagno" />
     <Folder Include="time" />

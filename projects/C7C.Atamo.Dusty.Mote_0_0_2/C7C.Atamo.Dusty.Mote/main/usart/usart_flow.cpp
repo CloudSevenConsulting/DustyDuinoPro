@@ -11,7 +11,7 @@
 /*============================================================================*/
 
 #include "usart_flow.h"
-#include "../port.h"
+#include "../sys/port.h"
 
 extern "C" {
     #include "../usart/usart_vars.h"
